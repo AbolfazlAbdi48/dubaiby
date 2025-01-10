@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     # Third-Party
 
     # Manual apps
+    "account",
     "core",
+    "travel",
 ]
 
 MIDDLEWARE = [
@@ -105,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "fa-ir"
 
 TIME_ZONE = "UTC"
 
@@ -130,3 +132,5 @@ MEDIA_ROOT = config('MEDIA_ROOT')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = 'account.User'
