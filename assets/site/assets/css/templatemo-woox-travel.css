@@ -711,8 +711,8 @@ Banner Style
 
 #section-1 {
   margin-top: 0px;
-  height: 100vh;
-  min-height: 700px;
+  height: 90vh;
+  min-height: 500px;
   color: #fff;
   background-color: #222;
   position: relative;
@@ -723,7 +723,7 @@ Banner Style
   height: 100%;
 }
 #section-1 .content-slider input {
-  display: none;
+  border: none;
 }
 #section-1 .content-slider .slider {
   position: relative;
@@ -750,9 +750,9 @@ Banner Style
   padding: 30px 60px;
   border-radius: 61px;
   position: absolute;
-  width: 80%;
-  left: 10%;
-  bottom: 130px;
+  width: 50%;
+  left: 25%;
+  bottom: 140px;
   display: inline-block;
 }
 #section-1 .more-info i {
@@ -800,14 +800,14 @@ Banner Style
   top: 40%;
   transform: translateY(-50%);
 }
-#section-1 .content-slider .slider .banner .banner-inner-wrapper h2 {
+#section-1 .content-slider .slider .banner .banner-inner-wrapper .h-2 {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 25px;
   color: #fff;
   margin-bottom: 20px;
 }
-#section-1 .content-slider .slider .banner .banner-inner-wrapper h1 {
-  font-size: 50px;
+#section-1 .content-slider .slider .banner .banner-inner-wrapper .h-1 {
+  font-size: 30px;
   color: #fff;
   font-weight: 700;
   margin-bottom: 30px;
@@ -1324,10 +1324,10 @@ About Page Style
 
 .weekly-offers .item .thumb .text h6 {
   display: inline-block;
-  float: right;
+  float: left;
   text-align: right;
-  font-size: 20px;
-  color: #22b3c1;
+  font-size: 15px;
+  color: #E2B714;
 }
 
 .weekly-offers .item .thumb .text h4 span,
@@ -1934,20 +1934,20 @@ Deals Page Style
 }
 
 .amazing-deals .item .image {
-  border-top-left-radius: 23px;
-  border-bottom-left-radius: 23px;
+  border-top-right-radius: 23px;
+  border-bottom-right-radius: 23px;
   overflow: hidden;
 }
 
 .amazing-deals .item {
   background-color: #f7f7f7;
   border-radius: 23px;
-  padding-right: 30px;
+  padding-left: 30px;
   margin-bottom: 30px;
 }
 
 .amazing-deals .item span.info {
-  color: #22b3c1;
+  color: #a5a5a5;
   font-size: 15px;
   margin-bottom: 20px;
   display: block;
@@ -2215,7 +2215,7 @@ body {
     padding: 30px;
     margin-top: 30px !important;
     border-radius: 23px;
-    bottom: 110px;
+    bottom: 200px;
     width: 95%;
     left: 2.5%;
   }

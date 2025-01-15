@@ -1,0 +1,110 @@
+.intro {
+    position: relative;
+    height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+
+.intro video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.intro h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    z-index: 2;
+    color: #fff;
+}
+
+.input-container {
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 1.75rem 1rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.input-container button {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    padding: 0.5rem 1rem;
+    background-color: #E2B714;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.intro .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Tinted overlay */
+    z-index: 2;
+}
+
+.input-container button:hover {
+    background-color: #d4a410;
+}
+
+.badge-container {
+    margin-top: 1.5rem;
+    z-index: 2;
+}
+
+.badge-container .badge {
+    background-color: #FBECBB;
+    color: #412f2c99;
+    margin: 0.25rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.badge-container .badge:hover {
+    transform: scale(1.1);
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.header img {
+    height: 40px;
+}
+
+.header .menu {
+    font-size: 1.5rem;
+    cursor: pointer;
+}

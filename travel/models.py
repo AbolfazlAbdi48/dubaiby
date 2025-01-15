@@ -34,7 +34,7 @@ class Hotel(models.Model):
     image = models.ImageField(verbose_name=_('تصویر اصلی'), upload_to='hotels/')
     title = models.CharField(verbose_name=_('عنوان هتل'), max_length=200)
     location = models.CharField(verbose_name=_('لوکیشن'), max_length=200)
-    rating = models.DecimalField(verbose_name=_('امتیاز'), max_digits=3, decimal_places=2)
+    rating = models.DecimalField(verbose_name=_('امتیاز'), max_digits=3, decimal_places=0)
     amenities = models.TextField(verbose_name=_('امکانات'))
     description = models.TextField(verbose_name=_("توضیحات"))
 
@@ -59,7 +59,7 @@ class HotelRoom(models.Model):
     title = models.CharField(verbose_name=_('عنوان'), max_length=200, null=True, blank=True)
     hotel = models.ForeignKey(Hotel, verbose_name=_('هتل'), related_name='rooms', on_delete=models.CASCADE)
     meal_plan = models.CharField(verbose_name=_('وعده غذایی'), max_length=100)
-    price_per_night = models.DecimalField(verbose_name=_('قیمت هر شب'), max_digits=10, decimal_places=2)
+    price_per_night = models.DecimalField(verbose_name=_('قیمت هر شب'), max_digits=10, decimal_places=0)
     description = models.TextField(verbose_name=_('توضیحات'), null=True, blank=True)
 
     def __str__(self):
@@ -79,7 +79,7 @@ class Tour(models.Model):
     meals = models.CharField(verbose_name=_('وعده های غذایی'), max_length=200)
     start_time = models.DateTimeField(verbose_name=_('زمان شروع'))
     end_time = models.DateTimeField(verbose_name=_('زمان پایان'))
-    price_per_person = models.DecimalField(verbose_name=_('قیمت به ازای هر نفر'), max_digits=10, decimal_places=2)
+    price_per_person = models.DecimalField(verbose_name=_('قیمت به ازای هر نفر'), max_digits=10, decimal_places=0)
 
     def __str__(self):
         return self.title
