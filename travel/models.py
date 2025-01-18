@@ -68,8 +68,10 @@ class HotelRoom(models.Model):
 
 class Tour(models.Model):
     image = models.ImageField(verbose_name=_('تصویر'), upload_to='tours/images/')
+    image_cover = models.ImageField(verbose_name=_('تصویر کاور'), upload_to='tours/images', null=True, blank=True)
     title = models.CharField(verbose_name=_('عنوان'), max_length=200)
     summary = models.CharField(verbose_name=_('خلاصه'), max_length=200)
+    ai_summary = models.TextField(verbose_name=_('خلاصه هوش مصنوعی'), null=True, blank=True)
     description = models.TextField(verbose_name=_('توضیحات'))
     accommodation = models.CharField(verbose_name=_('اقامت'), max_length=200)
     transport_text = models.CharField(verbose_name=_('حمل و نقل (متن)'), null=True, blank=True, max_length=200)
@@ -83,3 +85,36 @@ class Tour(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class TourDay(models.Model):
+    day = models.CharField(verbose_name=_('روز'), max_length=200)
+    summary = models.CharField(verbose_name=_('خلاصه'), max_length=200)
+    image = models.ImageField(verbose_name=_('تصویر'), upload_to='tours/images')
+    tour = models.ForeignKey(to='Tour', verbose_name=_('تور'),
+                             related_name='tour_days', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.tour.title} - {self.day}"
+
+
+class Provider(models.Model):
+    provider = models.CharField(verbose_name=_('ارائه دهنده'), max_length=100)
+    price = models.DecimalField(verbose_name=_('قیمت'), max_digits=10, decimal_places=0)
+    rating = models.DecimalField(verbose_name=_('امتیاز'), max_digits=3, decimal_places=0)
+    affiliate_link = models.URLField(verbose_name=_('لینک'))
+    hotel = models.ForeignKey(to='Hotel', verbose_name=_('هتل'), related_name='hotel_provider',
+                              on_delete=models.CASCADE,
+                              null=True, blank=True)
+    tour = models.ForeignKey(to='Tour', verbose_name=_('تور'),
+                             related_name='tour_provider', on_delete=models.CASCADE, null=True, blank=True)
+    flight = models.ForeignKey(to='FlightTicket', verbose_name=_('پرواز'), related_name='flight_provider',
+                               on_delete=models.CASCADE,
+                               null=True, blank=True)
+
+    def __str__(self):
+        if self.hotel:
+            return f"{self.provider} - {self.hotel.title}"
+        elif self.flight:
+            return f"{self.provider} - {self.flight.airline}"
+        return f"{self.provider} - {self.tour.title}"

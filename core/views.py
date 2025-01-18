@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic import DetailView
 
 from travel.models import Tour, Hotel
 
@@ -13,3 +14,8 @@ def home(request):
         'hotels': hotels
     }
     return render(request, 'core/home.html', context=context)
+
+
+class TourDetailView(DetailView):
+    model = Tour
+    template_name = 'core/tour_detail.html'

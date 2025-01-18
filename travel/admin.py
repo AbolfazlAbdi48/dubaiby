@@ -5,6 +5,8 @@ from .models import (
     HotelRoom,
     Image,
     Tour,
+    TourDay,
+    Provider
 )
 
 
@@ -31,4 +33,14 @@ class ImageAdmin(admin.ModelAdmin):
 
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(TourDay)
+class TourDayAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Provider)
+class ProviderAdmin(admin.ModelAdmin):
     pass
