@@ -19,3 +19,8 @@ def home(request):
 class TourDetailView(DetailView):
     model = Tour
     template_name = 'core/tour_detail.html'
+
+
+class HotelDetailView(DetailView):
+    model = Hotel
+    template_name = 'core/hotel_detail.html'

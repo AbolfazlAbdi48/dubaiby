@@ -18,9 +18,9 @@
         <div class="overlay"></div>
 
         <!-- Content -->
-        <h1>دوبی‌بای، دستیار هوشمند شما در دبی</h1>
+        <h1>دبی‌بای، دستیار هوشمند شما در دبی</h1>
         <div class="input-container">
-            <input type="text" placeholder="برنامه ریزی سفر با هوش مصنوعی...">
+            <input type="text" placeholder="چی از دبی میخوای؟">
             <button>بپرس!</button>
         </div>
         <div class="badge-container">
@@ -64,7 +64,7 @@
                                 <div class="thumb" dir="rtl">
                                     <img src="{{ tour.image.url }}" alt="">
                                     <div class="text">
-                                        <h6><i class="fa fa-location-dot">AI</i><br><span></span></h6>
+{#                                        <h6><i class="fa fa-location-dot">AI</i><br><span></span></h6>#}
                                         <h4>{{ tour.title }}<br><span><i
                                                 class="fa fa-dollar"></i> {{ tour.price_per_person|intcomma:False }}تومان </span>
                                         </h4>
@@ -129,7 +129,8 @@
                                                     </div>
                                                     <p>{{ hotel.description|truncatewords:10 }}</p>
                                                     <div class="main-button">
-                                                        <a href="">رزرو با هوش مصنوعی</a>
+                                                        <a href="{% url 'core:hotel-detail' hotel.pk %}">رزرو با هوش
+                                                            مصنوعی</a>
                                                     </div>
                                                 </div>
                                             </div>
