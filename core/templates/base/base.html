@@ -82,12 +82,18 @@
 {#<!-- ***** Header Area End ***** -->#}
 <!-- Header -->
 <div class="header">
-    <a href="/">
-        <img src="logo.png" alt="Dubai-Bai Logo">
-    </a>
-    <div class="menu">
+    <div id="dropdown">
+        <a href="#">خانه</a>
+        <a href="#">هوش مصنوعی</a>
+        <a href="#">فرصت های تجاری دبی</a>
+        <a href="#">ورود به حساب</a>
+    </div>
+    <div class="menu" id="menu">
         &#9776;
     </div>
+    <a href="/">
+        <img src="" alt="Dubai-Bai Logo">
+    </a>
 </div>
 {% block main %}
 
@@ -130,6 +136,21 @@
     $('nav .controls label').click(function () {
         clearInterval(bannerTimer);
         bannerTimer = setInterval(bannerSwitcher, 5000)
+    });
+
+
+    const menuButton = document.getElementById('menu');
+    const dropdown = document.getElementById('dropdown');
+
+    menuButton.addEventListener('click', () => {
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Optional: Close the dropdown if clicked outside
+    document.addEventListener('click', (event) => {
+        if (!menuButton.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.style.display = 'none';
+        }
     });
 </script>
 
