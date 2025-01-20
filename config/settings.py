@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
 
     # Third-Party
+    "crispy_forms",
+    "crispy_bootstrap4",
 
     # Manual apps
     "account",
@@ -135,3 +137,8 @@ MEDIA_ROOT = config('MEDIA_ROOT')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'account.User'
+
+LOGIN_REDIRECT_URL = 'core:home'
+LOGOUT_REDIRECT_URL = 'core:home'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
