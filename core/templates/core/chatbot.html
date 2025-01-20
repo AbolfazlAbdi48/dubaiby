@@ -1,0 +1,70 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}
+    DubaiBy | چت بات
+{% endblock %}
+
+{% block main %}
+    <div class="container d-flex flex-column chat-box">
+        <!-- Chat Messages -->
+        <div class="chat-container d-flex flex-column" id="chat-container">
+
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-input input-group" dir="ltr">
+            <button class="btn btn-primary" id="chat-send"><i class="fa fa-paper-plane"></i></button>
+            <input type="text" class="form-control p-3" placeholder="پیام..." dir="rtl" id="chatbot">
+        </div>
+    </div>
+{% endblock %}
+
+{% block js_code %}
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const chatbotInput = document.getElementById('chatbot');
+        const chatBtn = document.getElementById("chat-send");
+
+        chatBtn.addEventListener('click', async (event) => {
+            const userMessage = chatbotInput.value.trim();
+            chatbotInput.value = ''; // Clear the input field
+
+            // Add the user's message to the chat
+            const userMessageElement = document.createElement('div');
+            userMessageElement.className = 'chat-message user-message';
+            userMessageElement.textContent = userMessage;
+            chatContainer.appendChild(userMessageElement);
+
+            // Add a loading message for the bot
+            const botMessageElement = document.createElement('div');
+            botMessageElement.className = 'chat-message bot-message';
+            botMessageElement.textContent = 'در حال پاسخ...';
+            chatContainer.appendChild(botMessageElement);
+
+            // Scroll to the bottom of the chat container
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            // Send the user's message to the server and get the bot's reply
+            try {
+                const response = await fetch('/chat/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({message: userMessage}),
+                });
+
+                const data = await response.json();
+                console.log(data)
+                botMessageElement.innerHTML = data.reply; // Update bot message with the actual reply
+            } catch (error) {
+                console.error("Error communicating with assistant:", error);
+                botMessageElement.textContent = 'خطا در ارتباط با سرور. لطفا دوباره تلاش کنید.';
+            }
+        });
+
+
+    </script>
+{% endblock %}
