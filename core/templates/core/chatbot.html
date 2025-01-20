@@ -6,10 +6,24 @@
     DubaiBy | چت بات
 {% endblock %}
 
+{% block css_code %}
+    <style>
+        footer {
+            background: #ffffff;
+        }
+    </style>
+{% endblock %}
+
 {% block main %}
     <div class="container d-flex flex-column chat-box">
         <!-- Chat Messages -->
         <div class="chat-container d-flex flex-column" id="chat-container">
+            {% for message in messages %}
+                <!-- User Message -->
+                <div class="chat-message user-message">{{ message.user_message }}</div>
+                <!-- Bot Message -->
+                <div class="chat-message bot-message">{{ message.bot_message|safe }}</div>
+            {% endfor %}
 
         </div>
 
@@ -23,14 +37,19 @@
 
 {% block js_code %}
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth"
+            });
+        });
+
+
         const chatContainer = document.getElementById('chat-container');
         const chatbotInput = document.getElementById('chatbot');
         const chatBtn = document.getElementById("chat-send");
 
-        chatBtn.addEventListener('click', async (event) => {
-            const userMessage = chatbotInput.value.trim();
-            chatbotInput.value = ''; // Clear the input field
-
+        const chatAjax = async (userMessage) => {
             // Add the user's message to the chat
             const userMessageElement = document.createElement('div');
             userMessageElement.className = 'chat-message user-message';
@@ -57,13 +76,25 @@
                 });
 
                 const data = await response.json();
-                console.log(data)
                 botMessageElement.innerHTML = data.reply; // Update bot message with the actual reply
             } catch (error) {
                 console.error("Error communicating with assistant:", error);
                 botMessageElement.textContent = 'خطا در ارتباط با سرور. لطفا دوباره تلاش کنید.';
             }
+        }
+
+        chatBtn.addEventListener('click', (event) => {
+            const userMessage = chatbotInput.value.trim();
+            chatbotInput.value = ''; // Clear the input field
+            chatAjax(userMessage)
         });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get('message');
+
+        if (message) {
+            chatAjax(message);
+        }
 
 
     </script>

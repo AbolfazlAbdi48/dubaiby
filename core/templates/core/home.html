@@ -20,13 +20,15 @@
         <!-- Content -->
         <h1>دبی‌بای، دستیار هوشمند شما در دبی</h1>
         <div class="input-container">
-            <input type="text" placeholder="چی از دبی میخوای؟">
-            <button>بپرس!</button>
+            <form action="/chat/" autocomplete="off" method="get">
+                <input type="text" placeholder="چی از دبی میخوای؟" name="message">
+                <button type="submit">بپرس!</button>
+            </form>
         </div>
         <div class="badge-container">
-            <span class="badge rounded-pill">بهترین تور های دبی رو بهم بگو</span>
-            <span class="badge rounded-pill">چطور ویزای دبی بگیرم؟</span>
-            <span class="badge rounded-pill">یه تور تفریحی برای عید میخوام</span>
+            <a href="/chat/?message=" class="badge rounded-pill">بهترین تور های دبی رو بهم بگو</a>
+            <a href="/chat/?message=" class="badge rounded-pill">چطور ویزای دبی بگیرم؟</a>
+            <a href="/chat/?message=" class="badge rounded-pill">یه تور تفریحی برای عید میخوام</a>
         </div>
     </div>
 
@@ -64,7 +66,7 @@
                                 <div class="thumb" dir="rtl">
                                     <img src="{{ tour.image.url }}" alt="">
                                     <div class="text">
-{#                                        <h6><i class="fa fa-location-dot">AI</i><br><span></span></h6>#}
+                                        {#                                        <h6><i class="fa fa-location-dot">AI</i><br><span></span></h6>#}
                                         <h4>{{ tour.title }}<br><span><i
                                                 class="fa fa-dollar"></i> {{ tour.price_per_person|intcomma:False }}تومان </span>
                                         </h4>

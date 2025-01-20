@@ -5,11 +5,13 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import DetailView
 from openai import OpenAI
+
+from core.models import ChatMessage
 from travel.models import Tour, Hotel
 
 client = OpenAI(
     api_key="FAKE",
-    base_url="http://localhost:1337/v1"
+    base_url="http://0.0.0.0:1337/v1"
 )
 
 
@@ -69,10 +71,23 @@ def chatbot_view(request):
 
             assistant_message = response.choices[0].message.content
 
+            chat_message = ChatMessage(
+                user_message=user_message,
+                bot_message=assistant_message
+            )
+            if request.user.is_authenticated:
+                chat_message.user = request.user
+            chat_message.save()
+
             return JsonResponse({"reply": assistant_message}, status=200)
 
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
 
-    context = {}
+    messages = None
+    if request.user.is_authenticated:
+        messages = ChatMessage.objects.filter(user=request.user)
+    context = {
+        "messages": messages
+    }
     return render(request, 'core/chatbot.html', context=context)
