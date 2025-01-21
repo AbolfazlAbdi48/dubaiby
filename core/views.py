@@ -4,15 +4,15 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import DetailView
-# from openai import OpenAI
+from openai import OpenAI
 
 from core.models import ChatMessage
 from travel.models import Tour, Hotel
 
-# client = OpenAI(
-#     api_key="FAKE",
-#     base_url="http://0.0.0.0:1337/v1"
-# )
+client = OpenAI(
+    api_key="FAKE",
+    base_url="http://0.0.0.0:1337/v1"
+)
 
 
 # Create your views here.
@@ -55,19 +55,19 @@ def chatbot_view(request):
             if not user_message:
                 return JsonResponse({"error": "Message is required"}, status=400)
 
-            # response = client.chat.completions.create(
-            #     model="gpt-4o",
-            #     messages=[
-            #         {
-            #             "role": "system",
-            #             "content": system_content
-            #         },
-            #         {
-            #             "role": "user",
-            #             "content": user_message
-            #         }
-            #     ]
-            # )
+            response = client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {
+                        "role": "system",
+                        "content": system_content
+                    },
+                    {
+                        "role": "user",
+                        "content": user_message
+                    }
+                ]
+            )
 
             assistant_message = 'response.choices[0].message.content'
 
