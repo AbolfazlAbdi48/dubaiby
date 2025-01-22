@@ -69,7 +69,7 @@ def chatbot_view(request):
                 ]
             )
 
-            assistant_message = 'response.choices[0].message.content'
+            assistant_message = response.choices[0].message.content
 
             chat_message = ChatMessage(
                 user_message=user_message,
