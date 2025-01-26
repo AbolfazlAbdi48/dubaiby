@@ -80,10 +80,12 @@
 <!-- Header -->
 <div class="header">
     <div id="dropdown">
-        <a href="#">خانه</a>
-        <a href="#">هوش مصنوعی</a>
-        <a href="#">فرصت های تجاری دبی</a>
-        <a href="#">ورود به حساب</a>
+        <a href="{% url 'core:home' %}">خانه</a>
+        <a href="{% url 'core:chatbot' %}">دستیار هوشمند سفر</a>
+        <a href="#">همکاری با ما</a>
+        <a href="
+                {% if request.user.is_authenticated %}{% url 'core:chatbot' %}{% else %}{% url 'account:login' %}{% endif %}">ورود
+            به حساب</a>
     </div>
     <div class="menu" id="menu">
         <i class="fa fa-bars"></i>
