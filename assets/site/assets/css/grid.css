@@ -49,7 +49,7 @@
     left: 10px;
     transform: translateY(-50%);
     padding: 0.5rem 1rem;
-    background-color: #E2B714;
+    background-color: #22b3c1;
     color: #fff;
     border: none;
     border-radius: 20px;
@@ -69,7 +69,7 @@
 }
 
 .input-container button:hover {
-    background-color: #d4a410;
+    background-color: #16727a;
 }
 
 .badge-container {
@@ -78,8 +78,8 @@
 }
 
 .badge-container .badge {
-    background-color: #FBECBB;
-    color: #412f2c99;
+    background-color: #22b3c1b8;
+    color: #e0e0e0;
     margin: 0.25rem;
     font-size: 0.8rem;
     cursor: pointer;
@@ -113,7 +113,7 @@
 }
 
 .header {
-    color: #E2B714;
+    color: #22b3c1;
 }
 
 .chat-box {
@@ -158,13 +158,13 @@
 }
 
 .chat-input button {
-    background-color: #E2B714;
-    border-color: #E2B714;
+    background-color: #22b3c1;
+    border-color: #22b3c1;
 }
 
 .chat-input button:hover {
-    background-color: #E2B714;
-    border-color: #E2B714;
+    background-color: #22b3c1;
+    border-color: #22b3c1;
 }
 
 .chat-message h1, h2, h3, h4, h5, h6 {

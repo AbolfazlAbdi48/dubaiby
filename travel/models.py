@@ -36,6 +36,7 @@ class Hotel(models.Model):
     ai_summary = models.TextField(verbose_name=_('خلاصه هوش مصنوعی'), null=True, blank=True)
     title = models.CharField(verbose_name=_('عنوان هتل'), max_length=200)
     location = models.CharField(verbose_name=_('لوکیشن'), max_length=200)
+    location_img = models.ImageField(verbose_name=_('تصویر لوکیشن'), upload_to='hotels/loc/', null=True, blank=True)
     rating = models.DecimalField(verbose_name=_('امتیاز'), max_digits=3, decimal_places=0)
     amenities = models.TextField(verbose_name=_('امکانات'))
     description = models.TextField(verbose_name=_("توضیحات"))

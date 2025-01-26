@@ -18,7 +18,10 @@
         <div class="overlay"></div>
 
         <!-- Content -->
-        <h1>دبی‌بای، دستیار هوشمند شما در دبی</h1>
+        <h1>
+            DubaiBy <br>
+            دستیار هوشمند شما در دبی!
+        </h1>
         <div class="input-container">
             <form action="/chat/" autocomplete="off" method="get">
                 <input type="text" placeholder="چی از دبی میخوای؟" name="message">
@@ -26,9 +29,11 @@
             </form>
         </div>
         <div class="badge-container">
-            <a href="/chat/?message=بهترین+تور+های+دبی+رو+بهم+بگو" class="badge rounded-pill">بهترین تور های دبی رو بهم بگو</a>
+            <a href="/chat/?message=بهترین+تور+های+دبی+رو+بهم+بگو" class="badge rounded-pill">بهترین تور های دبی رو بهم
+                بگو</a>
             <a href="/chat/?message=چطور+ویزای+دبی+بگیرم" class="badge rounded-pill">چطور ویزای دبی بگیرم؟</a>
-            <a href="/chat/?message=یه+تور+تفریحی+برای+عید+میخوام" class="badge rounded-pill">یه تور تفریحی برای عید میخوام</a>
+            <a href="/chat/?message=یه+تور+تفریحی+برای+عید+میخوام" class="badge rounded-pill">یه تور تفریحی برای عید
+                میخوام</a>
         </div>
     </div>
 
@@ -51,8 +56,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-heading text-center">
-                        <h2>تور های دبی</h2>
-                        <p>تور های شگفت انگیز دبی به پیشنهاد هوش مصنوعی</p>
+                        <h2>پیشنهادات ویژه</h2>
+                        <p>پیشنهاد های شگفت انگیز هوش مصنوعی</p>
                     </div>
                 </div>
             </div>
@@ -96,8 +101,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center">
-                        <h2>اقامت در دبی</h2>
-                        <p>هتل و اقامتگاه های دبی</p>
+                        <h2>تور و اقامت در دبی</h2>
+                        <p>تور و اقامتگاه های ویژه دبی</p>
                     </div>
                 </div>
                 <div class="col-12">
@@ -156,6 +161,47 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container border-top pt-5 mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>رزرو لحظه ای پرواز</h2>
+                    <p>تور و اقامتگاه های ویژه دبی</p>
+                </div>
+            </div>
+            <div class="col-12">
+                {% for flight in flights %}
+                    <div class="more-info">
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-6 col-6">
+                                <i class="fa fa-plane-departure"></i>
+                                <h4><span>مبدا:</span><br>{{ flight.flight.origin }}</h4>
+                            </div>
+                            <div class="col-lg-3 col-sm-6 col-6">
+                                <i class="fa fa-plane-arrival"></i>
+                                <h4><span>مقصد:</span><br>{{ flight.flight.destination }}</h4>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-6">
+                                <i class="fa fa-calendar"></i>
+                                <h4><span>تاریخ:</span><br>{{ flight.flight.departure_date.date }}</h4>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-6">
+                                <i class="fa fa-money-bill-wave"></i>
+                                <h4><span> قیمت:</span><br>{{ flight.price|intcomma:False }}</h4>
+                            </div>
+                            <div class="col-lg-2 col-sm-6 col-6">
+                                <div class="main-button">
+                                    <a href="{{ flight.affiliate_link }}" target="_blank">رزرو از {{ flight.provider }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
             </div>
         </div>
     </div>

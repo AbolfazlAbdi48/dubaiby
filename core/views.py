@@ -7,7 +7,7 @@ from django.views.generic import DetailView
 from openai import OpenAI
 
 from core.models import ChatMessage
-from travel.models import Tour, Hotel
+from travel.models import Tour, Hotel, Provider
 
 client = OpenAI(
     api_key="FAKE",
@@ -19,10 +19,12 @@ client = OpenAI(
 def home(request):
     tours = Tour.objects.all()
     hotels = Hotel.objects.all()
+    flights = Provider.objects.filter(flight__isnull=False)
 
     context = {
         'tours': tours,
-        'hotels': hotels
+        'hotels': hotels,
+        'flights': flights
     }
     return render(request, 'core/home.html', context=context)
 
@@ -42,10 +44,10 @@ def chatbot_view(request):
     if request.method == "POST":
         system_content = '''
             You are a helpful travel assistant specialized in Dubai.
-            say in persian.
             show: heading and title with html tag <h4>, line break with tag <br>, text with tag <p>.
-            فقط به سوالاتی که درباره دبی هست پاسخ بده و به سوالات متفرقه پاسخ بده:
+            فقط به سوالاتی که درباره سفر، هتل، اقامتگاه، دبی هست پاسخ بده و به سوالات متفرقه پاسخ بده:
              "من میتونم در زمینه سفر به دبی و فرصت های تجاری دبی راهنماییت کنم..."
+             اگه انگلیسی پرسید، انگلیسی پاسخ بده، اگه فارسی پرسید فارسی پاسخ بده.
         '''
 
         try:

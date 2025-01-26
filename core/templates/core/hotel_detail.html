@@ -81,8 +81,9 @@
                             <div class="info-item">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h4 class="text-secondary">{{ hotel.location }}</h4>
-                                        <span>لوکیشن</span>
+                                        <a href="{{ hotel.location }}" target="_blank"><img
+                                                src="{{ hotel.location_img.url }}" alt=""
+                                                class="img-fluid rounded"></a>
                                     </div>
                                 </div>
                             </div>
@@ -121,7 +122,8 @@
                                     </div>
                                     <div class="info">
                                         <div class="main">{{ room.title }}</div>
-                                        <div class="sub">{{ room.meal_plan }} ، {{ room.price_per_night|intcomma:False }} تومان
+                                        <div class="sub">{{ room.meal_plan }}
+                                            ، {{ room.price_per_night|intcomma:False }} تومان
                                         </div>
                                     </div>
                                 </div>
