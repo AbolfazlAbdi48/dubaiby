@@ -202,6 +202,12 @@
     border-bottom: none;
 }
 
+.more-info .main-button a {
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+}
+
 @media (max-width: 576px) {
     .intro h1 {
         font-size: 1.4rem;
