@@ -11,7 +11,7 @@ from travel.models import Tour, Hotel, Provider
 
 client = OpenAI(
     api_key="FAKE",
-    base_url="http://0.0.0.0:1337/v1"
+    base_url="http://localhost:1337/v1"
 )
 
 
@@ -45,9 +45,8 @@ def chatbot_view(request):
         system_content = '''
             You are a helpful travel assistant specialized in Dubai.
             show: heading and title with html tag <h4>, line break with tag <br>, text with tag <p>.
-            فقط به سوالاتی که درباره سفر، هتل، اقامتگاه، دبی هست پاسخ بده و به سوالات متفرقه پاسخ بده:
-             "من میتونم در زمینه سفر به دبی و فرصت های تجاری دبی راهنماییت کنم..."
-             اگه انگلیسی پرسید، انگلیسی پاسخ بده، اگه فارسی پرسید فارسی پاسخ بده.
+            Only answer questions related to travel, hotels, flights, tours, and Dubai.
+            من میتونم در زمینه سفر به دبی و فرصت های تجاری دبی راهنماییت کنم.
         '''
 
         try:
@@ -84,6 +83,7 @@ def chatbot_view(request):
             return JsonResponse({"reply": assistant_message}, status=200)
 
         except Exception as e:
+            print(e)
             return JsonResponse({"error": str(e)}, status=500)
 
     messages = None
