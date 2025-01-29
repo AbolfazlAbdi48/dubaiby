@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
 
@@ -25,6 +26,11 @@ class FlightTicket(models.Model):
     price_adult = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("قیمت بزرگسال"))
     price_child = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("قیمت کودک"))
     price_infant = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("قیمت نوزاد"))
+    active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
+
+    class Meta:
+        verbose_name = 'پرواز'
+        verbose_name_plural = '1. پرواز ها'
 
     def __str__(self):
         return f"{self.airline} از {self.origin} به {self.destination}"
@@ -40,6 +46,11 @@ class Hotel(models.Model):
     rating = models.DecimalField(verbose_name=_('امتیاز'), max_digits=3, decimal_places=0)
     amenities = models.TextField(verbose_name=_('امکانات'))
     description = models.TextField(verbose_name=_("توضیحات"))
+    active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
+
+    class Meta:
+        verbose_name = 'هتل'
+        verbose_name_plural = '2. هتل ها'
 
     def __str__(self):
         return self.title
@@ -52,10 +63,21 @@ class Image(models.Model):
                              related_name='tour_images', on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(verbose_name=_('تصویر'), upload_to='images/')
 
+    def get_thumbnail(self):
+        return format_html(f"<img width=100 height=75 style='border-radius: 5px;' src='{self.image.url}'>")
+
+    get_thumbnail.short_description = "تصویر"
+
+    class Meta:
+        verbose_name = 'تصویر'
+        verbose_name_plural = '4. تصاویر'
+
     def __str__(self):
         if self.hotel:
-            return f"{self.hotel.title} - hotel"
-        return f"{self.tour.title} - tour"
+            return f"{self.hotel.title} hotel"
+        elif self.tour:
+            return f"{self.tour.title} tour"
+        return "Image"
 
 
 class HotelRoom(models.Model):
@@ -65,6 +87,10 @@ class HotelRoom(models.Model):
     price_per_night = models.DecimalField(verbose_name=_('قیمت هر شب'), max_digits=10, decimal_places=0)
     description = models.TextField(verbose_name=_('توضیحات'), null=True, blank=True)
     image = models.ImageField(verbose_name=_('تصویر کاور'), upload_to='hotels/', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'اتاق هتل'
+        verbose_name_plural = '2.1 اتاق ها'
 
     def __str__(self):
         return f"{self.hotel.title} - {self.title}"
@@ -86,6 +112,11 @@ class Tour(models.Model):
     start_time = models.DateTimeField(verbose_name=_('زمان شروع'))
     end_time = models.DateTimeField(verbose_name=_('زمان پایان'))
     price_per_person = models.DecimalField(verbose_name=_('قیمت به ازای هر نفر'), max_digits=10, decimal_places=0)
+    active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
+
+    class Meta:
+        verbose_name = 'تور'
+        verbose_name_plural = '3. تور ها'
 
     def __str__(self):
         return self.title
@@ -97,6 +128,10 @@ class TourDay(models.Model):
     image = models.ImageField(verbose_name=_('تصویر'), upload_to='tours/images')
     tour = models.ForeignKey(to='Tour', verbose_name=_('تور'),
                              related_name='tour_days', on_delete=models.CASCADE, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'برنامه تور'
+        verbose_name_plural = '3.1 برنامه تور ها'
 
     def __str__(self):
         return f"{self.tour.title} - {self.day}"
@@ -115,6 +150,10 @@ class Provider(models.Model):
     flight = models.ForeignKey(to='FlightTicket', verbose_name=_('پرواز'), related_name='flight_provider',
                                on_delete=models.CASCADE,
                                null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'افیلیت'
+        verbose_name_plural = 'لیست افیلیت'
 
     def __str__(self):
         if self.hotel:

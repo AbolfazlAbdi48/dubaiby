@@ -11,14 +11,31 @@ from .models import (
 
 
 # Register your models here.
+class HotelRoomInline(admin.StackedInline):
+    model = HotelRoom
+    extra = 0
+
+
+class TourDayInline(admin.StackedInline):
+    model = TourDay
+    extra = 0
+
+
 @admin.register(FlightTicket)
 class FlightTicketAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('origin', 'destination', 'departure_date', 'arrival_date', 'airline', 'active')
+    list_filter = ('departure_date', 'arrival_date', 'travel_type')
+    list_editable = ('active',)
 
 
 @admin.register(Hotel)
 class HotelAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ('title',)
+    list_display = ('title', 'active')
+    list_editable = ('active',)
+    inlines = [
+        HotelRoomInline
+    ]
 
 
 @admin.register(HotelRoom)
@@ -28,12 +45,18 @@ class HotelRoomAdmin(admin.ModelAdmin):
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('get_thumbnail', '__str__')
+    search_fields = ('hotel__title', 'tour__title')
 
 
 @admin.register(Tour)
 class TourAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'start_time', 'end_time', 'active')
+    search_fields = ('title', 'description')
+    list_editable = ('active',)
+    inlines = [
+        TourDayInline
+    ]
 
 
 @admin.register(TourDay)

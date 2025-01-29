@@ -17,9 +17,9 @@ client = OpenAI(
 
 # Create your views here.
 def home(request):
-    tours = Tour.objects.all()
-    hotels = Hotel.objects.all()
-    flights = Provider.objects.filter(flight__isnull=False)
+    tours = Tour.objects.filter(active=True)
+    hotels = Hotel.objects.filter(active=True)
+    flights = Provider.objects.filter(flight__isnull=False, flight__active=True)
 
     context = {
         'tours': tours,
