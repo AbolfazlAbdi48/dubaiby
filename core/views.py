@@ -1,10 +1,12 @@
 import json
 
+from decouple import config
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import DetailView
 from openai import OpenAI
+import requests
 
 from core.models import ChatMessage
 from travel.models import Tour, Hotel, Provider
@@ -56,21 +58,38 @@ def chatbot_view(request):
             if not user_message:
                 return JsonResponse({"error": "Message is required"}, status=400)
 
-            response = client.chat.completions.create(
-                model="gpt-4o",
-                messages=[
-                    {
-                        "role": "system",
-                        "content": system_content
-                    },
-                    {
-                        "role": "user",
-                        "content": user_message
-                    }
-                ]
-            )
+            # response = client.chat.completions.create(
+            #     model="gpt-4o",
+            #     messages=[
+            #         {
+            #             "role": "system",
+            #             "content": system_content
+            #         },
+            #         {
+            #             "role": "user",
+            #             "content": user_message
+            #         }
+            #     ]
+            # )
 
-            assistant_message = response.choices[0].message.content
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {config('OPENAI_KEY')}"
+            }
+
+            data = {
+                "model": "gpt-4o-mini",
+                "messages": [
+                    {"role": "system", "content": system_content},
+                    {"role": "user", "content": user_message}
+                ],
+                "temperature": 0.7
+            }
+
+            response = requests.post(url='https://api.openai.com/v1/chat/completions', headers=headers, json=data)
+
+            # assistant_message = response.choices[0].message.content
+            assistant_message = response.json()['choices'][0]['message']['content']
 
             chat_message = ChatMessage(
                 user_message=user_message,
