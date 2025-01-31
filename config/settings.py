@@ -84,14 +84,14 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-if config('DEBUG') == 'True':
+if config('DATABASE') == 'SQLITE':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-elif config('DEBUG') == 'False':
+elif config('DATABASE') == 'MYSQL':
     DATABASES = {
         'default': {
             'ENGINE': config('DATABASE_ENGINE'),
