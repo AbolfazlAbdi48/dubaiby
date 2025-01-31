@@ -208,12 +208,101 @@
     text-align: center;
 }
 
+ul, li {
+    list-style: none;
+    padding: 0;
+}
+
+.container-plan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #209cff, #68e0cf);
+    padding: 3rem 2rem;
+}
+
+.wrapper-plan {
+    background: #eaf6ff;
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.wrapper-plan h1 {
+    font-size: 1.5rem;
+}
+
+.sessions {
+    margin-top: 2rem;
+    border-radius: 12px;
+    position: relative;
+}
+
+.wrapper-plan li {
+    padding-bottom: 1.5rem;
+    border-right: 1px solid #abaaed;
+    position: relative;
+    padding-right: 20px;
+    margin-right: 10px;
+}
+
+.wrapper-plan li:last-child {
+    border: 0px;
+    padding-bottom: 0;
+}
+
+.wrapper-plan li:before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background: white;
+    border: 1px solid #4e5ed3;
+    box-shadow: 3px 3px 0px #bab5f8;
+    border-radius: 50%;
+    position: absolute;
+    right: -7px;
+    top: 0px;
+}
+
+.wrapper-plan .time {
+    color: #2a2839;
+    font-weight: 700;
+}
+
+.wrapper-plan .time i{
+    color: #bab5f8;
+}
+
+@media screen and (min-width: 601px) {
+    .wrapper-plan .time {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .time {
+        margin-bottom: 0.3rem;
+        font-size: 0.85rem;
+    }
+}
+
+.wrapper-plan p {
+    color: #4f4f4f;
+    line-height: 1.5;
+    margin-top: 0.4rem;
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper-plan p {
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 576px) {
     .intro h1 {
         font-size: 1.4rem;
     }
 
-    .input-container input{
+    .input-container input {
         padding: 1rem;
     }
 }

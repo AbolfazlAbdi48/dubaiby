@@ -105,37 +105,33 @@
         </div>
     </div>
 
+
+
+    <div class="container-plan" id="daily">
+        <div class="wrapper-plan">
+            <h1>برنامه سفر</h1>
+            <ul class="sessions">
+                {% for day in tour.tour_days.all %}
+                    <li>
+                        <div class="time">
+                            <i class="fa fa-calendar"></i>
+                            {{ day.day }}
+                        </div>
+                        <p>{{ day.summary }}</p>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+
+
     <div class="best-locations" id="affiliates">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading text-center">
-                        <h2>برنامه سفر</h2>
-                    </div>
-                </div>
-                <div class="col-lg-8 offset-lg-2" id="daily">
-                    <div class="options">
-                        {% for day in tour.tour_days.all %}
-                            <div class="option {% if forloop.first %}active{% endif %}"
-                                 style="--optionBackground:url({{ day.image.url }});">
-                                <div class="shadow"></div>
-                                <div class="label">
-                                    <div class="icon">
-                                        <i class="fas fa-expand"></i>
-                                    </div>
-                                    <div class="info">
-                                        <div class="main">{{ day.day }}</div>
-                                        <div class="sub">{{ day.summary }}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-
-                    </div>
-                </div>
                 <div class="col-lg-12 my-5">
                     <div class="text-center">
-                        <h4>رزرو از:</h4>
+                        <h4>رزرو</h4>
                     </div>
                 </div>
                 <div class="col-12">

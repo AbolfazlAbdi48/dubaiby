@@ -124,8 +124,8 @@ class Tour(models.Model):
 
 class TourDay(models.Model):
     day = models.CharField(verbose_name=_('روز'), max_length=200)
-    summary = models.CharField(verbose_name=_('خلاصه'), max_length=200)
-    image = models.ImageField(verbose_name=_('تصویر'), upload_to='tours/images')
+    summary = models.TextField(verbose_name=_('خلاصه'))
+    image = models.ImageField(verbose_name=_('تصویر-Optional'), upload_to='tours/images', null=True, blank=True)
     tour = models.ForeignKey(to='Tour', verbose_name=_('تور'),
                              related_name='tour_days', on_delete=models.CASCADE, null=True, blank=True)
 
