@@ -8,6 +8,8 @@
 
 {% block main %}
 
+    <a href="{% url 'core:chatbot' %}?message=help+about+{{ object.title }}" class="fixed-btn">با دستیار هوشمند مشورت کن</a>
+
     <!-- ***** Main Banner Area Start ***** -->
     <div style="background-image: url({{ hotel.image_cover.url }});" class="about-main-content">
         <div class="container">

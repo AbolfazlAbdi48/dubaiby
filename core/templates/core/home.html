@@ -51,6 +51,12 @@
         </div>
     </div>
 
+    <div class="container">
+        <div class="row">
+
+        </div>
+    </div>
+
     <div class="weekly-offers">
         <div class="container">
             <div class="row">
@@ -69,23 +75,39 @@
                         {% for tour in tours %}
                             <div class="item">
                                 <div class="thumb" dir="rtl">
-                                    <img src="{{ tour.image.url }}" alt="">
-                                    <div class="text">
-                                        {#                                        <h6><i class="fa fa-location-dot">AI</i><br><span></span></h6>#}
-                                        <h4>{{ tour.title }}<br><span><i
-                                                class="fa fa-dollar"></i> {{ tour.price_per_person|intcomma:False }}تومان </span>
-                                        </h4>
-                                        <div class="line-dec"></div>
-                                        <ul>
-                                            <li>جزئیات سفر:</li>
-                                            <li><i class="fa fa-taxi"></i> {{ tour.accommodation }}</li>
-                                            <li><i class="fa fa-plane"></i> {{ tour.transport_text }}</li>
-                                            <li><i class="fa fa-bowling-ball"></i> {{ tour.meals }}</li>
-                                        </ul>
-                                        <div class="main-button">
-                                            <a href="{% url 'core:tour-detail' tour.pk %}">رزرو با هوش مصنوعی</a>
+                                    {#                                    <div class="col-md-4">#}
+                                    <div class="tour-card">
+                                        <img src="{{ tour.image_cover.url }}" class="tour-img" alt="تور گردشگری">
+                                        <div class="tour-details">
+                                            <h5 class="tour-title">{{ tour.title }}</h5>
+                                            <p class="tour-price">{{ tour.price_per_person|intcomma:False }} تومان</p>
+                                            <div class="divider"></div>
+                                            <p class="tour-meta"><strong><i class="fa fa-calendar"></i> تاریخ تور:</strong> {{ tour.start_time.date }}</p>
+                                            <p class="tour-meta"><strong><i class="fa fa-plane"></i> حمل و نقل:</strong> {{ tour.accommodation }}</p>
+                                            <p class="tour-meta"><strong><i class="fa fa-list"></i> ارائه‌دهنده‌ها:</strong> {{ tour.tour_provider.count }} ارائه دهنده</p>
+                                            <div class="main-button mt-3">
+                                                <a href="{% url 'core:tour-detail' tour.pk %}">رزرو با هوش مصنوعی</a>
+                                            </div>
                                         </div>
                                     </div>
+                                    {#            </div>#}
+                                    {#                                    <img src="{{ tour.image.url }}" alt="">#}
+                                    {#                                    <div class="text">#}
+                                    {#                                        <h6><i class="fa fa-location-dot">AI</i><br><span></span></h6>#}
+                                    {#                                        <h4>{{ tour.title }}<br><span><i#}
+                                    {#                                                class="fa fa-dollar"></i> {{ tour.price_per_person|intcomma:False }}تومان </span>#}
+                                    {#                                        </h4>#}
+                                    {#                                        <div class="line-dec"></div>#}
+                                    {#                                        <ul>#}
+                                    {#                                            <li>جزئیات سفر:</li>#}
+                                    {#                                            <li><i class="fa fa-taxi"></i> {{ tour.accommodation }}</li>#}
+                                    {#                                            <li><i class="fa fa-plane"></i> {{ tour.transport_text }}</li>#}
+                                    {#                                            <li><i class="fa fa-bowling-ball"></i> {{ tour.meals }}</li>#}
+                                    {#                                        </ul>#}
+                                    {#                                        <div class="main-button">#}
+                                    {#                                            <a href="{% url 'core:tour-detail' tour.pk %}">رزرو با هوش مصنوعی</a>#}
+                                    {#                                        </div>#}
+                                    {#                                    </div>#}
                                 </div>
                             </div>
                         {% endfor %}
@@ -193,7 +215,8 @@
                             </div>
                             <div class="col-lg-2 col-sm-12 col-12">
                                 <div class="main-button">
-                                    <a href="{{ flight.affiliate_link }}" target="_blank">رزرو از {{ flight.provider }}</a>
+                                    <a href="{{ flight.affiliate_link }}" target="_blank">رزرو
+                                        از {{ flight.provider }}</a>
                                 </div>
                             </div>
                         </div>

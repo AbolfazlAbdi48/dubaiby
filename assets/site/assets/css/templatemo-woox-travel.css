@@ -1292,12 +1292,7 @@ About Page Style
 .weekly-offers .item {
   margin: 0px 15px;
   position: relative;
-  min-height: 420px;
-}
-
-.weekly-offers .item .thumb img {
-  padding-right: 160px;
-  border-radius: 23px;
+  min-height: 500px;
 }
 
 .weekly-offers .item .thumb .text {
