@@ -150,6 +150,7 @@ class Provider(models.Model):
     flight = models.ForeignKey(to='FlightTicket', verbose_name=_('پرواز'), related_name='flight_provider',
                                on_delete=models.CASCADE,
                                null=True, blank=True)
+    active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
 
     class Meta:
         verbose_name = 'افیلیت'
@@ -160,4 +161,6 @@ class Provider(models.Model):
             return f"{self.provider} - {self.hotel.title}"
         elif self.flight:
             return f"{self.provider} - {self.flight.airline}"
-        return f"{self.provider} - {self.tour.title}"
+        elif self.tour:
+            return f"{self.provider} - {self.tour.title}"
+        return self.provider

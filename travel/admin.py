@@ -66,4 +66,6 @@ class TourDayAdmin(admin.ModelAdmin):
 
 @admin.register(Provider)
 class ProviderAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('__str__', 'active')
+    list_editable = ('active',)
+    search_fields = ('provider', 'affiliate_link', 'hotel__title', 'tour__title', 'flight__airline')
