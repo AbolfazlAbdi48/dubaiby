@@ -29,6 +29,11 @@ def home(request):
     return render(request, 'core/home.html', context=context)
 
 
+def contact_view(request):
+    context = {}
+    return render(request, 'core/contact.html', context=context)
+
+
 class TourDetailView(DetailView):
     model = Tour
     template_name = 'core/tour_detail.html'

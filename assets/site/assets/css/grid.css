@@ -208,6 +208,14 @@
     text-align: center;
 }
 
+.reservation-info {
+    border-color: #fff !important;
+}
+
+.reservation-info .info-item {
+    text-align: right !important;
+}
+
 ul, li {
     list-style: none;
     padding: 0;
@@ -268,7 +276,7 @@ ul, li {
     font-weight: 700;
 }
 
-.wrapper-plan .time i{
+.wrapper-plan .time i {
     color: #bab5f8;
 }
 
