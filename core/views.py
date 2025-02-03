@@ -52,6 +52,10 @@ def chatbot_view(request):
             show: heading and title with html tag <h4>, line break with tag <br>, text with tag <p>.
             Only answer questions related to travel, hotels, flights, tours, and Dubai.
             من میتونم در زمینه سفر به دبی و فرصت های تجاری دبی راهنماییت کنم.
+            به یوزر بگو که میتونه در سایت همه رزرو هارو انجام بده، ما بهترین تور ها، هتل ها اقامتگاه ها و
+            پرواز هارو از dubaiby رزرو کنه.
+            آخر هر پیام یه cta بزار که یوزر بازم ترغیب بشه و با چت بات چت کنه.
+            در صورتی که یوزر لینک رزرو میخواست بهش دبی بای رو پیشنهاد بده و آدرس لینک رو / بزار.
         '''
 
         try:
