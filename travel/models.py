@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
+from travel.managers import TourManager, HotelManager, FlightManager, ProviderManager
+
 
 # Create your models here.
 class FlightTicket(models.Model):
@@ -27,10 +29,13 @@ class FlightTicket(models.Model):
     price_child = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("قیمت کودک"))
     price_infant = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("قیمت نوزاد"))
     active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
+    keywords = models.TextField(verbose_name=_('کلمات کلیدی'), null=True, blank=True)
 
     class Meta:
         verbose_name = 'پرواز'
         verbose_name_plural = '1. پرواز ها'
+
+    objects = FlightManager()
 
     def __str__(self):
         return f"{self.airline} از {self.origin} به {self.destination}"
@@ -47,10 +52,13 @@ class Hotel(models.Model):
     amenities = models.TextField(verbose_name=_('امکانات'))
     description = models.TextField(verbose_name=_("توضیحات"))
     active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
+    keywords = models.TextField(verbose_name=_('کلمات کلیدی'), null=True, blank=True)
 
     class Meta:
         verbose_name = 'هتل'
         verbose_name_plural = '2. هتل ها'
+
+    objects = HotelManager()
 
     def __str__(self):
         return self.title
@@ -113,10 +121,13 @@ class Tour(models.Model):
     end_time = models.DateTimeField(verbose_name=_('زمان پایان'))
     price_per_person = models.DecimalField(verbose_name=_('قیمت به ازای هر نفر'), max_digits=10, decimal_places=0)
     active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
+    keywords = models.TextField(verbose_name=_('کلمات کلیدی'), null=True, blank=True)
 
     class Meta:
         verbose_name = 'تور'
         verbose_name_plural = '3. تور ها'
+
+    objects = TourManager()
 
     def __str__(self):
         return self.title
@@ -151,10 +162,13 @@ class Provider(models.Model):
                                on_delete=models.CASCADE,
                                null=True, blank=True)
     active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
+    keywords = models.TextField(verbose_name=_('کلمات کلیدی'), null=True, blank=True)
 
     class Meta:
         verbose_name = 'افیلیت'
         verbose_name_plural = 'لیست افیلیت'
+
+    objects = ProviderManager()
 
     def __str__(self):
         if self.hotel:

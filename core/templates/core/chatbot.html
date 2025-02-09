@@ -83,6 +83,7 @@
 
                 const data = await response.json();
                 botMessageElement.innerHTML = data.reply; // Update bot message with the actual reply
+                console.log(data)
             } catch (error) {
                 console.error("Error communicating with assistant:", error);
                 botMessageElement.textContent = 'خطا در ارتباط با سرور. لطفا دوباره تلاش کنید.';
