@@ -8,7 +8,7 @@
 
 {% block main %}
 
-    <a href="{% url 'core:chatbot' %}?message=help+about+{{ object.title }}" class="fixed-btn">با دستیار هوشمند مشورت کن</a>
+    <a href="{% url 'core:chatbot' %}?message=همه+چیز+درباره+هتل+{{ object.title }}" class="fixed-btn">با دستیار هوشمند مشورت کن</a>
 
     <!-- ***** Main Banner Area Start ***** -->
     <div style="background-image: url({{ tour.image_cover.url }});" class="about-main-content">
@@ -67,7 +67,7 @@
                         <p>{{ tour.summary }}</p>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <div class="info-item">
                                 <h4>{{ tour.start_time.date }}</h4>
                                 <span>از تاریخ</span>
@@ -98,11 +98,11 @@
                         <a href="#daily">مشاهده برنامه سفر و رزرو</a>
                     </div>
                 </div>
-                <div class="col-lg-6 align-self-center">
-                    <div class="left-image">
-                        <img src="{% static 'site/assets/images/about-left-image.jpg' %}" alt="">
-                    </div>
-                </div>
+{#                <div class="col-lg-6 align-self-center">#}
+{#                    <div class="left-image">#}
+{#                        <img src="{% static 'site/assets/images/about-left-image.jpg' %}" alt="">#}
+{#                    </div>#}
+{#                </div>#}
             </div>
         </div>
     </div>
