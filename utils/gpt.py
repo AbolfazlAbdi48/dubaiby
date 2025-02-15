@@ -1,8 +1,8 @@
 from openai import OpenAI
+from decouple import config
 
 client = OpenAI(
-    api_key="FAKE",
-    base_url="http://localhost:1337/v1"
+    api_key=config("OPENAI_KEY")
 )
 
 # Global Variables
@@ -31,7 +31,7 @@ SYSTEM_CONTENT = '''
 
 def gpt_request(system_prompt, user_prompt):
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4o-mini",
         messages=[
             {
                 "role": "system",
