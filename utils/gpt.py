@@ -34,10 +34,10 @@ SYSTEM_CONTENT = '''
 def get_last_5_messages(user_id):
     """Latest user message"""
     if user_id:
-        messages = ChatMessage.objects.filter(user_id=user_id)[:20]
+        messages = ChatMessage.objects.filter(user_id=user_id).order_by('-created')[:20]
 
         conversation = []
-        for msg in reversed(messages):
+        for msg in messages:
             conversation.append({"role": "user", "content": msg.user_message})
             conversation.append({"role": "assistant", "content": msg.bot_message})
 
