@@ -51,7 +51,7 @@ def chatbot_view(request):
                 return JsonResponse({"error": "Message is required"}, status=400)
 
             # gpt request for client
-            gpt_response = gpt_request(SYSTEM_CONTENT, user_message)
+            gpt_response = gpt_request(SYSTEM_CONTENT, user_message, request.user.id)
             # save user prompt and gpt response
             chat_message = ChatMessage(
                 user_message=user_message,

@@ -1,6 +1,8 @@
 from openai import OpenAI
 from decouple import config
 
+from core.models import ChatMessage
+
 client = OpenAI(
     api_key=config("OPENAI_KEY")
 )
@@ -29,19 +31,29 @@ SYSTEM_CONTENT = '''
 '''
 
 
-def gpt_request(system_prompt, user_prompt):
+def get_last_5_messages(user_id):
+    """Latest user message"""
+    if user_id:
+        messages = ChatMessage.objects.filter(user_id=user_id)[:20]
+
+        conversation = []
+        for msg in reversed(messages):
+            conversation.append({"role": "user", "content": msg.user_message})
+            conversation.append({"role": "assistant", "content": msg.bot_message})
+
+        return conversation
+    return []
+
+
+def gpt_request(system_prompt, user_prompt, user_id):
+    conversation = get_last_5_messages(user_id)
+
+    conversation.insert(0, {"role": "system", "content": system_prompt})
+
+    conversation.append({"role": "user", "content": user_prompt})
     response = client.chat.completions.create(
         model="gpt-4o-mini",
-        messages=[
-            {
-                "role": "system",
-                "content": system_prompt
-            },
-            {
-                "role": "user",
-                "content": user_prompt
-            }
-        ]
+        messages=conversation
     )
 
     assistant_message = response.choices[0].message.content

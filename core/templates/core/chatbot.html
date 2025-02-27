@@ -24,14 +24,12 @@
                 <!-- Bot Message -->
                 <div class="chat-message bot-message">{{ message.bot_message|safe }}</div>
             {% endfor %}
-
-            {% if not request.user.is_authenticated %}
-                <div class="alert alert-success">
-                    برای دسترسی به امکانات بیشتر چت بات <a href="{% url 'account:register' %}">وارد اکانتت شو</a>!
-                </div>
-            {% endif %}
-
         </div>
+        {% if not request.user.is_authenticated %}
+            <div class="alert alert-success">
+                برای یه تجربه خوب و کامل <a href="{% url 'account:register' %}">وارد اکانتت شو</a>!
+            </div>
+        {% endif %}
 
         <!-- Chat Input -->
         <div class="chat-input input-group" dir="ltr">
