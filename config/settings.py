@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     # Third-Party
     "crispy_forms",
     "crispy_bootstrap4",
+    "ckeditor",
+    "ckeditor_uploader",
 
     # Manual apps
     "account",
@@ -156,3 +158,6 @@ LOGIN_REDIRECT_URL = 'core:home'
 LOGOUT_REDIRECT_URL = 'core:home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# ckeditor section
+CKEDITOR_UPLOAD_PATH = 'uploads/'
