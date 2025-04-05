@@ -54,22 +54,18 @@
         const chatBtn = document.getElementById("chat-send");
 
         const chatAjax = async (userMessage) => {
-            // Add the user's message to the chat
             const userMessageElement = document.createElement('div');
             userMessageElement.className = 'chat-message user-message';
             userMessageElement.textContent = userMessage;
             chatContainer.appendChild(userMessageElement);
 
-            // Add a loading message for the bot
             const botMessageElement = document.createElement('div');
             botMessageElement.className = 'chat-message bot-message';
-            botMessageElement.textContent = 'در حال پاسخ...';
+            botMessageElement.innerHTML = 'در حال پاسخ...';
             chatContainer.appendChild(botMessageElement);
 
-            // Scroll to the bottom of the chat container
             chatContainer.scrollTop = chatContainer.scrollHeight;
 
-            // Send the user's message to the server and get the bot's reply
             try {
                 const response = await fetch('/chat/', {
                     method: 'POST',
@@ -80,13 +76,46 @@
                 });
 
                 const data = await response.json();
-                botMessageElement.innerHTML = data.reply; // Update bot message with the actual reply
-                console.log(data)
+                let replyHtml = `<p>${data.reply}</p>`;
+
+                if (data.results) {
+                    console.log(data)
+                    // hotels
+                    if (data.results.hotels?.length) {
+                        replyHtml += `<h5>🏨 هتل‌های پیشنهادی DubaiBy:</h5><ul>`;
+                        data.results.hotels.forEach(hotel => {
+                            replyHtml += `<li><a href="/hotel/${hotel.id}" target="_blank">${hotel.title}</a></li>`;
+                        });
+                        replyHtml += `</ul>`;
+                    }
+
+                    // tours
+                    if (data.results.tours?.length) {
+                        replyHtml += `<h5>🧳 تورهای پیشنهادی:</h5><ul>`;
+                        data.results.tours.forEach(tour => {
+                            replyHtml += `<li><a href="/tours/${tour.id}" target="_blank">${tour.title}</a></li>`;
+                        });
+                        replyHtml += `</ul>`;
+                    }
+
+                    // flights
+                    if (data.results.flights?.length) {
+                        replyHtml += `<h5>✈️ پروازهای پیشنهادی:</h5><ul>`;
+                        data.results.flights.forEach(flight => {
+                            replyHtml += `<li><a href="/flight/${flight.id}" target="_blank">${flight.origin} به ${flight.destination}</a></li>`;
+                        });
+                        replyHtml += `</ul>`;
+                    }
+                }
+
+                botMessageElement.innerHTML = replyHtml;
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+
             } catch (error) {
                 console.error("Error communicating with assistant:", error);
                 botMessageElement.textContent = 'خطا در ارتباط با سرور. لطفا دوباره تلاش کنید.';
             }
-        }
+        };
 
         chatBtn.addEventListener('click', (event) => {
             const userMessage = chatbotInput.value.trim();

@@ -8,6 +8,7 @@ from django.views.generic import DetailView
 from core.models import ChatMessage
 from travel.models import Tour, Hotel, Provider
 from utils.gpt import gpt_request, SYSTEM_CONTENT
+from utils.search import search_across_models
 
 
 # Create your views here.
@@ -50,6 +51,8 @@ def chatbot_view(request):
             if not user_message:
                 return JsonResponse({"error": "Message is required"}, status=400)
 
+            results = search_across_models(user_message)
+
             # gpt request for client
             gpt_response = gpt_request(SYSTEM_CONTENT, user_message, request.user.id)
             # save user prompt and gpt response
@@ -60,10 +63,11 @@ def chatbot_view(request):
             if request.user.is_authenticated:
                 chat_message.user = request.user
             chat_message.save()
-            # return response
+
             return JsonResponse(
                 {
-                    "reply": gpt_response
+                    "reply": 'gpt_response',
+                    "results": results
                 },
                 status=200
             )
