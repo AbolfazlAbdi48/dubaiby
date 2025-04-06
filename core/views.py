@@ -66,7 +66,7 @@ def chatbot_view(request):
 
             return JsonResponse(
                 {
-                    "reply": 'gpt_response',
+                    "reply": gpt_response,
                     "results": results
                 },
                 status=200
