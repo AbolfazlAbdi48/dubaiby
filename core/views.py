@@ -13,7 +13,7 @@ from utils.search import search_across_models
 
 # Create your views here.
 def home(request):
-    tours = Tour.objects.filter(active=True)
+    tours = Tour.objects.filter(active=True)[:2]
     hotels = Hotel.objects.filter(active=True)
     flights = Provider.objects.filter(flight__isnull=False, flight__active=True)
 
@@ -28,11 +28,6 @@ def home(request):
 def contact_view(request):
     context = {}
     return render(request, 'core/contact.html', context=context)
-
-
-class TourDetailView(DetailView):
-    model = Tour
-    template_name = 'core/tour_detail.html'
 
 
 @csrf_exempt

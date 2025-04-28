@@ -11,6 +11,9 @@ class TravelCategory(models.Model):
     name = models.CharField(max_length=255, verbose_name=_('category'))
     description = models.TextField(verbose_name=_('description'))
     image = models.ImageField(null=True, blank=True, upload_to='categories/travel/', verbose_name=_('تصویر'))
+    for_hotel = models.BooleanField(default=True, verbose_name=_('For Hotel'))
+    for_tour = models.BooleanField(default=True, verbose_name=_('For tour'))
+    for_flight = models.BooleanField(default=True, verbose_name=_('For flight'))
     parent = models.ForeignKey(
         'self',
         on_delete=models.SET_NULL,
@@ -72,7 +75,7 @@ class FlightTicket(models.Model):
 class Hotel(models.Model):
     image = models.ImageField(verbose_name=_('تصویر اصلی'), upload_to='hotels/')
     image_cover = models.ImageField(verbose_name=_('تصویر کاور'), upload_to='hotels/', null=True, blank=True)
-    ai_summary = models.TextField(verbose_name=_('خلاصه هوش مصنوعی'), null=True, blank=True)
+    # ai_summary = models.TextField(verbose_name=_('خلاصه هوش مصنوعی'), null=True, blank=True)
     title = models.CharField(verbose_name=_('عنوان هتل'), max_length=200)
     location = models.CharField(verbose_name=_('لوکیشن'), max_length=200)
     location_url = models.CharField(verbose_name=_('آدرس گوگل مپ'), null=True, max_length=200)
@@ -152,20 +155,20 @@ class HotelRoom(models.Model):
 
 class Tour(models.Model):
     image = models.ImageField(verbose_name=_('تصویر'), upload_to='tours/images/')
-    image_cover = models.ImageField(verbose_name=_('تصویر کاور'), upload_to='tours/images', null=True, blank=True)
     title = models.CharField(verbose_name=_('عنوان'), max_length=200)
     summary = models.CharField(verbose_name=_('خلاصه'), max_length=200)
-    ai_summary = models.TextField(verbose_name=_('خلاصه هوش مصنوعی'), null=True, blank=True)
+    # ai_summary = models.TextField(verbose_name=_('خلاصه هوش مصنوعی'), null=True, blank=True)
     description = models.TextField(verbose_name=_('توضیحات'))
-    accommodation = models.CharField(verbose_name=_('اقامت'), max_length=200)
-    transport_text = models.CharField(verbose_name=_('حمل و نقل (متن)'), null=True, blank=True, max_length=200)
-    transport_ticket = models.ForeignKey(to='FlightTicket', verbose_name=_('حمل و نقل (بلیط پرواز)'),
-                                         on_delete=models.SET_NULL,
-                                         null=True, blank=True)
-    meals = models.CharField(verbose_name=_('وعده های غذایی'), max_length=200)
+    # accommodation = models.CharField(verbose_name=_('اقامت'), max_length=200)
+    # transport_text = models.CharField(verbose_name=_('حمل و نقل (متن)'), null=True, blank=True, max_length=200)
+    # transport_ticket = models.ForeignKey(to='FlightTicket', verbose_name=_('حمل و نقل (بلیط پرواز)'),
+    #                                      on_delete=models.SET_NULL,
+    #                                      null=True, blank=True)
+    # meals = models.CharField(verbose_name=_('وعده های غذایی'), max_length=200)
     start_time = models.DateTimeField(verbose_name=_('زمان شروع'))
     end_time = models.DateTimeField(verbose_name=_('زمان پایان'))
     price_per_person = models.DecimalField(verbose_name=_('قیمت به ازای هر نفر'), max_digits=10, decimal_places=0)
+    currency = models.CharField(max_length=20, null=True, verbose_name=_('واحد پول'))
     active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
     keywords = models.TextField(verbose_name=_('کلمات کلیدی'), null=True, blank=True)
     categories = models.ManyToManyField(
@@ -180,6 +183,12 @@ class Tour(models.Model):
         verbose_name_plural = '3. تور ها'
 
     objects = TourManager()
+
+    def get_replaced_title(self):
+        return self.title.replace(' ', '-')
+
+    def get_absolute_url(self):
+        return reverse('travel:tour-detail', args=[self.id, self.get_replaced_title()])
 
     def __str__(self):
         return self.title
