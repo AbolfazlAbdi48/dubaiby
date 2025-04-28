@@ -93,6 +93,9 @@ class Hotel(models.Model):
 
     objects = HotelManager()
 
+    def get_min_price(self):
+        return self.rooms.first()
+
     def __str__(self):
         return self.title
 
@@ -126,12 +129,14 @@ class HotelRoom(models.Model):
     hotel = models.ForeignKey(Hotel, verbose_name=_('هتل'), related_name='rooms', on_delete=models.CASCADE)
     meal_plan = models.CharField(verbose_name=_('وعده غذایی'), max_length=100)
     price_per_night = models.DecimalField(verbose_name=_('قیمت هر شب'), max_digits=10, decimal_places=0)
+    currency = models.CharField(max_length=20, null=True, verbose_name=_('واحد پول'))
     description = models.TextField(verbose_name=_('توضیحات'), null=True, blank=True)
     image = models.ImageField(verbose_name=_('تصویر کاور'), upload_to='hotels/', null=True, blank=True)
 
     class Meta:
         verbose_name = 'اتاق هتل'
         verbose_name_plural = '2.1 اتاق ها'
+        ordering = ('price_per_night',)
 
     def __str__(self):
         return f"{self.hotel.title} - {self.title}"

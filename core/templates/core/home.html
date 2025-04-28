@@ -1,309 +1,1360 @@
 {% extends 'base/base.html' %}
 {% load static %}
-{% load humanize %}
 
 {% block title %}
-    DubaiBy | AI Travel Agent
+    DubaiBy | دستیار هوشمند سفر
+{% endblock %}
+
+{% block title_secondary %}
+    DubaiBy
+    <span class="page-desc text-white fw-semibold fs-2 pt-3">دستیار هوشمند شما
+                                            در
+                                            دبی</span>
 {% endblock %}
 
 {% block main %}
-    <div class="intro">
-
-        <!-- Background Video -->
-        <video autoplay muted loop>
-            <source src="{% static 'site/assets/videos/v.mp4' %}" type="video/mp4">
-            Your browser does not support HTML5 video.
-        </video>
-
-        <div class="overlay"></div>
-
-        <!-- Content -->
-        <h1>
-            DubaiBy <br>
-            دستیار هوشمند شما در دبی!
-        </h1>
-        <div class="input-container">
-            <form action="/chat/" autocomplete="off" method="get">
-                <input type="text" placeholder="چی از دبی میخوای؟" name="message">
-                <button type="submit">بپرس!</button>
-            </form>
-        </div>
-        <div class="badge-container">
-            <a href="/chat/?message=بهترین+تور+های+دبی+رو+بهم+بگو" class="badge rounded-pill">بهترین تور های دبی رو بهم
-                بگو</a>
-            <a href="/chat/?message=چطور+ویزای+دبی+بگیرم" class="badge rounded-pill">چطور ویزای دبی بگیرم؟</a>
-            <a href="/chat/?message=یه+تور+تفریحی+برای+عید+میخوام" class="badge rounded-pill">یه تور تفریحی برای عید
-                میخوام</a>
-        </div>
-    </div>
-
-    <div class="search-form">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <form id="search-form" name="gs" method="submit" role="search" action="#">
-                        <div class="row">
-
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-
-        </div>
-    </div>
-
-    <div class="container py-5">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6">
-                <h1 class="mb-4">به <span class="text-main text-uppercase">DubaiBy</span> خوش اومدی!</h1>
-                <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
-                    diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna
-                    dolore erat amet</p>
-                <div class="row g-3 pb-4">
-                    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="border rounded p-1">
-                            <div class="border rounded text-center p-4">
-                                <i class="fa fa-hotel fa-2x text-primary mb-2"></i>
-                                <h2 class="mb-1 text-main" data-toggle="counter-up">1234</h2>
-                                <p class="mb-0">Rooms</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.3s">
-                        <div class="border rounded p-1">
-                            <div class="border rounded text-center p-4">
-                                <i class="fa fa-users-cog fa-2x text-primary mb-2"></i>
-                                <h2 class="mb-1" data-toggle="counter-up">1234</h2>
-                                <p class="mb-0">Staffs</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.5s">
-                        <div class="border rounded p-1">
-                            <div class="border rounded text-center p-4">
-                                <i class="fa fa-users fa-2x text-primary mb-2"></i>
-                                <h2 class="mb-1" data-toggle="counter-up">1234</h2>
-                                <p class="mb-0">Clients</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="btn btn-primary py-3 px-5 mt-2" href="">Explore More</a>
-            </div>
-            <div class="col-lg-6">
-                <div class="row g-3" dir="ltr">
-                    <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s"
-                             src="{% static 'site/assets/images/dubai-2.jpg' %}">
-                    </div>
-                    <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.7s"
-                             src="{% static 'site/assets/images/dubai-1.jpg' %}" style="margin-top: 25%;">
-                    </div>
-                    <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.3s"
-                             src="{% static 'site/assets/images/dubai-3.jpeg' %}">
-                    </div>
-                    <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s"
-                             src="{% static 'site/assets/images/dubai-4.jpeg' %}">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="weekly-offers">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading text-center">
-                        <h2>پیشنهادات ویژه</h2>
-                        <p>پیشنهاد های شگفت انگیز هوش مصنوعی</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div dir="ltr" class="owl-weekly-offers owl-carousel">
-                        {% for tour in tours %}
-                            <div class="item">
-                                <div class="thumb" dir="rtl">
-                                    {#                                    <div class="col-md-4">#}
-                                    <div class="tour-card">
-                                        <img src="{{ tour.image.url }}" class="tour-img" alt="تور گردشگری">
-                                        <div class="tour-details">
-                                            <h5 class="tour-title">{{ tour.title }}</h5>
-                                            <p class="tour-price">{{ tour.price_per_person|intcomma:False }} تومان</p>
-                                            <div class="divider"></div>
-                                            <p class="tour-meta"><strong><i class="fa fa-calendar"></i> تاریخ
-                                                تور:</strong> {{ tour.start_time.date }}</p>
-                                            <p class="tour-meta"><strong><i class="fa fa-plane"></i> حمل و
-                                                نقل:</strong> {{ tour.accommodation }}</p>
-                                            <p class="tour-meta"><strong><i class="fa fa-list"></i>
-                                                ارائه‌دهنده‌ها:</strong> {{ tour.tour_provider.count }} ارائه دهنده</p>
-                                            <div class="main-button mt-3">
-                                                <a href="{% url 'core:tour-detail' tour.pk %}">رزرو با هوش مصنوعی</a>
-                                            </div>
+    <!--begin::Wrapper container-->
+    <div class="app-container container-xxl">
+        <!--begin::اصلی-->
+        <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+            <!--begin::Content wrapper-->
+            <div class="d-flex flex-column flex-column-fluid">
+                <!--begin::Content-->
+                <div id="kt_app_content" class="app-content flex-column-fluid">
+                    <!--begin::Row-->
+                    <div class="row g-5 g-xl-8">
+                        <!--begin::Col-->
+                        <div class="col-xl-12 ps-xl-12">
+                            <!--begin::Engage widget 1-->
+                            <div class="card bgi-position-y-bottom bgi-position-x-start bgi-no-repeat bgi-size-cover min-h-250px bg-body mb-5 mb-xl-8"
+                                 style="background-position: 100% 50px;background-size: 500px auto;background-image:url({% static 'site/media/misc/city.png' %})"
+                                 dir="ltr">
+                                <!--begin::Body-->
+                                <div class="card-body d-flex flex-column align-items-center justify-content-center ps-lg-12"
+                                     style="background-color: rgba(0, 0, 0, 0.4); border-radius: 1.25rem;">
+                                    <!--begin::Title-->
+                                    <!-- <h3 class="text-gray-900 fs-2qx fw-bold mb-7 text-center">در حال تلاش
+                                        <br />برای تقویت خلق و خوی دوست داشتنی
+                                    </h3> -->
+                                    <!-- <form action=""> -->
+                                    <input type="text"
+                                           class="form-control form-control-solid py-5 w-50 border"
+                                           style="text-align: right; font-size: 1.2rem; border-radius: 3rem;"
+                                           placeholder="...دستیار هوشمند سفر اینجاست">
+                                    <!-- </form> -->
+                                    <div class="mt-3">
+                                        <div class="btn btn-facebook btn-sm py-1">
+                                            <a href="#" class="text-white">یه سفر تفریحی برام طراحی کن</a>
+                                        </div>
+                                        <div class="btn btn-facebook btn-sm py-1">
+                                            <a href="#" class="text-white">نزدیک ترین هتل های برج خلیفه</a>
+                                        </div>
+                                        <div class="btn btn-facebook btn-sm py-1">
+                                            <a href="#" class="text-white">میخوام با دبی بای همکاری کنم</a>
                                         </div>
                                     </div>
-                                    {#            </div>#}
-                                    {#                                    <img src="{{ tour.image.url }}" alt="">#}
-                                    {#                                    <div class="text">#}
-                                    {#                                        <h6><i class="fa fa-location-dot">AI</i><br><span></span></h6>#}
-                                    {#                                        <h4>{{ tour.title }}<br><span><i#}
-                                    {#                                                class="fa fa-dollar"></i> {{ tour.price_per_person|intcomma:False }}تومان </span>#}
-                                    {#                                        </h4>#}
-                                    {#                                        <div class="line-dec"></div>#}
-                                    {#                                        <ul>#}
-                                    {#                                            <li>جزئیات سفر:</li>#}
-                                    {#                                            <li><i class="fa fa-taxi"></i> {{ tour.accommodation }}</li>#}
-                                    {#                                            <li><i class="fa fa-plane"></i> {{ tour.transport_text }}</li>#}
-                                    {#                                            <li><i class="fa fa-bowling-ball"></i> {{ tour.meals }}</li>#}
-                                    {#                                        </ul>#}
-                                    {#                                        <div class="main-button">#}
-                                    {#                                            <a href="{% url 'core:tour-detail' tour.pk %}">رزرو با هوش مصنوعی</a>#}
-                                    {#                                        </div>#}
-                                    {#                                    </div>#}
+                                    <!--end::Title-->
+                                    <!--begin::Actions-->
+                                    <!-- <div class="m-0">
+                                        <a href='#' class="btn btn-dark fw-semibold px-6 py-3"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#kt_modal_create_app">ساختن فروشگاه</a>
+                                    </div> -->
+                                    <!--begin::Actions-->
                                 </div>
+                                <!--end::Body-->
                             </div>
-                        {% endfor %}
+                            <!--end::Engage widget 1-->
+                            <div class="row mb-5 mb-xl-8 g-5 g-xl-8">
+                                <!--begin::Col-->
+                                <div class="col-6 col-md-3">
+                                    <!--begin::کارت-->
+                                    <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
+                                       href="apps/customers/view.html">
+                                        <i
+                                                class="ki-outline ki-abstract-26 fs-2tx mb-5 ms-n1 text-gray-500"></i>
+                                        <span class="fs-4 fw-bold">پلنر هوشمند سفر</span>
+                                    </a>
+                                    <!--end::کارت-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-6 col-md-3">
+                                    <!--begin::کارت-->
+                                    <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
+                                       href="account/overview.html">
+                                        <i class="ki-outline ki-gift fs-2tx mb-5 ms-n1 text-gray-500"></i>
+                                        <span class="fs-4 fw-bold">سفر به دبی</span>
+                                    </a>
+                                    <!--end::کارت-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-6 col-md-3">
+                                    <!--begin::کارت-->
+                                    <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
+                                       href="account/statements.html">
+                                        <i
+                                                class="ki-outline ki-technology-2 fs-2tx mb-5 ms-n1 text-gray-500"></i>
+                                        <span class="fs-4 fw-bold">زندگی در بی</span>
+                                    </a>
+                                    <!--end::کارت-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-6 col-md-3">
+                                    <!--begin::کارت-->
+                                    <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
+                                       href="account/referrals.html">
+                                        <i
+                                                class="ki-outline ki-fingerprint-scanning fs-2tx mb-5 ms-n1 text-gray-500"></i>
+                                        <span class="fs-4 fw-bold">کسب و کار در دبی</span>
+                                    </a>
+                                    <!--end::کارت-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="visit-scountry amazing-deals">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-heading text-center">
-                        <h2>هتل و اقامت در دبی</h2>
-                        <p>تور و اقامتگاه های ویژه دبی</p>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="items">
-                        <div class="row">
-                            {% for hotel in hotels %}
-                                <div class="col-lg-6 col-sm-6">
-                                    <div class="item">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="image">
-                                                    <img src="{{ hotel.image.url }}" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 align-self-center">
-                                                <div class="content">
-                                                    <h4>{{ hotel.title }}</h4>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <i class="fa fa-money-bill-wave"></i>
-                                                            <span class="list">{{ hotel.rooms.first.price_per_night|intcomma:False }}ت</span>
+                            <div class="row g-5 gx-xl-10 mb-5 mt-10 mb-xl-10">
+                                <div class="col-12 mt-12">
+                                    <h1 class="text-center">پیشنهادات ویژه DubaiBy</h1>
+                                </div>
+                                <!--begin::Col-->
+                                <div class="col-xxl-6">
+                                    <!--begin::کارت widget 15-->
+                                    <div class="card card-flush h-xl-100">
+                                        <!--begin::Body-->
+                                        <div class="card-body py-9">
+                                            <!--begin::Row-->
+                                            <div class="row gx-9 h-100">
+                                                <!--begin::Col-->
+                                                <div class="col-sm-6 mb-10 mb-sm-0">
+                                                    <!--begin::Overlay-->
+                                                    <a class="d-block overlay h-100"
+                                                       data-fslightbox="lightbox-hot-sales"
+                                                       href="{% static 'site/media/stock/600x600/img-42.jpg' %}">
+                                                        <!--begin::Image-->
+                                                        <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-200px h-100"
+                                                             style="background-image:url('https://wallpapers-max.b-cdn.net/wallpapers/2020/hd/cool-burj-khalifa-in-dubai-wallpaper.jpg')">
                                                         </div>
-                                                        <div class="col-6">
-                                                            <i class="fa fa-star"></i>
-                                                            <span class="list">{{ hotel.rating }} ستاره</span>
+                                                        <!--end::Image-->
+                                                        <!--begin::Actions-->
+                                                        <div
+                                                                class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                            <i
+                                                                    class="ki-outline ki-eye fs-3x text-white"></i>
                                                         </div>
-                                                    </div>
-                                                    <p>{{ hotel.description|truncatewords:10 }}</p>
-                                                    <div class="main-button">
-                                                        <a href="{% url 'core:hotel-detail' hotel.pk %}">رزرو با هوش
-                                                            مصنوعی</a>
-                                                    </div>
+                                                        <!--end::Actions-->
+                                                    </a>
+                                                    <!--end::Overlay-->
                                                 </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-sm-6">
+                                                    <!--begin::Wrapper-->
+                                                    <div class="d-flex flex-column h-100">
+                                                        <!--begin::Header-->
+                                                        <div class="mb-7">
+                                                            <!--begin::Title-->
+                                                            <div class="mb-6">
+                                                                            <span
+                                                                                    class="text-gray-500 fs-7 fw-bold me-2 d-block lh-1 pb-1">شناسه:
+                                                                                34356776</span>
+                                                                <a href="apps/projects/users.html"
+                                                                   class="text-gray-800 text-hover-primary fs-1 fw-bold">هنر
+                                                                    کالیفرنیا</a>
+                                                            </div>
+                                                            <!--end::Title-->
+                                                            <!--begin::items-->
+                                                            <div
+                                                                    class="d-flex align-items-center flex-wrap d-grid gap-2">
+                                                                <!--begin::item-->
+                                                                <div
+                                                                        class="d-flex align-items-center me-5 me-xl-13">
+                                                                    <!--begin::Symbol-->
+                                                                    <div
+                                                                            class="symbol symbol-30px symbol-circle me-3">
+                                                                        <img src="{% static 'site/media/avatars/300-3.jpg' %}"
+                                                                             class="" alt="">
+                                                                    </div>
+                                                                    <!--end::Symbol-->
+                                                                    <!--begin::Info-->
+                                                                    <div class="m-0">
+                                                                                    <span
+                                                                                            class="fw-semibold text-gray-500 d-block fs-8">Creatیا</span>
+                                                                        <a href="apps/projects/users.html"
+                                                                           class="fw-bold text-gray-800 text-hover-primary fs-7">رابرت
+                                                                            فاکس</a>
+                                                                    </div>
+                                                                    <!--end::Info-->
+                                                                </div>
+                                                                <!--end::item-->
+                                                                <!--begin::item-->
+                                                                <div class="d-flex align-items-center">
+                                                                    <!--begin::Symbol-->
+                                                                    <div
+                                                                            class="symbol symbol-30px symbol-circle me-3">
+                                                                                    <span
+                                                                                            class="symbol-label bg-success">
+                                                                                        <i
+                                                                                                class="ki-outline ki-abstract-41 fs-5 text-white"></i>
+                                                                                    </span>
+                                                                    </div>
+                                                                    <!--end::Symbol-->
+                                                                    <!--begin::Info-->
+                                                                    <div class="m-0">
+                                                                                    <span
+                                                                                            class="fw-semibold text-gray-500 d-block fs-8">قیمت
+                                                                                        فوری</span>
+                                                                        <a href="#"
+                                                                           class="fw-bold text-gray-800 text-hover-primary fs-7">4.2
+                                                                            ETH</a>
+                                                                    </div>
+                                                                    <!--end::Info-->
+                                                                </div>
+                                                                <!--end::item-->
+                                                            </div>
+                                                            <!--end::items-->
+                                                        </div>
+                                                        <!--end::Header-->
+                                                        <!--begin::Body-->
+                                                        <div
+                                                                class="d-flex flex-column border border-1 border-gray-300 text-center pt-5 pb-7 mb-8 card-rounded">
+                                                                        <span
+                                                                                class="fw-semibold text-gray-600 fs-7 pb-1">آخرین
+                                                                            مناقصه</span>
+                                                            <span
+                                                                    class="fw-bold text-gray-800 fs-2hx lh-1 pb-1">2.48
+                                                                            ETH</span>
+                                                            <span
+                                                                    class="fw-bold text-gray-600 fs-4 pb-5">$6,047.84</span>
+                                                            <span
+                                                                    class="fw-semibold text-gray-600 fs-7 pb-1">تا
+                                                                            پایان</span>
+                                                            <span class="fw-bold text-gray-800 fs-3">06h 52m
+                                                                            47s</span>
+                                                        </div>
+                                                        <!--end::Body-->
+                                                        <!--begin::Footer-->
+                                                        <div class="d-flex flex-stack mt-auto bd-highlight">
+                                                            <!--begin::Actions-->
+                                                            <a href="#"
+                                                               class="btn btn-primary btn-sm flex-shrink-0 me-3"
+                                                               data-bs-toggle="modal"
+                                                               data-bs-target="#kt_modal_bidding">مناقصه
+                                                                بگذارید</a>
+                                                            <a href="#"
+                                                               class="btn btn-light btn-sm flex-shrink-0"
+                                                               data-bs-toggle="modal"
+                                                               data-bs-target="#kt_modal_users_search">نمایش</a>
+                                                            <!--end::Actions-->
+                                                        </div>
+                                                        <!--end::Footer-->
+                                                    </div>
+                                                    <!--end::Wrapper-->
+                                                </div>
+                                                <!--end::Col-->
                                             </div>
+                                            <!--end::Row-->
                                         </div>
+                                        <!--end::Body-->
                                     </div>
+                                    <!--end::کارت widget 15-->
                                 </div>
-                            {% endfor %}
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-sm-6 col-xxl-3">
+                                    <!--begin::کارت widget 14-->
+                                    <div class="card card-flush h-xl-100">
+                                        <!--begin::Body-->
+                                        <div class="card-body text-center pb-5">
+                                            <!--begin::Overlay-->
+                                            <a class="d-block overlay" data-fslightbox="lightbox-hot-sales"
+                                               href="{% static 'site/media/stock/600x600/img-39.jpg' %}">
+                                                <!--begin::Image-->
+                                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded mb-7"
+                                                     style="height: 266px;background-image:url('https://i.pinimg.com/564x/a8/b2/84/a8b284d43f99de7af51a048d639ccd10.jpg')">
+                                                </div>
+                                                <!--end::Image-->
+                                                <!--begin::Actions-->
+                                                <div
+                                                        class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                    <i class="ki-outline ki-eye fs-3x text-white"></i>
+                                                </div>
+                                                <!--end::Actions-->
+                                            </a>
+                                            <!--end::Overlay-->
+                                            <!--begin::Info-->
+                                            <div class="d-flex align-items-end flex-stack mb-1">
+                                                <!--begin::Title-->
+                                                <div class="text-start">
+                                                                <span
+                                                                        class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-4 d-block">هنر
+                                                                    منحنی
+                                                                    مواج</span>
+                                                    <span class="text-gray-500 mt-1 fw-bold fs-6">آخرین
+                                                                    مناقصه: 1.07 ETH</span>
+                                                </div>
+                                                <!--end::Title-->
+                                                <!--begin::کل-->
+                                                <span
+                                                        class="text-gray-600 text-end fw-bold fs-6">$2,630</span>
+                                                <!--end::کل-->
+                                            </div>
+                                            <!--end::Info-->
+                                        </div>
+                                        <!--end::Body-->
+                                        <!--begin::Footer-->
+                                        <div class="card-footer d-flex flex-stack pt-0">
+                                            <!--begin::Link-->
+                                            <a class="btn btn-sm btn-primary flex-shrink-0 me-2"
+                                               data-bs-target="#kt_modal_bidding"
+                                               data-bs-toggle="modal">مناقصه بگذارید</a>
+                                            <!--end::Link-->
+                                            <!--begin::Link-->
+                                            <a class="btn btn-sm btn-light flex-shrink-0"
+                                               href="apps/ecommerce/sales/listing.html">نمایش</a>
+                                            <!--end::Link-->
+                                        </div>
+                                        <!--end::Footer-->
+                                    </div>
+                                    <!--end::کارت widget 14-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-sm-6 col-xxl-3">
+                                    <!--begin::کارت widget 14-->
+                                    <div class="card card-flush h-xl-100">
+                                        <!--begin::Body-->
+                                        <div class="card-body text-center pb-5">
+                                            <!--begin::Overlay-->
+                                            <a class="d-block overlay" data-fslightbox="lightbox-hot-sales"
+                                               href="{% static 'site/media/stock/600x600/img-47.jpg' %}">
+                                                <!--begin::Image-->
+                                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded mb-7"
+                                                     style="height: 266px;background-image:url('https://i.pinimg.com/736x/71/12/22/711222d2a5c1748e382c9e3deec7738b.jpg')">
+                                                </div>
+                                                <!--end::Image-->
+                                                <!--begin::Actions-->
+                                                <div
+                                                        class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                    <i class="ki-outline ki-eye fs-3x text-white"></i>
+                                                </div>
+                                                <!--end::Actions-->
+                                            </a>
+                                            <!--end::Overlay-->
+                                            <!--begin::Info-->
+                                            <div class="d-flex align-items-end flex-stack mb-1">
+                                                <!--begin::Title-->
+                                                <div class="text-start">
+                                                                <span
+                                                                        class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-4 d-block">هنر
+                                                                    کیتی
+                                                                    شاد</span>
+                                                    <span class="text-gray-500 mt-1 fw-bold fs-6">آخرین
+                                                                    مناقصه: 7.83 ETH</span>
+                                                </div>
+                                                <!--end::Title-->
+                                                <!--begin::کل-->
+                                                <span
+                                                        class="text-gray-600 text-end fw-bold fs-6">$17,035</span>
+                                                <!--end::کل-->
+                                            </div>
+                                            <!--end::Info-->
+                                        </div>
+                                        <!--end::Body-->
+                                        <!--begin::Footer-->
+                                        <div class="card-footer d-flex flex-stack pt-0">
+                                            <!--begin::Link-->
+                                            <a class="btn btn-sm btn-primary flex-shrink-0 me-2"
+                                               data-bs-target="#kt_modal_bidding"
+                                               data-bs-toggle="modal">مناقصه بگذارید</a>
+                                            <!--end::Link-->
+                                            <!--begin::Link-->
+                                            <a class="btn btn-sm btn-light flex-shrink-0"
+                                               href="apps/ecommerce/sales/listing.html">نمایش</a>
+                                            <!--end::Link-->
+                                        </div>
+                                        <!--end::Footer-->
+                                    </div>
+                                    <!--end::کارت widget 14-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+
+                            <div class="row g-5 g-xl-10 mt-10 mb-5 mb-xl-10">
+                                <!-- <div class="col-12 mt-12 text-center">
+                                    <h2 class="h1">
+                                        هتل های دبی
+                                    </h2>
+                                </div> -->
+                                <!--begin::Col-->
+                                <div class="col-xl-8">
+                                    <!--begin::Engage widget 7-->
+                                    <div class="card card-flush h-xl-100">
+                                        <!--begin::Header-->
+                                        <div class="card-header pt-7">
+                                            <!--begin::Title-->
+                                            <h3 class="card-title align-items-start flex-column">
+                                                            <span class="card-label fw-bold text-gray-900 fs-2">رزرو
+                                                                هتل</span>
+                                            </h3>
+                                            <!--end::Title-->
+                                            <!--begin::Toolbar-->
+                                            <div class="card-toolbar">
+                                                <a href="account/statements.html"
+                                                   class="btn btn-sm btn-light">همه هتل ها</a>
+                                            </div>
+                                            <!--end::Toolbar-->
+                                        </div>
+                                        <!--end::Header-->
+                                        <!--begin::کارت body-->
+                                        <div class="card-body pt-7">
+                                            <!--begin::Row-->
+                                            <div class="row align-items-end h-100 gx-5 gx-xl-10">
+                                                {% for hotel in hotels %}
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-4 mb-11 mb-md-0">
+                                                        <!--begin::Overlay-->
+                                                        <a class="d-block overlay"
+                                                           data-fslightbox="lightbox-hot-sales"
+                                                           href="">
+                                                            <!--begin::Image-->
+                                                            <div class="overlay-wrapper bgi-position-center bgi-no-repeat bgi-size-cover h-200px card-rounded mb-3"
+                                                                 style="height: 266px;background-image:url({{ hotel.image.url }})">
+                                                            </div>
+                                                            <!--end::Image-->
+                                                            <!--begin::Actions-->
+                                                            <div
+                                                                    class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                                <i
+                                                                        class="ki-outline ki-eye fs-3x text-white"></i>
+                                                            </div>
+                                                            <!--end::Actions-->
+                                                        </a>
+                                                        <!--end::Overlay-->
+                                                        <!--begin::Info-->
+                                                        <div class="m-0">
+                                                            <!--begin::Title-->
+                                                            <a href="#"
+                                                               class="text-gray-800 text-hover-primary fs-3 fw-bold d-block mb-2">{{ hotel.title }}</a>
+                                                            <!--end::Title-->
+                                                            <!--begin::زمان-->
+                                                            <span
+                                                                    class="fw-bold fs-6 text-gray-500 d-block lh-1">قیمت:
+                                                                        از {{ hotel.get_min_price.price_per_night }}{{ hotel.get_min_price.currency }}</span>
+                                                            <!--end::زمان-->
+                                                        </div>
+                                                        <!--end::Info-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                {% endfor %}
+
+                                            </div>
+                                            <!--end::Row-->
+                                        </div>
+                                        <!--end::کارت body-->
+                                    </div>
+                                    <!--end::Engage widget 7-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xl-4">
+                                    <!--begin::Engage widget 1-->
+                                    <div class="card h-md-100" dir="ltr">
+                                        <!--begin::Body-->
+                                        <div class="card-body d-flex flex-column flex-center">
+                                            <!--begin::Heading-->
+                                            <div class="mb-2">
+                                                <!--begin::Title-->
+                                                <h1
+                                                        class="fw-semibold text-gray-800 fs-4 text-center lh-lg">
+                                                    <br>
+                                                    <span class="fw-bolder">دستیار هوشمند سفر</span>
+                                                    <br>
+                                                    برای انتخاب هتل با دستیار هوشمندت مشورت کن
+                                                </h1>
+                                                <!--end::Title-->
+                                                <!--begin::Illustration-->
+                                                <div class="py-10 text-center">
+                                                    <img src="{% static 'site/media/svg/illustrations/easy/2.svg' %}"
+                                                         class="theme-light-show h-125px" alt="">
+                                                    <img src="{% static 'site/media/svg/illustrations/easy/2-dark.svg' %}"
+                                                         class="theme-dark-show h-125px" alt="">
+                                                </div>
+                                                <!--end::Illustration-->
+                                            </div>
+                                            <!--end::Heading-->
+                                            <!--begin::Links-->
+                                            <div class="text-center mb-1">
+                                                <!--begin::Link-->
+                                                <a class="btn btn-sm btn-info"
+                                                   href="account/billing.html">دستیار سفر</a>
+                                                <!--end::Link-->
+                                            </div>
+                                            <!--end::Links-->
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                    <!--end::Engage widget 1-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+
+                            <div class="row mt-12">
+                                <div class="col-xl-12 mb-xl-10">
+                                    <!--begin::لیست widget 17-->
+                                    <div class="card card-flush h-xl-100">
+                                        <!--begin::Header-->
+                                        <div class="card-header pt-7">
+                                            <!--begin::Title-->
+                                            <h3 class="card-title align-items-start flex-column">
+                                                            <span class="card-label fw-bold text-gray-800 fs-2">پرواز
+                                                                های دبی</span>
+                                                <!-- <span class="text-gray-500 mt-1 fw-semibold fs-6">8 هزار
+                                                    بازدید اجتماعی</span> -->
+                                            </h3>
+                                            <!--end::Title-->
+                                            <!--begin::Toolbar-->
+                                            <div class="card-toolbar">
+                                                <a href="apps/ecommerce/catalog/add-product.html"
+                                                   class="btn btn-sm btn-light">همه پرواز ها</a>
+                                            </div>
+                                            <!--end::Toolbar-->
+                                        </div>
+                                        <div class="separator separator-dashed my-4"></div>
+                                        <!--end::Header-->
+                                        <!--begin::Body-->
+                                        <div class="card-body pt-0">
+                                            <!--begin::Content-->
+                                            <div class="d-flex flex-stack my-5">
+                                                <!-- <span class="text-gray-500 fs-7 fw-bold">پرواز</span>
+                                                <span class="text-gray-500 fw-bold fs-7">قیمت</span> -->
+                                            </div>
+                                            <!--end::Content-->
+                                            <!--begin::item-->
+                                            <div class="d-flex flex-stack">
+                                                <!--begin::Wrapper-->
+                                                <div class="d-flex align-items-center me-3">
+                                                    <!--begin::Icon-->
+                                                    <!-- <img src="{% static 'site/media/stock/ecommerce/14.png' %}"
+                                                                class="me-4 w-50px" alt=""> -->
+                                                    <!--end::Icon-->
+                                                    <!--begin::Section-->
+                                                    <div class="flex-grow-1">
+                                                        <a href="apps/ecommerce/sales/details.html"
+                                                           class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">جزیره
+                                                            کیش (KIH) - دبی (DXB)</a>
+                                                        <span
+                                                                class="text-gray-500 fw-semibold d-block fs-7">10
+                                                                        اردیبهشت 12:30 - 15:30</span>
+                                                    </div>
+                                                    <!--end::Section-->
+                                                </div>
+                                                <!--end::Wrapper-->
+                                                <!--begin::Value-->
+                                                <!-- <span class="text-gray-500 fw-bold fs-7 fw-semibold">قشم
+                                                    ایر/اکونومی</span> -->
+                                                <span class="text-gray-800 fw-bold fs-6">
+                                                                125 AED
+                                                                <br>
+                                                                <span class="text-gray-500 fw-semibold fs-7">
+                                                                    قشم ایر/اکونومی
+                                                                </span>
+                                                            </span>
+                                                <a href="#" class="btn btn-light-info btn-sm">رزرو</a>
+                                                <!--end::Value-->
+                                            </div>
+                                            <!--end::item-->
+                                            <!--begin::separator-->
+                                            <div class="separator separator-dashed my-4"></div>
+                                            <!--end::separator-->
+                                            <!--begin::item-->
+                                            <div class="d-flex flex-stack">
+                                                <!--begin::Wrapper-->
+                                                <div class="d-flex align-items-center me-3">
+                                                    <!--begin::Icon-->
+                                                    <!-- <img src="{% static 'site/media/stock/ecommerce/14.png' %}"
+                                                                                                                        class="me-4 w-50px" alt=""> -->
+                                                    <!--end::Icon-->
+                                                    <!--begin::Section-->
+                                                    <div class="flex-grow-1">
+                                                        <a href="apps/ecommerce/sales/details.html"
+                                                           class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">شیراز
+                                                            (SYZ) - دبی (DXB)</a>
+                                                        <span
+                                                                class="text-gray-500 fw-semibold d-block fs-7">10
+                                                                        اردیبهشت 12:30 - 15:30</span>
+                                                    </div>
+                                                    <!--end::Section-->
+                                                </div>
+                                                <!--end::Wrapper-->
+                                                <!--begin::Value-->
+                                                <!-- <span class="text-gray-500 fw-bold fs-7 fw-semibold">قشم
+                                                                                                            ایر/اکونومی</span> -->
+                                                <span class="text-gray-800 fw-bold fs-6">
+                                                                125 AED
+                                                                <br>
+                                                                <span class="text-gray-500 fw-semibold fs-7">
+                                                                    قشم ایر/اکونومی
+                                                                </span>
+                                                            </span>
+                                                <a href="#" class="btn btn-light-info btn-sm">رزرو</a>
+                                                <!--end::Value-->
+                                            </div>
+                                            <!--end::item-->
+                                            <!--begin::separator-->
+                                            <div class="separator separator-dashed my-4"></div>
+                                            <!--end::separator-->
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                    <!--end::لیست widget 17-->
+                                </div>
+                            </div>
+
+                            <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+                                <!--begin::Col-->
+                                <div class="col-xxl-12">
+                                    <!--begin::Engage widget 8-->
+                                    <div class="card border-0 h-md-100" data-bs-theme="light"
+                                         style="background: linear-gradient(112.14deg, #3B2A38 0%, #7a6075 100%)">
+                                        <!--begin::Body-->
+                                        <div class="card-body">
+                                            <!--begin::Row-->
+                                            <div class="row align-items-center h-100">
+                                                <!--begin::Col-->
+                                                <div class="col-7 ps-xl-13">
+                                                    <!--begin::Title-->
+                                                    <div class="text-white mb-6 pt-6">
+                                                                    <span class="fs-2 fw-bold">طراحی هوشمند پلن
+                                                                        سفر</span>
+                                                    </div>
+                                                    <!--end::Title-->
+                                                    <!--begin::Text-->
+                                                    <span
+                                                            class="fw-semibold text-white fs-6 mb-8 d-block opacity-75">برنامه
+                                                                    سفرت رو با DubaiBy هوشمند و ویژه بچین</span>
+                                                    <!--end::Text-->
+                                                    <!--begin::Actions-->
+                                                    <div
+                                                            class="d-flex flex-column flex-sm-row d-grid gap-2">
+                                                        <a href="#"
+                                                           class="btn btn-facebook flex-shrink-0 me-lg-2"
+                                                           data-bs-toggle="modal"
+                                                           data-bs-target="#kt_modal_upgrade_plan">برنامه
+                                                            سفرتو بچین</a>
+                                                        <a href="#" class="btn btn-primary flex-shrink-0"
+                                                           style="background: rgba(255, 255, 255, 0.2)"
+                                                           data-bs-toggle="modal"
+                                                           data-bs-target="#kt_modal_create_app">از دستیار
+                                                            هوشمندت بپرس</a>
+                                                    </div>
+                                                    <!--end::Actions-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-5 pt-10">
+                                                    <!--begin::Illustration-->
+                                                    <div class="bgi-no-repeat bgi-size-contain bgi-position-x-end h-225px"
+                                                         style="background-image:url({% static 'site/media/svg/illustrations/easy/5.svg' %})">
+                                                    </div>
+                                                    <!--end::Illustration-->
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                            <!--end::Row-->
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                    <!--end::Engage widget 8-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xxl-6">
+                                    <!--begin::کارت widget 18-->
+                                    <div class="card card-flush h-md-100">
+                                        <!--begin::Body-->
+                                        <div class="card-body py-9">
+                                            <!--begin::Row-->
+                                            <div class="row gx-9 h-100">
+                                                <!--begin::Col-->
+                                                <div class="col-sm-6 mb-10 mb-sm-0">
+                                                    <!--begin::Image-->
+                                                    <div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-400px min-h-sm-100 h-100"
+                                                         style="background-size: 100% 100%;background-image:url('https://media.tacdn.com/media/attractions-splice-spp-674x446/06/d6/c3/e8.jpg')">
+                                                    </div>
+                                                    <!--end::Image-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-sm-6">
+                                                    <!--begin::Wrapper-->
+                                                    <div class="d-flex flex-column h-100">
+                                                        <!--begin::Header-->
+                                                        <div class="mb-7">
+                                                            <!--begin::Headin-->
+                                                            <div class="d-flex flex-stack mb-6">
+                                                                <!--begin::Title-->
+                                                                <div class="flex-shrink-0 me-5">
+                                                                                <span
+                                                                                        class="text-gray-800 fs-2 fw-bold">تور
+                                                                                    8 روزه امارات</span>
+                                                                </div>
+                                                            </div>
+                                                            <!--end::Heading-->
+                                                            <!--begin::items-->
+                                                            <div
+                                                                    class="d-flex align-items-center flex-wrap d-grid gap-2">
+                                                                <!--begin::item-->
+                                                                <div
+                                                                        class="d-flex align-items-center me-5 me-xl-13">
+                                                                    <!--begin::Symbol-->
+                                                                    <div
+                                                                            class="symbol symbol-30px symbol-circle me-3">
+                                                                        <img src="{% static 'site/media/avatars/300-3.jpg' %}"
+                                                                             class="" alt="">
+                                                                    </div>
+                                                                    <!--end::Symbol-->
+                                                                    <!--begin::Info-->
+                                                                    <div class="m-0">
+                                                                                    <span
+                                                                                            class="fw-semibold text-gray-500 d-block fs-8">مبدا</span>
+                                                                        <a href="pages/user-profile/overview.html"
+                                                                           class="fw-bold text-gray-800 text-hover-primary fs-7">کیش</a>
+                                                                    </div>
+                                                                    <!--end::Info-->
+                                                                </div>
+                                                                <!--end::item-->
+                                                                <!--begin::item-->
+                                                                <div class="d-flex align-items-center">
+                                                                    <!--begin::Symbol-->
+                                                                    <div
+                                                                            class="symbol symbol-30px symbol-circle me-3">
+                                                                                    <span
+                                                                                            class="symbol-label bg-success">
+                                                                                        <i
+                                                                                                class="ki-outline ki-abstract-41 fs-5 text-white"></i>
+                                                                                    </span>
+                                                                    </div>
+                                                                    <!--end::Symbol-->
+                                                                    <!--begin::Info-->
+                                                                    <div class="m-0">
+                                                                                    <span
+                                                                                            class="fw-semibold text-gray-500 d-block fs-8">قیمت</span>
+                                                                        <span
+                                                                                class="fw-bold text-gray-800 fs-7">ت64.800</span>
+                                                                    </div>
+                                                                    <!--end::Info-->
+                                                                </div>
+                                                                <!--end::item-->
+                                                            </div>
+                                                            <!--end::items-->
+                                                        </div>
+                                                        <!--end::Header-->
+                                                        <!--begin::Body-->
+                                                        <div class="mb-6">
+                                                            <!--begin::Text-->
+                                                            <!-- <span
+                                                                class="fw-semibold text-gray-600 fs-6 mb-8 d-block">تور
+                                                                8 روزه کشتی امارت حرکت از کیش به مقصد
+                                                                امارات...</span> -->
+                                                            <!--end::Text-->
+                                                            <!--begin::Stats-->
+                                                            <div class="d-flex">
+                                                                <!--begin::Stat-->
+                                                                <div
+                                                                        class="border border-gray-300 border-dashed rounded min-w-100px w-100 py-2 px-4 me-6 mb-3">
+                                                                    <!--begin::تاریخ-->
+                                                                    <span
+                                                                            class="fs-6 text-gray-700 fw-bold">12
+                                                                                    اردیبهشت</span>
+                                                                    <!--end::تاریخ-->
+                                                                    <!--begin::Tags-->
+                                                                    <div class="fw-semibold text-gray-500">
+                                                                        رفت
+                                                                    </div>
+                                                                    <!--end::Tags-->
+                                                                </div>
+                                                                <!--end::Stat-->
+                                                                <!--begin::Stat-->
+                                                                <div
+                                                                        class="border border-gray-300 border-dashed rounded min-w-100px w-100 py-2 px-4 mb-3">
+                                                                    <!--begin::شماره کارت-->
+                                                                    <span
+                                                                            class="fs-6 text-gray-700 fw-bold">12
+                                                                                    اردیبهشت</span>
+                                                                    <!--end::شماره کارت-->
+                                                                    <!--begin::Tags-->
+                                                                    <div class="fw-semibold text-gray-500">
+                                                                        برگشت
+                                                                    </div>
+                                                                    <!--end::Tags-->
+                                                                </div>
+                                                                <!--end::Stat-->
+                                                            </div>
+                                                            <!--end::Stats-->
+                                                        </div>
+                                                        <!--end::Body-->
+                                                        <!--begin::Footer-->
+                                                        <div class="d-flex flex-stack mt-auto bd-highlight">
+                                                            <!--begin::کاربران group-->
+                                                            <div
+                                                                    class="symbol-group symbol-hover flex-nowrap">
+                                                                <div class="symbol symbol-35px symbol-circle"
+                                                                     data-bs-toggle="tooltip"
+                                                                     aria-label="میلاد مرادی"
+                                                                     data-bs-original-title="میلاد مرادی"
+                                                                     data-kt-initialized="1">
+                                                                    <img alt="Pic"
+                                                                         src="{% static 'site/media/avatars/300-2.jpg' %}">
+                                                                </div>
+                                                                <div class="symbol symbol-35px symbol-circle"
+                                                                     data-bs-toggle="tooltip"
+                                                                     aria-label="میکائیل احمدی"
+                                                                     data-bs-original-title="میکائیل احمدی"
+                                                                     data-kt-initialized="1">
+                                                                    <img alt="Pic"
+                                                                         src="{% static 'site/media/avatars/300-3.jpg' %}">
+                                                                </div>
+                                                                <div class="symbol symbol-35px symbol-circle"
+                                                                     data-bs-toggle="tooltip"
+                                                                     data-bs-original-title="سوسن موسوی"
+                                                                     data-kt-initialized="1">
+                                                                                <span
+                                                                                        class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
+                                                                </div>
+                                                            </div>
+                                                            <!--end::کاربران group-->
+                                                            <!--begin::Actions-->
+                                                            <a href="apps/projects/project.html"
+                                                               class="d-flex align-items-center text-primary opacity-75-hover fs-6 fw-semibold">رزرو
+                                                                تور
+                                                                <i
+                                                                        class="ki-outline ki-exit-right-center fs-4 ms-1"></i></a>
+                                                            <!--end::Actions-->
+                                                        </div>
+                                                        <!--end::Footer-->
+                                                    </div>
+                                                    <!--end::Wrapper-->
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                            <!--end::Row-->
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                    <!--end::کارت widget 18-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xxl-6">
+                                    <!--begin::کارت widget 18-->
+                                    <div class="card card-flush h-md-100">
+                                        <!--begin::Body-->
+                                        <div class="card-body py-9">
+                                            <!--begin::Row-->
+                                            <div class="row gx-9 h-100">
+                                                <!--begin::Col-->
+                                                <div class="col-sm-6 mb-10 mb-sm-0">
+                                                    <!--begin::Image-->
+                                                    <div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-400px min-h-sm-100 h-100"
+                                                         style="background-size: 100% 100%;background-image:url('https://www.shutterstock.com/image-photo/family-on-vacation-emirates-four-600nw-1743126875.jpg')">
+                                                    </div>
+                                                    <!--end::Image-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-sm-6">
+                                                    <!--begin::Wrapper-->
+                                                    <div class="d-flex flex-column h-100">
+                                                        <!--begin::Header-->
+                                                        <div class="mb-7">
+                                                            <!--begin::Headin-->
+                                                            <div class="d-flex flex-stack mb-6">
+                                                                <!--begin::Title-->
+                                                                <div class="flex-shrink-0 me-5">
+                                                                                <span
+                                                                                        class="text-gray-800 fs-2 fw-bold">تور
+                                                                                    8 روزه امارات</span>
+                                                                </div>
+                                                            </div>
+                                                            <!--end::Heading-->
+                                                            <!--begin::items-->
+                                                            <div
+                                                                    class="d-flex align-items-center flex-wrap d-grid gap-2">
+                                                                <!--begin::item-->
+                                                                <div
+                                                                        class="d-flex align-items-center me-5 me-xl-13">
+                                                                    <!--begin::Symbol-->
+                                                                    <div
+                                                                            class="symbol symbol-30px symbol-circle me-3">
+                                                                        <img src="{% static 'site/media/avatars/300-3.jpg' %}"
+                                                                             class="" alt="">
+                                                                    </div>
+                                                                    <!--end::Symbol-->
+                                                                    <!--begin::Info-->
+                                                                    <div class="m-0">
+                                                                                    <span
+                                                                                            class="fw-semibold text-gray-500 d-block fs-8">مبدا</span>
+                                                                        <a href="pages/user-profile/overview.html"
+                                                                           class="fw-bold text-gray-800 text-hover-primary fs-7">کیش</a>
+                                                                    </div>
+                                                                    <!--end::Info-->
+                                                                </div>
+                                                                <!--end::item-->
+                                                                <!--begin::item-->
+                                                                <div class="d-flex align-items-center">
+                                                                    <!--begin::Symbol-->
+                                                                    <div
+                                                                            class="symbol symbol-30px symbol-circle me-3">
+                                                                                    <span
+                                                                                            class="symbol-label bg-success">
+                                                                                        <i
+                                                                                                class="ki-outline ki-abstract-41 fs-5 text-white"></i>
+                                                                                    </span>
+                                                                    </div>
+                                                                    <!--end::Symbol-->
+                                                                    <!--begin::Info-->
+                                                                    <div class="m-0">
+                                                                                    <span
+                                                                                            class="fw-semibold text-gray-500 d-block fs-8">قیمت</span>
+                                                                        <span
+                                                                                class="fw-bold text-gray-800 fs-7">ت64.800</span>
+                                                                    </div>
+                                                                    <!--end::Info-->
+                                                                </div>
+                                                                <!--end::item-->
+                                                            </div>
+                                                            <!--end::items-->
+                                                        </div>
+                                                        <!--end::Header-->
+                                                        <!--begin::Body-->
+                                                        <div class="mb-6">
+                                                            <!--begin::Text-->
+                                                            <!-- <span
+                                                                class="fw-semibold text-gray-600 fs-6 mb-8 d-block">تور
+                                                                8 روزه کشتی امارت حرکت از کیش به مقصد
+                                                                امارات...</span> -->
+                                                            <!--end::Text-->
+                                                            <!--begin::Stats-->
+                                                            <div class="d-flex">
+                                                                <!--begin::Stat-->
+                                                                <div
+                                                                        class="border border-gray-300 border-dashed rounded min-w-100px w-100 py-2 px-4 me-6 mb-3">
+                                                                    <!--begin::تاریخ-->
+                                                                    <span
+                                                                            class="fs-6 text-gray-700 fw-bold">12
+                                                                                    اردیبهشت</span>
+                                                                    <!--end::تاریخ-->
+                                                                    <!--begin::Tags-->
+                                                                    <div class="fw-semibold text-gray-500">
+                                                                        رفت
+                                                                    </div>
+                                                                    <!--end::Tags-->
+                                                                </div>
+                                                                <!--end::Stat-->
+                                                                <!--begin::Stat-->
+                                                                <div
+                                                                        class="border border-gray-300 border-dashed rounded min-w-100px w-100 py-2 px-4 mb-3">
+                                                                    <!--begin::شماره کارت-->
+                                                                    <span
+                                                                            class="fs-6 text-gray-700 fw-bold">12
+                                                                                    اردیبهشت</span>
+                                                                    <!--end::شماره کارت-->
+                                                                    <!--begin::Tags-->
+                                                                    <div class="fw-semibold text-gray-500">
+                                                                        برگشت
+                                                                    </div>
+                                                                    <!--end::Tags-->
+                                                                </div>
+                                                                <!--end::Stat-->
+                                                            </div>
+                                                            <!--end::Stats-->
+                                                        </div>
+                                                        <!--end::Body-->
+                                                        <!--begin::Footer-->
+                                                        <div class="d-flex flex-stack mt-auto bd-highlight">
+                                                            <!--begin::کاربران group-->
+                                                            <div
+                                                                    class="symbol-group symbol-hover flex-nowrap">
+                                                                <div class="symbol symbol-35px symbol-circle"
+                                                                     data-bs-toggle="tooltip"
+                                                                     aria-label="میلاد مرادی"
+                                                                     data-bs-original-title="میلاد مرادی"
+                                                                     data-kt-initialized="1">
+                                                                    <img alt="Pic"
+                                                                         src="{% static 'site/media/avatars/300-2.jpg' %}">
+                                                                </div>
+                                                                <div class="symbol symbol-35px symbol-circle"
+                                                                     data-bs-toggle="tooltip"
+                                                                     aria-label="میکائیل احمدی"
+                                                                     data-bs-original-title="میکائیل احمدی"
+                                                                     data-kt-initialized="1">
+                                                                    <img alt="Pic"
+                                                                         src="{% static 'site/media/avatars/300-3.jpg' %}">
+                                                                </div>
+                                                                <div class="symbol symbol-35px symbol-circle"
+                                                                     data-bs-toggle="tooltip"
+                                                                     data-bs-original-title="سوسن موسوی"
+                                                                     data-kt-initialized="1">
+                                                                                <span
+                                                                                        class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
+                                                                </div>
+                                                            </div>
+                                                            <!--end::کاربران group-->
+                                                            <!--begin::Actions-->
+                                                            <a href="apps/projects/project.html"
+                                                               class="d-flex align-items-center text-primary opacity-75-hover fs-6 fw-semibold">رزرو
+                                                                تور
+                                                                <i
+                                                                        class="ki-outline ki-exit-right-center fs-4 ms-1"></i></a>
+                                                            <!--end::Actions-->
+                                                        </div>
+                                                        <!--end::Footer-->
+                                                    </div>
+                                                    <!--end::Wrapper-->
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                            <!--end::Row-->
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                    <!--end::کارت widget 18-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+
+                            <div class="row g-6 g-xl-9">
+                                <div class="col-md-6 col-xl-4">
+                                    <!--begin::کارت-->
+                                    <a href="apps/projects/project.html" class="card border-hover-primary">
+                                        <!--begin::کارت header-->
+                                        <div class="card-header border-0 pt-9">
+                                            <!--begin::کارت Title-->
+                                            <div class="card-title m-0">
+                                                <!--begin::Avatar-->
+                                                <div class="symbol symbol-50px w-50px bg-light">
+                                                    <img src="{% static 'site/media/svg/brand-logos/plurk.svg' %}"
+                                                         alt="image" class="p-3">
+                                                </div>
+                                                <!--end::Avatar-->
+                                            </div>
+                                            <!--end::Car Title-->
+                                            <!--begin::کارت toolbar-->
+                                            <div class="card-toolbar">
+                                                            <span
+                                                                    class="badge badge-light-primary fw-bold me-auto px-4 py-3">درحال
+                                                                پردازش</span>
+                                            </div>
+                                            <!--end::کارت toolbar-->
+                                        </div>
+                                        <!--end:: کارت header-->
+                                        <!--begin:: کارت body-->
+                                        <div class="card-body p-9">
+                                            <!--begin::نام-->
+                                            <div class="fs-3 fw-bold text-gray-900">درخواست ویزای دبی</div>
+                                            <!--end::نام-->
+                                            <!--begin::توضیحات-->
+                                            <p class="text-gray-500 fw-semibold fs-5 mt-1 mb-7">ارتباط با
+                                                بهترین شرکت های مهاجرتی</p>
+                                            <!--end::توضیحات-->
+                                            <!--begin::Info-->
+                                            <div class="d-flex flex-wrap mb-5">
+                                                <!--begin::Due-->
+                                                <div
+                                                        class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 mb-3">
+                                                    <div class="fs-6 text-gray-800 fw-bold">15
+                                                    </div>
+                                                    <div class="fw-semibold text-gray-500">سرویس ثبت شده
+                                                    </div>
+                                                </div>
+                                                <!--end::Due-->
+                                                <!--begin::بودجه-->
+                                                <div
+                                                        class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 mb-3">
+                                                    <div class="fs-6 text-gray-800 fw-bold">10
+                                                    </div>
+                                                    <div class="fw-semibold text-gray-500">ویزای صادر شده
+                                                    </div>
+                                                </div>
+                                                <!--end::بودجه-->
+                                            </div>
+                                            <!--end::Info-->
+                                            <!--begin::پردازش-->
+                                            <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip"
+                                                 aria-label="This project 100% completed"
+                                                 data-bs-original-title="This project 100% completed"
+                                                 data-kt-initialized="1">
+                                                <div class="bg-primary rounded h-4px" role="progressbar"
+                                                     style="width: 100%" aria-valuenow="50" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                            <!--end::پردازش-->
+                                            <!--begin::users-->
+                                            <div class="symbol-group symbol-hover">
+                                                <!--begin::user-->
+                                                <div class="symbol symbol-35px symbol-circle"
+                                                     data-bs-toggle="tooltip" aria-label="مرادی نیا"
+                                                     data-bs-original-title="مرادی نیا"
+                                                     data-kt-initialized="1">
+                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-6.jpg' %}">
+                                                </div>
+                                                <!--begin::user-->
+                                                <!--begin::user-->
+                                                <div class="symbol symbol-35px symbol-circle"
+                                                     data-bs-toggle="tooltip" aria-label="Rudy Stone"
+                                                     data-bs-original-title="Rudy Stone"
+                                                     data-kt-initialized="1">
+                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-1.jpg' %}">
+                                                </div>
+                                                <!--begin::user-->
+                                                <!--begin::user-->
+                                                <div class="symbol symbol-35px symbol-circle"
+                                                     data-bs-toggle="tooltip"
+                                                     data-bs-original-title="سوسن موسوی"
+                                                     data-kt-initialized="1">
+                                                                <span
+                                                                        class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
+                                                </div>
+                                                <!--begin::user-->
+                                            </div>
+                                            <!--end::users-->
+                                        </div>
+                                        <!--end:: کارت body-->
+                                    </a>
+                                    <!--end::کارت-->
+                                </div>
+                                <div class="col-md-6 col-xl-4">
+                                    <!--begin::کارت-->
+                                    <a href="apps/projects/project.html" class="card border-hover-primary">
+                                        <!--begin::کارت header-->
+                                        <div class="card-header border-0 pt-9">
+                                            <!--begin::کارت Title-->
+                                            <div class="card-title m-0">
+                                                <!--begin::Avatar-->
+                                                <div class="symbol symbol-50px w-50px bg-light">
+                                                    <img src="{% static 'site/media/svg/brand-logos/plurk.svg' %}"
+                                                         alt="image" class="p-3">
+                                                </div>
+                                                <!--end::Avatar-->
+                                            </div>
+                                            <!--end::Car Title-->
+                                        </div>
+                                        <!--end:: کارت header-->
+                                        <!--begin:: کارت body-->
+                                        <div class="card-body p-9">
+                                            <!--begin::نام-->
+                                            <div class="fs-3 fw-bold text-gray-900">زندگی در دبی</div>
+                                            <!--end::نام-->
+                                            <!--begin::توضیحات-->
+                                            <p class="text-gray-500 fw-semibold fs-5 mt-1 mb-7">ارتباط با
+                                                بهترین شرکت های مهاجرتی</p>
+                                            <!--end::توضیحات-->
+                                            <!--begin::Info-->
+                                            <div class="d-flex flex-wrap mb-5">
+                                                <!--begin::Due-->
+                                                <div
+                                                        class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 mb-3">
+                                                    <div class="fs-6 text-gray-800 fw-bold">15
+                                                    </div>
+                                                    <div class="fw-semibold text-gray-500">سرویس ثبت شده
+                                                    </div>
+                                                </div>
+                                                <!--end::Due-->
+                                                <!--begin::بودجه-->
+                                                <div
+                                                        class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 mb-3">
+                                                    <div class="fs-6 text-gray-800 fw-bold">10
+                                                    </div>
+                                                    <div class="fw-semibold text-gray-500">ویزای صادر شده
+                                                    </div>
+                                                </div>
+                                                <!--end::بودجه-->
+                                            </div>
+                                            <!--end::Info-->
+                                            <!--begin::پردازش-->
+                                            <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip"
+                                                 aria-label="This project 100% completed"
+                                                 data-bs-original-title="This project 100% completed"
+                                                 data-kt-initialized="1">
+                                                <div class="bg-success rounded h-4px" role="progressbar"
+                                                     style="width: 100%" aria-valuenow="50" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                            <!--end::پردازش-->
+                                            <!--begin::users-->
+                                            <div class="symbol-group symbol-hover">
+                                                <!--begin::user-->
+                                                <div class="symbol symbol-35px symbol-circle"
+                                                     data-bs-toggle="tooltip" aria-label="مرادی نیا"
+                                                     data-bs-original-title="مرادی نیا"
+                                                     data-kt-initialized="1">
+                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-6.jpg' %}">
+                                                </div>
+                                                <!--begin::user-->
+                                                <!--begin::user-->
+                                                <div class="symbol symbol-35px symbol-circle"
+                                                     data-bs-toggle="tooltip" aria-label="Rudy Stone"
+                                                     data-bs-original-title="Rudy Stone"
+                                                     data-kt-initialized="1">
+                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-1.jpg' %}">
+                                                </div>
+                                                <!--begin::user-->
+                                                <!--begin::user-->
+                                                <div class="symbol symbol-35px symbol-circle"
+                                                     data-bs-toggle="tooltip"
+                                                     data-bs-original-title="سوسن موسوی"
+                                                     data-kt-initialized="1">
+                                                                <span
+                                                                        class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
+                                                </div>
+                                                <!--begin::user-->
+                                            </div>
+                                            <!--end::users-->
+                                        </div>
+                                        <!--end:: کارت body-->
+                                    </a>
+                                    <!--end::کارت-->
+                                </div>
+                                <div class="col-md-6 col-xl-4">
+                                    <!--begin::کارت-->
+                                    <a href="apps/projects/project.html" class="card border-hover-primary">
+                                        <!--begin::کارت header-->
+                                        <div class="card-header border-0 pt-9">
+                                            <!--begin::کارت Title-->
+                                            <div class="card-title m-0">
+                                                <!--begin::Avatar-->
+                                                <div class="symbol symbol-50px w-50px bg-light">
+                                                    <img src="{% static 'site/media/svg/brand-logos/plurk.svg' %}"
+                                                         alt="image" class="p-3">
+                                                </div>
+                                                <!--end::Avatar-->
+                                            </div>
+                                            <!--end::Car Title-->
+                                            <!--begin::کارت toolbar-->
+                                            <div class="card-toolbar">
+                                                            <span
+                                                                    class="badge badge-light-primary fw-bold me-auto px-4 py-3">درحال
+                                                                پردازش</span>
+                                            </div>
+                                            <!--end::کارت toolbar-->
+                                        </div>
+                                        <!--end:: کارت header-->
+                                        <!--begin:: کارت body-->
+                                        <div class="card-body p-9">
+                                            <!--begin::نام-->
+                                            <div class="fs-3 fw-bold text-gray-900">کسب و کار و سرمایه گذاری
+                                            </div>
+                                            <!--end::نام-->
+                                            <!--begin::توضیحات-->
+                                            <p class="text-gray-500 fw-semibold fs-5 mt-1 mb-7">ارتباط با
+                                                بهترین شرکت های مهاجرتی</p>
+                                            <!--end::توضیحات-->
+                                            <!--begin::Info-->
+                                            <div class="d-flex flex-wrap mb-5">
+                                                <!--begin::Due-->
+                                                <div
+                                                        class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 mb-3">
+                                                    <div class="fs-6 text-gray-800 fw-bold">15
+                                                    </div>
+                                                    <div class="fw-semibold text-gray-500">سرویس ثبت شده
+                                                    </div>
+                                                </div>
+                                                <!--end::Due-->
+                                                <!--begin::بودجه-->
+                                                <div
+                                                        class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 mb-3">
+                                                    <div class="fs-6 text-gray-800 fw-bold">10
+                                                    </div>
+                                                    <div class="fw-semibold text-gray-500">ویزای صادر شده
+                                                    </div>
+                                                </div>
+                                                <!--end::بودجه-->
+                                            </div>
+                                            <!--end::Info-->
+                                            <!--begin::پردازش-->
+                                            <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip"
+                                                 aria-label="This project 100% completed"
+                                                 data-bs-original-title="This project 100% completed"
+                                                 data-kt-initialized="1">
+                                                <div class="bg-info rounded h-4px" role="progressbar"
+                                                     style="width: 100%" aria-valuenow="50" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                            <!--end::پردازش-->
+                                            <!--begin::users-->
+                                            <div class="symbol-group symbol-hover">
+                                                <!--begin::user-->
+                                                <div class="symbol symbol-35px symbol-circle"
+                                                     data-bs-toggle="tooltip" aria-label="مرادی نیا"
+                                                     data-bs-original-title="مرادی نیا"
+                                                     data-kt-initialized="1">
+                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-6.jpg' %}">
+                                                </div>
+                                                <!--begin::user-->
+                                                <!--begin::user-->
+                                                <div class="symbol symbol-35px symbol-circle"
+                                                     data-bs-toggle="tooltip" aria-label="Rudy Stone"
+                                                     data-bs-original-title="Rudy Stone"
+                                                     data-kt-initialized="1">
+                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-1.jpg' %}">
+                                                </div>
+                                                <!--begin::user-->
+                                                <!--begin::user-->
+                                                <div class="symbol symbol-35px symbol-circle"
+                                                     data-bs-toggle="tooltip"
+                                                     data-bs-original-title="سوسن موسوی"
+                                                     data-kt-initialized="1">
+                                                                <span
+                                                                        class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
+                                                </div>
+                                                <!--begin::user-->
+                                            </div>
+                                            <!--end::users-->
+                                        </div>
+                                        <!--end:: کارت body-->
+                                    </a>
+                                    <!--end::کارت-->
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <!--end::Row-->
                 </div>
-                <div class="col-lg-4">
-                    <div class="side-bar-map">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div id="map">
-                                    {#                                <iframe#}
-                                    {#                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12469.776493332698!2d-80.14036379941481!3d25.907788681148624!2m3!1f357.26927939317244!2f20.870722720054623!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x88d9add4b4ac788f%3A0xe77469d09480fcdb!2sSunny%20Isles%20Beach!5e1!3m2!1sen!2sth!4v1642869952544!5m2!1sen!2sth"#}
-                                    {#                                        width="100%" height="550px" frameborder="0"#}
-                                    {#                                        style="border:0; border-radius: 23px; "#}
-                                    {#                                        allowfullscreen=""></iframe>#}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!--end::Content-->
             </div>
+            <!--end::Content wrapper-->
+            <!--begin::Footer-->
+            <div id="kt_app_footer"
+                 class="app-footer d-flex flex-column flex-md-row align-items-center flex-center flex-md-stack py-2 py-lg-4">
+                <!--begin::کپیright-->
+                <div class="text-gray-900 order-2 order-md-1">
+                    <span class="text-muted fw-semibold me-1">2024&copy;</span>
+                    <a href="https://keenthemes.com" target="_blank"
+                       class="text-gray-800 text-hover-primary">ساتراس وب</a>
+                </div>
+                <!--end::کپیright-->
+                <!--begin::Menu-->
+                <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
+                    <li class="menu-item">
+                        <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">درباره ی
+                            ما</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://rtl-theme.com" target="_blank" class="menu-link px-2">پشتیبانی</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://www.rtl-theme.com/metronic-admin-html-template/" target="_blank"
+                           class="menu-link px-2">خرید</a>
+                    </li>
+                </ul>
+                <!--end::Menu-->
+            </div>
+            <!--end::Footer-->
         </div>
+        <!--end:::اصلی-->
     </div>
-
-    <div class="container border-top pt-5 mt-5">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-heading text-center">
-                    <h2>رزرو لحظه ای پرواز</h2>
-                    <p>پرواز های لحظه ای دبی</p>
-                </div>
-            </div>
-            <div class="col-12">
-                {% for flight in flights %}
-                    <div class="more-info">
-                        <div class="row">
-                            <div class="col-lg-3 col-sm-6 col-6">
-                                <i class="fa fa-plane-departure"></i>
-                                <h4><span>مبدا:</span><br>{{ flight.flight.origin }}</h4>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 col-6">
-                                <i class="fa fa-plane-arrival"></i>
-                                <h4><span>مقصد:</span><br>{{ flight.flight.destination }}</h4>
-                            </div>
-                            <div class="col-lg-2 col-sm-6 col-6">
-                                <i class="fa fa-calendar"></i>
-                                <h4><span>تاریخ:</span><br>{{ flight.flight.departure_date.date }}</h4>
-                            </div>
-                            <div class="col-lg-2 col-sm-6 col-6">
-                                <i class="fa fa-money-bill-wave"></i>
-                                <h4><span> قیمت:</span><br>{{ flight.price|intcomma:False }}</h4>
-                            </div>
-                            <div class="col-lg-2 col-sm-12 col-12">
-                                <div class="main-button">
-                                    <a href="{{ flight.affiliate_link }}" target="_blank">رزرو
-                                        از {{ flight.provider }}</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-
-            </div>
-        </div>
-    </div>
-
-    <div class="call-to-action">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h2>میخوای بری دبی؟</h2>
-                    <h4>همین حالا با هوش مصنوعی برنامه سفرتو بچین</h4>
-                </div>
-                <div class="col-lg-4">
-                    <div class="border-button">
-                        <a href="{% url 'core:chatbot' %}">دستیار سفر هوشمند</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--end::Wrapper container-->
 {% endblock %}
