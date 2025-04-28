@@ -1,0 +1,215 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    DubaiBy | هتل های دبی
+{% endblock %}
+
+{% block title_secondary %}
+    {% if category %}
+        هتل های {{ category }}
+    {% else %}
+        بهترین هتل های دبی
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    <!--begin::Wrapper container-->
+    <div class="app-container container-xxl">
+        <!--begin::اصلی-->
+        <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+            <!--begin::Content wrapper-->
+            <div class="d-flex flex-column flex-column-fluid">
+                <!--begin::Content-->
+                <div id="kt_app_content" class="app-content flex-column-fluid">
+                    <!--begin::Row-->
+                    <div class="row g-5 g-xl-8">
+                        <!--begin::Col-->
+                        <div class="col-xl-12 ps-xl-12">
+                            <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+                                <div class="col-xl-12">
+                                    <!--begin::Engage widget 7-->
+                                    <div class="card card-flush h-xl-100">
+                                        <!--begin::Header-->
+                                        <div class="card-header pt-7">
+                                            <!--begin::Title-->
+                                            <h3 class="card-title align-items-start flex-column">
+                                                <span class="card-label fw-bold text-gray-900 fs-2">{% if category %}
+                                                    هتل در دسته {{ category }}
+                                                {% else %}
+                                                    هتل های محبوب هفته
+                                                {% endif %}</span>
+                                            </h3>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::Header-->
+                                        <!--begin::کارت body-->
+                                        <div class="card-body pt-7">
+                                            <!--begin::Row-->
+                                            <div class="row align-items-end h-100 gx-5 gx-xl-10">
+                                                {% for hotel in hotels %}
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-3 mb-11 mb-md-0">
+                                                        <!--begin::Overlay-->
+                                                        <a class="d-block overlay"
+                                                           data-fslightbox="lightbox-hot-sales"
+                                                           href="{{ hotel.get_absolute_url }}">
+                                                            <!--begin::Image-->
+                                                            <div class="overlay-wrapper bgi-position-center bgi-no-repeat bgi-size-cover h-200px card-rounded mb-3"
+                                                                 style="height: 266px;background-image:url({{ hotel.image.url }})">
+                                                            </div>
+                                                            <!--end::Image-->
+                                                            <!--begin::Actions-->
+                                                            <div
+                                                                    class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                                <i
+                                                                        class="ki-outline ki-eye fs-3x text-white"></i>
+                                                            </div>
+                                                            <!--end::Actions-->
+                                                        </a>
+                                                        <!--end::Overlay-->
+                                                        <!--begin::Info-->
+                                                        <div class="m-0">
+                                                            <!--begin::Title-->
+                                                            <a href="{{ hotel.get_absolute_url }}"
+                                                               class="text-gray-800 text-hover-primary fs-3 fw-bold d-block mb-2">{{ hotel.title }}</a>
+                                                            <!--end::Title-->
+                                                            <!--begin::زمان-->
+                                                            <span
+                                                                    class="fw-bold fs-6 text-gray-500 d-block lh-1">قیمت:
+                                                                        از
+                                                                {{ hotel.get_min_price.price_per_night }}{{ hotel.get_min_price.currency }}</span>
+                                                            <!--end::زمان-->
+                                                        </div>
+                                                        <!--end::Info-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                {% empty %}
+                                                    <div class="alert alert-secondary text-dark">
+                                                        هتلی یافت نشد
+                                                    </div>
+                                                {% endfor %}
+
+                                            </div>
+                                            <!--end::Row-->
+                                        </div>
+                                        <!--end::کارت body-->
+                                    </div>
+                                    <!--end::Engage widget 7-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <div class="row mb-5 mb-xl-8 g-5 g-xl-8">
+                                {% for category in categories %}
+                                    <!--begin::Col-->
+                                    <div class="col-6 col-md-3">
+                                        <!--begin::کارت-->
+                                        <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
+                                           href="{% url 'travel:hotel-list' %}?category={{ category.name }}">
+                                            <i
+                                                    class="ki-outline ki-abstract-26 fs-2tx mb-5 ms-n1 text-gray-500"></i>
+                                            <span class="fs-6 fw-bold">هتل {{ category.name }}</span>
+                                        </a>
+                                        <!--end::کارت-->
+                                    </div>
+                                    <!--end::Col-->
+                                {% endfor %}
+
+                            </div>
+                            <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+                                <!--begin::Col-->
+                                <div class="col-xxl-12">
+                                    <!--begin::Engage widget 8-->
+                                    <div class="card border-0 h-md-100" data-bs-theme="light"
+                                         style="background: linear-gradient(112.14deg, #3B2A38 0%, #7a6075 100%)">
+                                        <!--begin::Body-->
+                                        <div class="card-body">
+                                            <!--begin::Row-->
+                                            <div class="row align-items-center h-100">
+                                                <!--begin::Col-->
+                                                <div class="col-7 ps-xl-13">
+                                                    <!--begin::Title-->
+                                                    <div class="text-white mb-6 pt-6">
+                                                                    <span class="fs-2 fw-bold">طراحی هوشمند پلن
+                                                                        سفر</span>
+                                                    </div>
+                                                    <!--end::Title-->
+                                                    <!--begin::Text-->
+                                                    <span
+                                                            class="fw-semibold text-white fs-6 mb-8 d-block opacity-75">برنامه
+                                                                    سفرت رو با DubaiBy هوشمند و ویژه بچین</span>
+                                                    <!--end::Text-->
+                                                    <!--begin::Actions-->
+                                                    <div
+                                                            class="d-flex flex-column flex-sm-row d-grid gap-2">
+                                                        <a href="#"
+                                                           class="btn btn-facebook flex-shrink-0 me-lg-2"
+                                                           data-bs-toggle="modal"
+                                                           data-bs-target="#kt_modal_upgrade_plan">برنامه
+                                                            سفرتو بچین</a>
+                                                        <a href="#" class="btn btn-primary flex-shrink-0"
+                                                           style="background: rgba(255, 255, 255, 0.2)"
+                                                           data-bs-toggle="modal"
+                                                           data-bs-target="#kt_modal_create_app">از دستیار
+                                                            هوشمندت بپرس</a>
+                                                    </div>
+                                                    <!--end::Actions-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-5 pt-10">
+                                                    <!--begin::Illustration-->
+                                                    <div class="bgi-no-repeat bgi-size-contain bgi-position-x-end h-225px"
+                                                         style="background-image:url({% static 'site/media/svg/illustrations/easy/5.svg' %})">
+                                                    </div>
+                                                    <!--end::Illustration-->
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                            <!--end::Row-->
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                    <!--end::Engage widget 8-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Row-->
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Content wrapper-->
+            <!--begin::Footer-->
+            <div id="kt_app_footer"
+                 class="app-footer d-flex flex-column flex-md-row align-items-center flex-center flex-md-stack py-2 py-lg-4">
+                <!--begin::کپیright-->
+                <div class="text-gray-900 order-2 order-md-1">
+                    <span class="text-muted fw-semibold me-1">2024&copy;</span>
+                    <a href="https://keenthemes.com" target="_blank"
+                       class="text-gray-800 text-hover-primary">ساتراس وب</a>
+                </div>
+                <!--end::کپیright-->
+                <!--begin::Menu-->
+                <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
+                    <li class="menu-item">
+                        <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">درباره ی
+                            ما</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://rtl-theme.com" target="_blank" class="menu-link px-2">پشتیبانی</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://www.rtl-theme.com/metronic-admin-html-template/" target="_blank"
+                           class="menu-link px-2">خرید</a>
+                    </li>
+                </ul>
+                <!--end::Menu-->
+            </div>
+            <!--end::Footer-->
+        </div>
+        <!--end:::اصلی-->
+    </div>
+    <!--end::Wrapper container-->
+{% endblock %}

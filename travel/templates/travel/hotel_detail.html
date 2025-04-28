@@ -1,0 +1,306 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    DubaiBy | {{ object.title }}
+{% endblock %}
+
+{% block title_secondary %}
+    {{ object.title }}
+{% endblock %}
+
+{% block main %}
+    <!--begin::Wrapper container-->
+    <div class="app-container container-xxl">
+        <!--begin::اصلی-->
+        <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+            <!--begin::Content wrapper-->
+            <div class="d-flex flex-column flex-column-fluid">
+                <!--begin::Content-->
+                <div id="kt_app_content" class="app-content flex-column-fluid">
+                    <!--begin::Row-->
+                    <div class="row g-5 g-xl-8">
+                        <!--begin::Col-->
+                        <div class="col-xl-12 ps-xl-12">
+                            <div class="card mb-6 mb-xl-9">
+                                <div class="card-body pt-9 pb-0">
+                                    <!--begin::Details-->
+                                    <div class="d-flex flex-wrap flex-sm-nowrap mb-6" id="ht_header">
+                                        <!--begin::Image-->
+                                        <div class="d-flex flex-center flex-shrink-0 bg-light rounded w-150px h-150px w-lg-200px h-lg-200px me-7 mb-4">
+                                            <img class="w-100 h-100 rounded"
+                                                 src="{{ hotel.image.url }}" alt="image">
+                                        </div>
+                                        <!--end::Image-->
+                                        <!--begin::Wrapper-->
+                                        <div class="flex-grow-1">
+                                            <!--begin::Head-->
+                                            <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+                                                <!--begin::Details-->
+                                                <div class="d-flex flex-column">
+                                                    <!--begin::وضعیت-->
+                                                    <div class="d-flex align-items-center mb-1">
+                                                        <a href="#"
+                                                           class="text-gray-800 text-hover-primary fs-2 fw-bold me-3">{{ hotel.title }}</a>
+                                                        <span class="badge badge-light-warning me-auto">
+                                                            <i class="fas fa-star text-warning"></i> 5 ستاره
+                                                        </span>
+                                                    </div>
+                                                    <!--end::وضعیت-->
+                                                    <!--begin::Info-->
+                                                    <div class="d-flex flex-wrap justify-content-start my-3">
+                                                        <!--begin::Stats-->
+                                                        <div class="d-flex flex-wrap">
+                                                            <!--begin::Stat-->
+                                                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                                                                <!--begin::شماره کارت-->
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="fs-5 fw-bold">
+                                                                        <a href="{{ hotel.location_url }}">{{ hotel.location }}</a>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end::شماره کارت-->
+                                                                <!--begin::Tags-->
+                                                                <div class="fw-semibold fs-7 text-gray-500">لوکیشن</div>
+                                                                <!--end::Tags-->
+                                                            </div>
+                                                            <!--end::Stat-->
+                                                            <!--begin::Stat-->
+                                                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                                                                <!--begin::شماره کارت-->
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="fs-6 fw-bold counted"
+                                                                         data-kt-countup="true"
+                                                                         data-kt-countup-value="75"
+                                                                         data-kt-initialized="1">{{ hotel.get_min_price.price_per_night }}
+                                                                        {{ hotel.get_min_price.currency }}
+                                                                    </div>
+                                                                </div>
+                                                                <!--end::شماره کارت-->
+                                                                <!--begin::Tags-->
+                                                                <div class="fw-semibold fs-7 text-gray-500">قیمت از شبی
+                                                                </div>
+                                                                <!--end::Tags-->
+                                                            </div>
+                                                            <!--end::Stat-->
+                                                        </div>
+                                                        <!--end::Stats-->
+                                                    </div>
+                                                    <!--end::Info-->
+                                                    <!--begin::توضیحات-->
+                                                    <div class="d-flex flex-wrap fw-semibold mb-4 fs-5 text-gray-500">
+                                                        {{ hotel.description|safe }}
+                                                    </div>
+                                                    <!--end::توضیحات-->
+                                                </div>
+                                                <!--end::Details-->
+                                            </div>
+                                            <!--end::Head-->
+                                        </div>
+                                        <!--end::Wrapper-->
+                                    </div>
+                                    <!--end::Details-->
+                                    <div class="separator"></div>
+                                    <!--begin::Nav-->
+                                    <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-7 fs-md-5 fw-bold">
+                                        <!--begin::Nav item-->
+                                        <li class="nav-item">
+                                            <a class="nav-link text-active-primary py-5 me-6 active"
+                                               href="#ht_header">اطلاعات هتل</a>
+                                        </li>
+                                        <!--end::Nav item-->
+                                        <!--begin::Nav item-->
+                                        <li class="nav-item">
+                                            <a class="nav-link text-active-primary py-5 me-6"
+                                               href="#ht_ai">مشاوره هوشمند</a>
+                                        </li>
+                                        <!--end::Nav item-->
+                                        <!--begin::Nav item-->
+                                        <li class="nav-item">
+                                            <a class="nav-link text-active-primary py-5 me-6"
+                                               href="#ht_imgs">تصاویر</a>
+                                        </li>
+                                        <!--end::Nav item-->
+                                        <!--begin::Nav item-->
+                                        <li class="nav-item">
+                                            <a class="nav-link text-active-primary py-5 me-6"
+                                               href="#ht_rooms">اتاق ها</a>
+                                        </li>
+                                        <!--end::Nav item-->
+                                    </ul>
+                                    <!--end::Nav-->
+                                </div>
+                            </div>
+
+                            <div id="ht_ai" class="row g-5 g-xl-10 mb-5 mb-xl-10">
+                                <!--begin::Col-->
+                                <div class="col-xxl-12">
+                                    <!--begin::Engage widget 8-->
+                                    <div class="card border-0 h-md-100" data-bs-theme="light"
+                                         style="background: linear-gradient(112.14deg, #3B2A38 0%, #7a6075 100%)">
+                                        <!--begin::Body-->
+                                        <div class="card-body">
+                                            <!--begin::Row-->
+                                            <div class="row align-items-center h-100">
+                                                <!--begin::Col-->
+                                                <div class="col-7 ps-xl-13">
+                                                    <!--begin::Title-->
+                                                    <div class="text-white mb-6 pt-6">
+                                                        <span class="fs-2 fw-bold">دستیار هوشمند سفر</span>
+                                                    </div>
+                                                    <!--end::Title-->
+                                                    <!--begin::Text-->
+                                                    <span
+                                                            class="fw-semibold text-white fs-6 mb-8 d-block opacity-75">برای انتخاب هتل با دستیار هوشمند DubaiBy مشورت کن</span>
+                                                    <!--end::Text-->
+                                                    <!--begin::Actions-->
+                                                    <div class="d-flex flex-column flex-sm-row d-grid gap-2">
+                                                        <a href="#" class="btn btn-facebook flex-shrink-0">دستیار هوشمند
+                                                            سفر</a>
+                                                    </div>
+                                                    <!--end::Actions-->
+                                                </div>
+                                                <!--end::Col-->
+                                                <!--begin::Col-->
+                                                <div class="col-5 pt-10">
+                                                    <!--begin::Illustration-->
+                                                    <div class="bgi-no-repeat bgi-size-contain bgi-position-x-end h-225px"
+                                                         style="background-image:url({% static 'site/media/svg/illustrations/easy/5.svg' %})">
+                                                    </div>
+                                                    <!--end::Illustration-->
+                                                </div>
+                                                <!--end::Col-->
+                                            </div>
+                                            <!--end::Row-->
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                    <!--end::Engage widget 8-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+
+                            <div id="ht_imgs" class="d-flex flex-wrap d-grid gap-5 gap-xxl-9">
+                                {% for image in hotel.hotel_images.all %}
+                                    <div class="card card-flush flex-row-fluid p-6 pb-5 mw-100">
+                                        <!--begin::Body-->
+                                        <div class="text-center">
+                                            <!--begin::Food img-->
+                                            <img src="{{ image.image.url }}"
+                                                 class="rounded-3 mb-4 w-200px h-150px w-xxl-350px h-xxl-250px" alt="">
+                                            <!--end::Food img-->
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+
+                            <div id="ht_rooms" class="row mt-12">
+                                <div class="col-xl-12 mb-xl-10">
+                                    <!--begin::لیست widget 17-->
+                                    <div class="card card-flush h-xl-100">
+                                        <!--begin::Header-->
+                                        <div class="card-header pt-7">
+                                            <!--begin::Title-->
+                                            <h3 class="card-title align-items-start flex-column">
+                                                <span class="card-label fw-bold text-gray-800 fs-2">اتاق ها</span>
+                                                <!-- <span class="text-gray-500 mt-1 fw-semibold fs-6">8 هزار
+                                                    بازدید اجتماعی</span> -->
+                                            </h3>
+                                            <!--end::Title-->
+                                        </div>
+                                        <div class="separator separator-dashed my-4"></div>
+                                        <!--end::Header-->
+                                        <!--begin::Body-->
+                                        <div class="card-body pt-0">
+                                            <!--begin::Content-->
+                                            <div class="d-flex flex-stack my-5">
+                                                <!-- <span class="text-gray-500 fs-7 fw-bold">پرواز</span>
+                                                <span class="text-gray-500 fw-bold fs-7">قیمت</span> -->
+                                            </div>
+                                            <!--end::Content-->
+
+                                            {% for room in hotel.rooms.all %}
+                                                <!--begin::item-->
+                                                <div class="d-flex flex-stack">
+                                                    <!--begin::Wrapper-->
+                                                    <div class="d-flex align-items-center me-3">
+                                                        <!--begin::Icon-->
+                                                        <!-- <img src="{% static 'site/media/stock/ecommerce/14.png' %}"
+                                                                class="me-4 w-50px" alt=""> -->
+                                                        <!--end::Icon-->
+                                                        <!--begin::Section-->
+                                                        <div class="flex-grow-1">
+                                                            <a href="apps/ecommerce/sales/details.html"
+                                                               class="text-gray-800 text-hover-primary fs-5 fw-bold lh-0">{{ room.title }}</a>
+                                                            <span
+                                                                    class="text-gray-500 fw-semibold d-block fs-7">وعده غذایی: {{ room.meal_plan }}</span>
+                                                        </div>
+                                                        <!--end::Section-->
+                                                    </div>
+                                                    <!--end::Wrapper-->
+                                                    <!--begin::Value-->
+                                                    <!-- <span class="text-gray-500 fw-bold fs-7 fw-semibold">قشم
+                                                        ایر/اکونومی</span> -->
+                                                    <span class="text-gray-800 fw-bold fs-6">
+                                                                {{ room.price_per_night }} {{ room.currency }}
+                                                                <br>
+                                                                <span class="text-gray-500 fw-semibold fs-7">
+                                                                    قیمت هر شب
+                                                                </span>
+                                                            </span>
+                                                    <a href="#" class="btn btn-light-info btn-sm">رزرو اتاق</a>
+                                                    <!--end::Value-->
+                                                </div>
+                                                <!--end::item-->
+                                                <!--begin::separator-->
+                                                <div class="separator separator-dashed my-4"></div>
+                                                <!--end::separator-->
+                                            {% endfor %}
+
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                    <!--end::لیست widget 17-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Row-->
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Content wrapper-->
+            <!--begin::Footer-->
+            <div id="kt_app_footer"
+                 class="app-footer d-flex flex-column flex-md-row align-items-center flex-center flex-md-stack py-2 py-lg-4">
+                <!--begin::کپیright-->
+                <div class="text-gray-900 order-2 order-md-1">
+                    <span class="text-muted fw-semibold me-1">2024&copy;</span>
+                    <a href="https://keenthemes.com" target="_blank"
+                       class="text-gray-800 text-hover-primary">ساتراس وب</a>
+                </div>
+                <!--end::کپیright-->
+                <!--begin::Menu-->
+                <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
+                    <li class="menu-item">
+                        <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">درباره ی
+                            ما</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://rtl-theme.com" target="_blank" class="menu-link px-2">پشتیبانی</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://www.rtl-theme.com/metronic-admin-html-template/" target="_blank"
+                           class="menu-link px-2">خرید</a>
+                    </li>
+                </ul>
+                <!--end::Menu-->
+            </div>
+            <!--end::Footer-->
+        </div>
+        <!--end:::اصلی-->
+    </div>
+    <!--end::Wrapper container-->
+{% endblock %}

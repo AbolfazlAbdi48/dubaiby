@@ -35,11 +35,6 @@ class TourDetailView(DetailView):
     template_name = 'core/tour_detail.html'
 
 
-class HotelDetailView(DetailView):
-    model = Hotel
-    template_name = 'core/hotel_detail.html'
-
-
 @csrf_exempt
 def chatbot_view(request):
     if request.method == "POST":

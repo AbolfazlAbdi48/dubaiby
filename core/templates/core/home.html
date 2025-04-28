@@ -418,7 +418,7 @@
                                                         <!--begin::Overlay-->
                                                         <a class="d-block overlay"
                                                            data-fslightbox="lightbox-hot-sales"
-                                                           href="">
+                                                           href="{{ hotel.get_absolute_url }}">
                                                             <!--begin::Image-->
                                                             <div class="overlay-wrapper bgi-position-center bgi-no-repeat bgi-size-cover h-200px card-rounded mb-3"
                                                                  style="height: 266px;background-image:url({{ hotel.image.url }})">
@@ -436,13 +436,14 @@
                                                         <!--begin::Info-->
                                                         <div class="m-0">
                                                             <!--begin::Title-->
-                                                            <a href="#"
+                                                            <a href="{{ hotel.get_absolute_url }}"
                                                                class="text-gray-800 text-hover-primary fs-3 fw-bold d-block mb-2">{{ hotel.title }}</a>
                                                             <!--end::Title-->
                                                             <!--begin::زمان-->
                                                             <span
                                                                     class="fw-bold fs-6 text-gray-500 d-block lh-1">قیمت:
-                                                                        از {{ hotel.get_min_price.price_per_night }}{{ hotel.get_min_price.currency }}</span>
+                                                                        از
+                                                                {{ hotel.get_min_price.price_per_night }}{{ hotel.get_min_price.currency }}</span>
                                                             <!--end::زمان-->
                                                         </div>
                                                         <!--end::Info-->

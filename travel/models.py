@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
@@ -74,9 +75,10 @@ class Hotel(models.Model):
     ai_summary = models.TextField(verbose_name=_('خلاصه هوش مصنوعی'), null=True, blank=True)
     title = models.CharField(verbose_name=_('عنوان هتل'), max_length=200)
     location = models.CharField(verbose_name=_('لوکیشن'), max_length=200)
+    location_url = models.CharField(verbose_name=_('آدرس گوگل مپ'), null=True, max_length=200)
     location_img = models.ImageField(verbose_name=_('تصویر لوکیشن'), upload_to='hotels/loc/', null=True, blank=True)
     rating = models.DecimalField(verbose_name=_('امتیاز'), max_digits=3, decimal_places=0)
-    amenities = models.TextField(verbose_name=_('امکانات'))
+    # TODO: add amenities for hotel
     description = models.TextField(verbose_name=_("توضیحات"))
     active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
     keywords = models.TextField(verbose_name=_('کلمات کلیدی'), null=True, blank=True)
@@ -95,6 +97,12 @@ class Hotel(models.Model):
 
     def get_min_price(self):
         return self.rooms.first()
+
+    def get_replaced_title(self):
+        return self.title.replace(' ', '-')
+
+    def get_absolute_url(self):
+        return reverse('travel:hotel-detail', args=[self.id, self.get_replaced_title()])
 
     def __str__(self):
         return self.title
