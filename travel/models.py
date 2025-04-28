@@ -6,6 +6,27 @@ from travel.managers import TourManager, HotelManager, FlightManager, ProviderMa
 
 
 # Create your models here.
+class TravelCategory(models.Model):
+    name = models.CharField(max_length=255, verbose_name=_('category'))
+    description = models.TextField(verbose_name=_('description'))
+    image = models.ImageField(null=True, blank=True, upload_to='categories/travel/', verbose_name=_('تصویر'))
+    parent = models.ForeignKey(
+        'self',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='subcategories',
+        verbose_name=_('parent')
+    )
+
+    class Meta:
+        verbose_name = _('دسته بندی')
+        verbose_name_plural = _('5. دسته بندی ها')
+
+    def __str__(self):
+        return self.name
+
+
 class FlightTicket(models.Model):
     TRAVEL_TYPE_CHOICES = [
         ('ECONOMY', 'اکونومی'),
@@ -30,6 +51,12 @@ class FlightTicket(models.Model):
     price_infant = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("قیمت نوزاد"))
     active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
     keywords = models.TextField(verbose_name=_('کلمات کلیدی'), null=True, blank=True)
+    categories = models.ManyToManyField(
+        to=TravelCategory,
+        related_name='flight_categories',
+        verbose_name=_('categories')
+
+    )
 
     class Meta:
         verbose_name = 'پرواز'
@@ -53,6 +80,12 @@ class Hotel(models.Model):
     description = models.TextField(verbose_name=_("توضیحات"))
     active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
     keywords = models.TextField(verbose_name=_('کلمات کلیدی'), null=True, blank=True)
+    categories = models.ManyToManyField(
+        to=TravelCategory,
+        related_name='hotel_categories',
+        verbose_name=_('categories')
+
+    )
 
     class Meta:
         verbose_name = 'هتل'
@@ -122,6 +155,12 @@ class Tour(models.Model):
     price_per_person = models.DecimalField(verbose_name=_('قیمت به ازای هر نفر'), max_digits=10, decimal_places=0)
     active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
     keywords = models.TextField(verbose_name=_('کلمات کلیدی'), null=True, blank=True)
+    categories = models.ManyToManyField(
+        to=TravelCategory,
+        related_name='tour_categories',
+        verbose_name=_('categories')
+
+    )
 
     class Meta:
         verbose_name = 'تور'
