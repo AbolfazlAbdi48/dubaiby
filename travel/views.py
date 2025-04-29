@@ -1,6 +1,8 @@
+from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import render
 from django.views.generic import DetailView
 
+from affiliate_module.models import ProviderLink
 from travel.models import Hotel, TravelCategory, Tour
 
 
@@ -24,6 +26,20 @@ def hotel_list_view(request):
 class HotelDetailView(DetailView):
     model = Hotel
     template_name = 'travel/hotel_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        hotel = self.object
+
+        hotel_type = ContentType.objects.get_for_model(Hotel)
+
+        provider_links = ProviderLink.objects.filter(
+            content_type=hotel_type,
+            object_id=hotel.id
+        )
+
+        context['provider_links'] = provider_links
+        return context
 
 
 def tour_list_view(request):

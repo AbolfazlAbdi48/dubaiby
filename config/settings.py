@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "core",
     "travel",
     "blog",
+    "affiliate_module",
 ]
 
 MIDDLEWARE = [
