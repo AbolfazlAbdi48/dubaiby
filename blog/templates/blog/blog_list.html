@@ -1,0 +1,234 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    DubaiBy | وبلاگ
+{% endblock %}
+
+{% block title_secondary %}
+    وبلاگ
+{% endblock %}
+
+{% block main %}
+    <!--begin::Wrapper container-->
+    <div class="app-container container-xxl">
+        <!--begin::اصلی-->
+        <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+            <!--begin::Content wrapper-->
+            <div class="d-flex flex-column flex-column-fluid">
+                <!--begin::Content-->
+                <div id="kt_app_content" class="app-content flex-column-fluid">
+                    <!--begin::Row-->
+                    <div class="row g-5 g-xl-8">
+                        <!--begin::Col-->
+                        <div class="col-xl-12 ps-xl-12">
+                            <div class="card">
+                                <!--begin::Body-->
+                                <div class="card-body p-lg-20">
+                                    <!--begin::Section-->
+                                    <div class="mb-17">
+                                        <!--begin::Title-->
+                                        <h3 class="text-gray-900 mb-7">مقالات DubaiBy</h3>
+                                        <!--end::Title-->
+                                        <!--begin::separator-->
+                                        <div class="separator separator-dashed mb-9"></div>
+                                        <!--end::separator-->
+                                        <!--begin::Row-->
+                                        <div class="row">
+                                            <!--begin::Col-->
+                                            <div class="col-md-6">
+                                                <!--begin::Feature post-->
+                                                <div class="h-100 d-flex flex-column justify-content-between pe-lg-6 mb-lg-0 mb-10">
+                                                    <!--begin::Video-->
+                                                    <div class="mb-3">
+                                                        <iframe class="embed-responsive-item card-rounded h-275px w-100"
+                                                                src="https://www.youtube.com/embed/TWdDZYNqlg4"
+                                                                allowfullscreen="allowfullscreen"></iframe>
+                                                    </div>
+                                                    <!--end::Video-->
+                                                    <!--begin::Body-->
+                                                    <div class="mb-5">
+                                                        <!--begin::Title-->
+                                                        <a href="#"
+                                                           class="fs-2 text-gray-900 fw-bold text-hover-primary text-gray-900 lh-base">دستیار
+                                                            هوشمند شما در سفر!</a>
+                                                        <!--end::Title-->
+                                                        <!--begin::Text-->
+                                                        <div class="fw-semibold fs-5 text-gray-600 text-gray-900 mt-4">
+                                                            ی‌توانید کد بزرگراه را برای ماه‌ها مطالعه کنید (یا مقالاتی
+                                                            را بخوانید که به شما می‌گویند چگونه یک پست وبلاگ بنویسید)
+                                                            اما هیچ چیز نمی‌تواند شما را برای چیز واقعی مانند پشت فرمان
+                                                            آماده کن
+                                                        </div>
+                                                        <!--end::Text-->
+                                                    </div>
+                                                    <!--end::Body-->
+                                                    <!--begin::Footer-->
+                                                    <div class="d-flex flex-stack flex-wrap">
+                                                        <!--begin::item-->
+                                                        <div class="d-flex align-items-center pe-2">
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Footer-->
+                                                </div>
+                                                <!--end::Feature post-->
+                                            </div>
+                                            <!--end::Col-->
+                                            <!--begin::Col-->
+                                            <div class="col-md-6 justify-content-between d-flex flex-column">
+                                                {% for article in latest_articles %}
+                                                    <!--begin::Post-->
+                                                    <div class="ps-lg-6 mb-16 mt-md-0 mt-17">
+                                                        <!--begin::Body-->
+                                                        <div class="mb-6">
+                                                            <!--begin::Title-->
+                                                            <a href="{{ article.get_absolute_url }}"
+                                                               class="fw-bold text-gray-900 mb-4 fs-2 lh-base text-hover-primary">{{ article.title }}</a>
+                                                            <!--end::Title-->
+                                                            <!--begin::Text-->
+                                                            <div class="fw-semibold fs-5 mt-4 text-gray-600 text-gray-900">
+                                                                {{ article.summary }}
+                                                            </div>
+                                                            <!--end::Text-->
+                                                        </div>
+                                                        <!--end::Body-->
+                                                        <!--begin::Footer-->
+                                                        <div class="d-flex flex-stack flex-wrap">
+                                                            <!--begin::item-->
+                                                            <div class="d-flex align-items-center pe-2">
+                                                                <!--begin::Avatar-->
+                                                                <div class="symbol symbol-35px symbol-circle me-3">
+                                                                    <img src="{% static 'site/media/avatars/blank.png' %}"
+                                                                         class=""
+                                                                         alt="blog">
+                                                                </div>
+                                                                <!--end::Avatar-->
+                                                                <!--begin::Text-->
+                                                                <div class="fs-5 fw-bold">
+                                                                    <a href=""
+                                                                       class="text-gray-700 text-hover-primary">DubaiBy</a><br>
+                                                                    <span class="text-muted fs-7">{{ article.publish_time.date }}</span>
+                                                                </div>
+                                                                <!--end::Text-->
+                                                            </div>
+                                                            <!--end::item-->
+                                                            <!--begin::Tags-->
+                                                            <span class="badge badge-light-info fw-bold my-2">{{ article.tags.first }}</span>
+                                                            <!--end::Tags-->
+                                                        </div>
+                                                        <!--end::Footer-->
+                                                    </div>
+                                                    <!--end::Post-->
+                                                {% endfor %}
+
+                                            </div>
+                                            <!--end::Col-->
+                                        </div>
+                                        <!--begin::Row-->
+                                    </div>
+                                    <!--end::Section-->
+
+                                    <div class="mb-17">
+                                        <!--begin::Content-->
+                                        <div class="d-flex flex-stack mb-5">
+                                            <!--begin::Title-->
+                                            <h3 class="text-gray-900">همه مقالات</h3>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::Content-->
+                                        <!--begin::separator-->
+                                        <div class="separator separator-dashed mb-9"></div>
+                                        <!--end::separator-->
+                                        <!--begin::Row-->
+                                        <div class="row g-10">
+                                            <!--begin::Col-->
+                                            {% for article in articles %}
+                                                <div class="col-md-4">
+                                                    <!--begin::Hot sales post-->
+                                                    <div class="card-xl-stretch me-md-6">
+                                                        <!--begin::Overlay-->
+                                                        <a class="d-block overlay" data-fslightbox="lightbox-hot-sales"
+                                                           href="{{ article.get_absolute_url }}">
+                                                            <!--begin::Image-->
+                                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px"
+                                                                 style="background-image:url({{ article.image.url }})"></div>
+                                                            <!--end::Image-->
+                                                            <!--begin::Actions-->
+                                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                                <i class="ki-outline ki-eye fs-2x text-white"></i>
+                                                            </div>
+                                                            <!--end::Actions-->
+                                                        </a>
+                                                        <!--end::Overlay-->
+                                                        <!--begin::Body-->
+                                                        <div class="mt-5">
+                                                            <!--begin::Title-->
+                                                            <a href="#"
+                                                               class="fs-4 text-gray-900 fw-bold text-hover-primary text-gray-900 lh-base">{{ article.title }}</a>
+                                                            <!--end::Title-->
+                                                            <!--begin::Text-->
+                                                            <div class="fw-semibold fs-5 text-gray-600 text-gray-900 mt-3">
+                                                                {{ article.summary }}
+                                                            </div>
+                                                            <!--end::Text-->
+                                                            <!--begin::Text-->
+                                                            <div class="fs-6 fw-bold mt-5 d-flex flex-stack">
+                                                                <a href="{{ article.get_absolute_url }}" class="btn btn-light-facebook w-100">خواندن</a>
+                                                                <!--end::Actions-->
+                                                            </div>
+                                                            <!--end::Text-->
+                                                        </div>
+                                                        <!--end::Body-->
+                                                    </div>
+                                                    {% empty %}
+                                                    <div class="alert alert-secondary">مقاله ای یافت نشد</div>
+                                                    <!--end::Hot sales post-->
+                                                </div>
+                                            {% endfor %}
+
+                                            <!--end::Col-->
+                                        </div>
+                                        <!--end::Row-->
+                                    </div>
+                                </div>
+                                <!--end::Body-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Row-->
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Content wrapper-->
+            <!--begin::Footer-->
+            <div id="kt_app_footer"
+                 class="app-footer d-flex flex-column flex-md-row align-items-center flex-center flex-md-stack py-2 py-lg-4">
+                <!--begin::کپیright-->
+                <div class="text-gray-900 order-2 order-md-1">
+                    <span class="text-muted fw-semibold me-1">2024&copy;</span>
+                    <a href="https://keenthemes.com" target="_blank"
+                       class="text-gray-800 text-hover-primary">ساتراس وب</a>
+                </div>
+                <!--end::کپیright-->
+                <!--begin::Menu-->
+                <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
+                    <li class="menu-item">
+                        <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">درباره ی
+                            ما</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://rtl-theme.com" target="_blank" class="menu-link px-2">پشتیبانی</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://www.rtl-theme.com/metronic-admin-html-template/" target="_blank"
+                           class="menu-link px-2">خرید</a>
+                    </li>
+                </ul>
+                <!--end::Menu-->
+            </div>
+            <!--end::Footer-->
+        </div>
+        <!--end:::اصلی-->
+    </div>
+    <!--end::Wrapper container-->
+{% endblock %}

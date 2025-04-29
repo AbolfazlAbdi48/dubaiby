@@ -53,6 +53,7 @@ class FlightTicket(models.Model):
     price_adult = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("قیمت بزرگسال"))
     price_child = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("قیمت کودک"))
     price_infant = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=_("قیمت نوزاد"))
+    currency = models.CharField(max_length=20, null=True, verbose_name=_('واحد پول'))
     active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
     keywords = models.TextField(verbose_name=_('کلمات کلیدی'), null=True, blank=True)
     categories = models.ManyToManyField(

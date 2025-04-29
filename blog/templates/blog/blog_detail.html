@@ -1,0 +1,229 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    DubaiBy | {{ object.title }}
+{% endblock %}
+
+{% block title_secondary %}
+    {{ object.title }}
+{% endblock %}
+
+{% block main %}
+    <!--begin::Wrapper container-->
+    <div class="app-container container-xxl">
+        <!--begin::اصلی-->
+        <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+            <!--begin::Content wrapper-->
+            <div class="d-flex flex-column flex-column-fluid">
+                <!--begin::Content-->
+                <div id="kt_app_content" class="app-content flex-column-fluid">
+                    <!--begin::Row-->
+                    <div class="row g-5 g-xl-8">
+                        <!--begin::Col-->
+                        <div class="col-xl-12 ps-xl-12">
+
+                            <div class="card">
+                                <!--begin::Body-->
+                                <div class="card-body p-lg-20 pb-lg-0">
+                                    <!--begin::قالب بندی-->
+                                    <div class="d-flex flex-column flex-xl-row">
+                                        <!--begin::Content-->
+                                        <div class="flex-lg-row-fluid me-xl-15">
+                                            <!--begin::Post content-->
+                                            <div class="mb-17">
+                                                <!--begin::Wrapper-->
+                                                <div class="mb-8">
+                                                    <!--begin::Info-->
+                                                    <div class="d-flex flex-wrap mb-6">
+                                                        <!--begin::item-->
+                                                        <div class="me-9 my-1">
+                                                            <!--begin::Icon-->
+                                                            <i class="ki-outline ki-element-11 text-primary fs-4 me-1"></i>
+                                                            <!--end::Icon-->
+                                                            <!--begin::Tags-->
+                                                            <span class="fw-bold text-gray-500">{{ article.publish_time.date }}</span>
+                                                            <!--end::Tags-->
+                                                        </div>
+                                                        <!--end::item-->
+                                                        <!--begin::item-->
+                                                        <div class="my-1">
+                                                            <!--begin::Icon-->
+                                                            <i class="fas fa-user-circle text-primary fs-4 me-1"></i>
+                                                            <!--end::Icon-->
+                                                            <!--begin::Tags-->
+                                                            <span class="fw-bold text-gray-500">DubaiBy Admin</span>
+                                                            <!--end::Tags-->
+                                                        </div>
+                                                        <!--end::item-->
+                                                    </div>
+                                                    <!--end::Info-->
+                                                    <!--begin::Title-->
+                                                    <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bold">
+                                                        {{ object.title }}
+                                                    </a>
+                                                    <!--end::Title-->
+                                                    <!--begin::Container-->
+                                                    <div class="overlay mt-8">
+                                                        <!--begin::Image-->
+                                                        <div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px"
+                                                             style="background-image:url({{ article.image.url }})"></div>
+                                                        <!--end::Image-->
+                                                    </div>
+                                                    <!--end::Container-->
+                                                </div>
+                                                <!--end::Wrapper-->
+                                                <!--begin::توضیحات-->
+                                                <div class="fs-5 fw-semibold text-gray-600">
+                                                    {{ article.description|safe }}
+                                                </div>
+                                                <!--end::توضیحات-->
+                                                <!--begin::Block-->
+                                                <div class="d-flex align-items-center border-1 border-dashed card-rounded p-5 p-lg-10 mb-14">
+                                                    <!--begin::Section-->
+                                                    <div class="text-center flex-shrink-0 me-7 me-lg-13">
+                                                        <!--begin::Avatar-->
+                                                        <div class="symbol symbol-70px symbol-circle mb-2">
+                                                            <img src="{% static 'site/media/avatars/blank.png' %}" class="" alt="">
+                                                        </div>
+                                                        <!--end::Avatar-->
+                                                        <!--begin::Info-->
+                                                        <div class="mb-0">
+                                                            <a href="pages/user-profile/overview.html"
+                                                               class="text-gray-700 fw-bold text-hover-primary">DubaiBy</a>
+                                                            <span class="text-gray-500 fs-7 fw-semibold d-block mt-1">Admin</span>
+                                                        </div>
+                                                        <!--end::Info-->
+                                                    </div>
+                                                    <!--end::Section-->
+                                                    <!--begin::Text-->
+                                                    <div class="mb-0 fs-6">
+                                                        <div class="text-muted fw-semibold lh-lg mb-2">DubaiBy a travel agent ...
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Text-->
+                                                </div>
+                                                <!--end::Block-->
+                                                <!--begin::Icons-->
+                                                <div class="d-flex flex-center">
+                                                    <!--begin::Icon-->
+                                                    <a href="#" class="mx-4">
+                                                        <img src="assets/media/svg/brand-logos/facebook-4.svg"
+                                                             class="h-20px my-2" alt="">
+                                                    </a>
+                                                    <!--end::Icon-->
+                                                    <!--begin::Icon-->
+                                                    <a href="#" class="mx-4">
+                                                        <img src="assets/media/svg/brand-logos/instagram-2-1.svg"
+                                                             class="h-20px my-2" alt="">
+                                                    </a>
+                                                    <!--end::Icon-->
+                                                    <!--begin::Icon-->
+                                                    <a href="#" class="mx-4">
+                                                        <img src="assets/media/svg/brand-logos/github.svg"
+                                                             class="h-20px my-2" alt="">
+                                                    </a>
+                                                    <!--end::Icon-->
+                                                    <!--begin::Icon-->
+                                                    <a href="#" class="mx-4">
+                                                        <img src="assets/media/svg/brand-logos/behance.svg"
+                                                             class="h-20px my-2" alt="">
+                                                    </a>
+                                                    <!--end::Icon-->
+                                                    <!--begin::Icon-->
+                                                    <a href="#" class="mx-4">
+                                                        <img src="assets/media/svg/brand-logos/pinterest-p.svg"
+                                                             class="h-20px my-2" alt="">
+                                                    </a>
+                                                    <!--end::Icon-->
+                                                    <!--begin::Icon-->
+                                                    <a href="#" class="mx-4">
+                                                        <img src="assets/media/svg/brand-logos/twitter.svg"
+                                                             class="h-20px my-2" alt="">
+                                                    </a>
+                                                    <!--end::Icon-->
+                                                    <!--begin::Icon-->
+                                                    <a href="#" class="mx-4">
+                                                        <img src="assets/media/svg/brand-logos/dribbble-icon-1.svg"
+                                                             class="h-20px my-2" alt="">
+                                                    </a>
+                                                    <!--end::Icon-->
+                                                </div>
+                                                <!--end::Icons-->
+                                            </div>
+                                            <!--end::Post content-->
+                                        </div>
+                                        <!--end::Content-->
+                                        <!--begin::Sidebar-->
+                                        <div class="flex-column flex-lg-row-auto w-100 w-xl-300px mb-10">
+                                            <!--begin::Catigیاies-->
+                                            <div class="mb-16">
+                                                <h4 class="text-gray-900 mb-7">دسترسی سریع</h4>
+                                                <!--begin::item-->
+                                                <div class="d-flex flex-stack fw-semibold fs-5 text-muted mb-4">
+                                                    <!--begin::Text-->
+                                                    <a href="{% url 'travel:tour-list' %}" class="text-muted text-hover-primary pe-2">دستیار هوشمند</a>
+                                                    <!--end::Text-->
+                                                </div>
+                                                <!--end::item-->
+                                                <!--begin::item-->
+                                                <div class="d-flex flex-stack fw-semibold fs-5 text-muted mb-4">
+                                                    <!--begin::Text-->
+                                                    <a href="{% url 'travel:tour-list' %}" class="text-muted text-hover-primary pe-2">تور های دبی</a>
+                                                    <!--end::Text-->
+                                                </div>
+                                                <!--end::item-->
+                                                <!--begin::item-->
+                                                <div class="d-flex flex-stack fw-semibold fs-5 text-muted mb-4">
+                                                    <!--begin::Text-->
+                                                    <a href="{% url 'travel:hotel-list' %}" class="text-muted text-hover-primary pe-2">هتل های دبی</a>
+                                                    <!--end::Text-->
+                                                </div>
+                                                <!--end::item-->
+                                            </div>
+                                        </div>
+                                        <!--end::Sidebar-->
+                                    </div>
+                                </div>
+                                <!--end::Body-->
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--end::Row-->
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Content wrapper-->
+            <!--begin::Footer-->
+            <div id="kt_app_footer"
+                 class="app-footer d-flex flex-column flex-md-row align-items-center flex-center flex-md-stack py-2 py-lg-4">
+                <!--begin::کپیright-->
+                <div class="text-gray-900 order-2 order-md-1">
+                    <span class="text-muted fw-semibold me-1">2024&copy;</span>
+                    <a href="https://keenthemes.com" target="_blank"
+                       class="text-gray-800 text-hover-primary">ساتراس وب</a>
+                </div>
+                <!--end::کپیright-->
+                <!--begin::Menu-->
+                <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
+                    <li class="menu-item">
+                        <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">درباره ی
+                            ما</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://rtl-theme.com" target="_blank" class="menu-link px-2">پشتیبانی</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://www.rtl-theme.com/metronic-admin-html-template/" target="_blank"
+                           class="menu-link px-2">خرید</a>
+                    </li>
+                </ul>
+                <!--end::Menu-->
+            </div>
+            <!--end::Footer-->
+        </div>
+        <!--end:::اصلی-->
+    </div>
+    <!--end::Wrapper container-->
+{% endblock %}
