@@ -8,8 +8,62 @@
 
 {% block css_code %}
     <style>
-        footer {
-            background: #ffffff;
+        .chat-box {
+            min-height: 100vh;
+            padding: 1.8rem 0 0 0;
+        }
+
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            max-width: 75%;
+            padding: 10px 15px;
+            border-radius: 10px;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background-color: #E1E6F0;
+            color: #000000;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background-color: #cdcfd9;
+            color: #000000;
+            align-self: flex-start;
+        }
+
+        .chat-input {
+            margin-top: 15px;
+            position: fixed;
+            bottom: 5px;
+            right: 0;
+            padding: 0 1rem;
+        }
+
+        .chat-input button {
+            background-color: #22b3c1;
+            border-color: #22b3c1;
+        }
+
+        .chat-input button:hover {
+            background-color: #22b3c1;
+            border-color: #22b3c1;
+        }
+
+        .chat-message h1, h2, h3, h4, h5, h6 {
+            font-size: 1rem;
+        }
+
+        .chat-message p {
+            color: #000;
         }
     </style>
 {% endblock %}
@@ -32,8 +86,8 @@
         {% endif %}
 
         <!-- Chat Input -->
-        <div class="chat-input input-group" dir="ltr">
-            <button class="btn btn-primary" id="chat-send"><i class="fa fa-paper-plane"></i></button>
+        <div class="chat-input input-group" dir="rtl">
+            <button class="btn btn-light-facebook" id="chat-send" dir="ltr"><i class="fa fa-paper-plane"></i></button>
             <input type="text" class="form-control p-3" placeholder="پیام..." dir="rtl" id="chatbot">
         </div>
     </div>
@@ -84,7 +138,7 @@
                     if (data.results.hotels?.length) {
                         replyHtml += `<h5>🏨 هتل‌های پیشنهادی DubaiBy:</h5><ul>`;
                         data.results.hotels.forEach(hotel => {
-                            replyHtml += `<li><a href="/hotel/${hotel.id}" target="_blank">${hotel.title}</a></li>`;
+                            replyHtml += `<li><a href="/travel/hotels/${hotel.id}/${hotel.title}" target="_blank">${hotel.title}</a></li>`;
                         });
                         replyHtml += `</ul>`;
                     }
@@ -93,7 +147,7 @@
                     if (data.results.tours?.length) {
                         replyHtml += `<h5>🧳 تورهای پیشنهادی:</h5><ul>`;
                         data.results.tours.forEach(tour => {
-                            replyHtml += `<li><a href="/tours/${tour.id}" target="_blank">${tour.title}</a></li>`;
+                            replyHtml += `<li><a href="/travel/tours/${tour.id}/${tour.title}" target="_blank">${tour.title}</a></li>`;
                         });
                         replyHtml += `</ul>`;
                     }
@@ -102,7 +156,7 @@
                     if (data.results.flights?.length) {
                         replyHtml += `<h5>✈️ پروازهای پیشنهادی:</h5><ul>`;
                         data.results.flights.forEach(flight => {
-                            replyHtml += `<li><a href="/flight/${flight.id}" target="_blank">${flight.origin} به ${flight.destination}</a></li>`;
+                            replyHtml += `<li><a href="/travel/flight/" target="_blank">${flight.origin} به ${flight.destination}</a></li>`;
                         });
                         replyHtml += `</ul>`;
                     }

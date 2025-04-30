@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import DetailView
 
 from affiliate_module.models import ProviderLink
-from travel.models import Hotel, TravelCategory, Tour
+from travel.models import Hotel, TravelCategory, Tour, Visa, FlightTicket
 
 
 # Create your views here.
@@ -61,3 +61,23 @@ def tour_list_view(request):
 class TourDetailView(DetailView):
     model = Tour
     template_name = 'travel/tour_detail.html'
+
+
+def visa_list_view(request):
+    visa_type = ContentType.objects.get_for_model(Visa)
+    visa_links = ProviderLink.objects.filter(content_type=visa_type)
+
+    context = {
+        'visa_links': visa_links,
+    }
+    return render(request, 'travel/visa_list.html', context)
+
+
+def flight_list_view(request):
+    flight = ContentType.objects.get_for_model(FlightTicket)
+    flights = ProviderLink.objects.filter(content_type=flight)
+
+    context = {
+        'flights': flights,
+    }
+    return render(request, 'travel/flight_list.html', context)

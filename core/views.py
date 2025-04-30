@@ -1,12 +1,14 @@
 import json
 
+from django.contrib.contenttypes.models import ContentType
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import DetailView
 
+from affiliate_module.models import ProviderLink
 from core.models import ChatMessage
-from travel.models import Tour, Hotel, Provider
+from travel.models import Tour, Hotel, FlightTicket
 from utils.gpt import gpt_request, SYSTEM_CONTENT
 from utils.search import search_across_models
 
@@ -15,7 +17,8 @@ from utils.search import search_across_models
 def home(request):
     tours = Tour.objects.filter(active=True)[:2]
     hotels = Hotel.objects.filter(active=True)
-    flights = Provider.objects.filter(flight__isnull=False, flight__active=True)
+    flight = ContentType.objects.get_for_model(FlightTicket)
+    flights = ProviderLink.objects.filter(content_type=flight)
 
     context = {
         'tours': tours,

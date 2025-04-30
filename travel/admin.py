@@ -6,7 +6,8 @@ from .models import (
     Image,
     Tour,
     TourDay,
-    Provider, TravelCategory
+    TravelCategory,
+    Visa
 )
 
 
@@ -64,13 +65,11 @@ class TourDayAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Provider)
-class ProviderAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'active')
-    list_editable = ('active',)
-    search_fields = ('provider', 'affiliate_link', 'hotel__title', 'tour__title', 'flight__airline')
-
-
 @admin.register(TravelCategory)
 class TravelCategoryAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(Visa)
+class VisaAdmin(admin.ModelAdmin):
+    list_display = ('title', 'about')

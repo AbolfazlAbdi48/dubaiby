@@ -14,6 +14,7 @@ class TravelCategory(models.Model):
     for_hotel = models.BooleanField(default=True, verbose_name=_('For Hotel'))
     for_tour = models.BooleanField(default=True, verbose_name=_('For tour'))
     for_flight = models.BooleanField(default=True, verbose_name=_('For flight'))
+    for_visa = models.BooleanField(default=True, verbose_name=_('For flight'))
     parent = models.ForeignKey(
         'self',
         on_delete=models.SET_NULL,
@@ -210,33 +211,19 @@ class TourDay(models.Model):
         return f"{self.tour.title} - {self.day}"
 
 
-class Provider(models.Model):
-    provider = models.CharField(verbose_name=_('ارائه دهنده'), max_length=100)
-    price = models.DecimalField(verbose_name=_('قیمت'), max_digits=10, decimal_places=0)
-    rating = models.DecimalField(verbose_name=_('امتیاز'), max_digits=3, decimal_places=0)
-    affiliate_link = models.URLField(verbose_name=_('لینک'))
-    hotel = models.ForeignKey(to='Hotel', verbose_name=_('هتل'), related_name='hotel_provider',
-                              on_delete=models.CASCADE,
-                              null=True, blank=True)
-    tour = models.ForeignKey(to='Tour', verbose_name=_('تور'),
-                             related_name='tour_provider', on_delete=models.CASCADE, null=True, blank=True)
-    flight = models.ForeignKey(to='FlightTicket', verbose_name=_('پرواز'), related_name='flight_provider',
-                               on_delete=models.CASCADE,
-                               null=True, blank=True)
-    active = models.BooleanField(verbose_name=_('فعال/غیرفعال'), default=True)
-    keywords = models.TextField(verbose_name=_('کلمات کلیدی'), null=True, blank=True)
+class Visa(models.Model):
+    title = models.CharField(max_length=255, verbose_name=_('Title'))
+    about = models.CharField(max_length=255, verbose_name=_('About'))
+    categories = models.ManyToManyField(
+        to=TravelCategory,
+        related_name='visa_categories',
+        verbose_name=_('categories')
+    )
+    keywords = models.TextField(verbose_name=_('Keywords'), null=True)
 
     class Meta:
-        verbose_name = 'افیلیت'
-        verbose_name_plural = 'لیست افیلیت'
-
-    objects = ProviderManager()
+        verbose_name = 'ویزا'
+        verbose_name_plural = '6. ویزا'
 
     def __str__(self):
-        if self.hotel:
-            return f"{self.provider} - {self.hotel.title}"
-        elif self.flight:
-            return f"{self.provider} - {self.flight.airline}"
-        elif self.tour:
-            return f"{self.provider} - {self.tour.title}"
-        return self.provider
+        return self.title

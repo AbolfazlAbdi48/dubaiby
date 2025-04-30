@@ -24,6 +24,8 @@ class ProviderLink(models.Model):
     )
     link = models.URLField(verbose_name=_('Link'))
     label = models.CharField(max_length=255, verbose_name=_('Label'))
+    price = models.BigIntegerField(default=0, verbose_name=_('Price'))
+    currency = models.CharField(max_length=20, default='AED', verbose_name=_('Currency'))
 
     # Generic relation to any model (Hotel, Tour, Flight, etc.)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
