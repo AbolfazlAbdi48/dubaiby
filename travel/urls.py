@@ -9,4 +9,5 @@ urlpatterns = [
     path('tours/<int:pk>/<str:title>', TourDetailView.as_view(), name='tour-detail'),
     path('visa/', visa_list_view, name='visa-list'),
     path('flight/', flight_list_view, name='flight-list'),
+    path('flight/', flight_list_view, name='flight-list'),
 ]

@@ -76,3 +76,7 @@ def chatbot_view(request):
         "messages": messages
     }
     return render(request, 'core/chatbot.html', context=context)
+
+
+def dubai_life_view(request):
+    return render(request, 'core/dubai_life.html')
