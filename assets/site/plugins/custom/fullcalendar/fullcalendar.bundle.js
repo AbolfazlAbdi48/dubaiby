@@ -8307,7 +8307,7 @@ var FullCalendar = (function (exports) {
             var height = (!isHeightAuto && options.height != null) ? options.height : '';
             var classNames = [
                 'fc',
-                forPrint ? 'fc-media-print' : 'fc-media-screen',
+                forPrint ? 'fc-medias-print' : 'fc-medias-screen',
                 "fc-direction-" + options.direction,
                 props.theme.getClass('root'),
             ];

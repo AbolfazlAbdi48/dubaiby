@@ -131,7 +131,7 @@ var KTModalBidding = function () {
                 return item.text;
             }
 
-            var url = 'assets/media/' + item.element.getAttribute('data-kt-bidding-modal-option-icon');
+            var url = 'assets/medias/' + item.element.getAttribute('data-kt-bidding-modal-option-icon');
             var img = $("<img>", {
                 class: "rounded-circle me-2",
                 width: 26,

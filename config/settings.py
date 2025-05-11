@@ -146,7 +146,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = config('STATIC_ROOT')
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/medias/'
 MEDIA_ROOT = config('MEDIA_ROOT')
 
 # Default primary key field type

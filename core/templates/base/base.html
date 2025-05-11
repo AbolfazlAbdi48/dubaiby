@@ -18,7 +18,7 @@
     <meta property="og:url" content="https://keenthemes.com/metronic"/>
     <meta property="og:site_name" content="مترونیک by ساتراس وب"/>
     <link rel="canonical" href="http://index.html"/>
-    <link rel="shortcut icon" href="{% static 'site/media/logos/favicon.ico' %}"/>
+    <link rel="shortcut icon" href="{% static 'site/medias/logos/favicon.ico' %}"/>
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/cssfamily=Inter:300,400,500,600,700"/>
     <!--end::Fonts-->
@@ -66,9 +66,9 @@
                     <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-18">
                         <a href="{% url 'core:home' %}">
                             <img alt="Logo"
-                                 src="{% static 'site/media/logos/demo34-small.svg' %}" class="h-25px d-sm-none' %}"/>
+                                 src="{% static 'site/medias/logos/demo34-small.svg' %}" class="h-25px d-sm-none' %}"/>
                             <img alt="Logo"
-                                 src="{% static 'site/media/logos/demo34.png' %}" class="h-25px d-none d-sm-block' %}"/>
+                                 src="{% static 'site/medias/logos/demo34.png' %}" class="h-25px d-none d-sm-block' %}"/>
                         </a>
                     </div>
                     <!--end::Logo-->
@@ -345,11 +345,21 @@
                                 </div>
                                 <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                                      data-kt-menu-placement="bottom-end"
-                                     class="menu-item {% if url_name == '' %}here{% endif %} menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                                     class="menu-item {% if url_name == 'dubai-business' %}here{% endif %} menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
                                     <!--begin:Menu link-->
-                                    <a href="{% url 'core:home' %}" class="menu-link">
+                                    <a href="{% url 'core:dubai-business' %}" class="menu-link">
                                         <span class="menu-title">
-                                           کسب و کار و سرمایه گذاری
+                                           کسب و کار در دبی
+                                        </span>
+                                    </a>
+                                </div>
+                                <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+                                     data-kt-menu-placement="bottom-end"
+                                     class="menu-item {% if url_name == 'blog-list' %}here{% endif %} menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                                    <!--begin:Menu link-->
+                                    <a href="{% url 'blog:blog-list' %}" class="menu-link">
+                                        <span class="menu-title">
+                                           وبلاگ
                                         </span>
                                     </a>
                                 </div>
@@ -373,7 +383,7 @@
                                      data-kt-menu="true" id="kt_menu_notifications">
                                     <!--begin::Heading-->
                                     <div class="d-flex flex-column bgi-no-repeat rounded-top"
-                                         style="background-image:url({% static 'site/media/misc/menu-header-bg.jpg' %})">
+                                         style="background-image:url({% static 'site/medias/misc/menu-header-bg.jpg' %})">
                                         <!--begin::Title-->
                                         <h3 class="text-white fw-semibold px-9 mt-10 mb-6">اعلان ها
                                             <span class="fs-8 opacity-75 ps-3">24 گزارش</span>
@@ -635,7 +645,7 @@
                                                 <!--begin::Illustration-->
                                                 <div class="text-center px-4">
                                                     <img class="mw-100 mh-200px" alt="image"
-                                                         src="{% static 'site/media/illustrations/sketchy-1/1.png' %}"/>
+                                                         src="{% static 'site/medias/illustrations/sketchy-1/1.png' %}"/>
                                                 </div>
                                                 <!--end::Illustration-->
                                             </div>
@@ -905,7 +915,7 @@
                                      data-kt-menu="true">
                                     <!--begin::Heading-->
                                     <div class="d-flex flex-column flex-center bgi-no-repeat rounded-top px-9 py-10"
-                                         style="background-image:url({% static 'site/media/misc/menu-header-bg.jpg' %})">
+                                         style="background-image:url({% static 'site/medias/misc/menu-header-bg.jpg' %})">
                                         <!--begin::Title-->
                                         <h3 class="text-white fw-semibold mb-3">لینک های سریع</h3>
                                         <!--end::Title-->
@@ -988,7 +998,7 @@
                                      data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                                      data-kt-menu-placement="bottom-end">
                                     <img class="symbol symbol-circle symbol-35px symbol-md-40px"
-                                         src="{% static 'site/media/avatars/300-13.jpg' %}" alt="user"/>
+                                         src="{% static 'site/medias/avatars/300-13.jpg' %}" alt="user"/>
                                 </div>
                                 <!--begin::کاربر account menu-->
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"
@@ -998,7 +1008,7 @@
                                         <div class="menu-content d-flex align-items-center px-3">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-50px me-5">
-                                                <img alt="Logo" src="{% static 'site/media/avatars/300-13.jpg' %}"/>
+                                                <img alt="Logo" src="{% static 'site/medias/avatars/300-13.jpg' %}"/>
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::کاربرname-->
@@ -1153,7 +1163,7 @@
                                                 <span
                                                         class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">انگلیسی
                                                     <img class="w-15px h-15px rounded-1 ms-2"
-                                                         src="{% static 'site/media/flags/united-states.svg' %}"
+                                                         src="{% static 'site/medias/flags/united-states.svg' %}"
                                                          alt=""/></span></span>
                                         </a>
                                         <!--begin::Menu sub-->
@@ -1163,7 +1173,7 @@
                                                 <a href="account/settings.html" class="menu-link d-flex px-5 active">
                                                     <span class="symbol symbol-20px me-4">
                                                         <img class="rounded-1"
-                                                             src="{% static 'site/media/flags/united-states.svg' %}"
+                                                             src="{% static 'site/medias/flags/united-states.svg' %}"
                                                              alt=""/>
                                                     </span>انگلیسی</a>
                                             </div>
@@ -1173,7 +1183,7 @@
                                                 <a href="account/settings.html" class="menu-link d-flex px-5">
                                                     <span class="symbol symbol-20px me-4">
                                                         <img class="rounded-1"
-                                                             src="{% static 'site/media/flags/spain.svg' %}"
+                                                             src="{% static 'site/medias/flags/spain.svg' %}"
                                                              alt=""/>
                                                     </span>اسپانیایی</a>
                                             </div>
@@ -1183,7 +1193,7 @@
                                                 <a href="account/settings.html" class="menu-link d-flex px-5">
                                                     <span class="symbol symbol-20px me-4">
                                                         <img class="rounded-1"
-                                                             src="{% static 'site/media/flags/germany.svg' %}"
+                                                             src="{% static 'site/medias/flags/germany.svg' %}"
                                                              alt=""/>
                                                     </span>آلمانی</a>
                                             </div>
@@ -1193,7 +1203,7 @@
                                                 <a href="account/settings.html" class="menu-link d-flex px-5">
                                                     <span class="symbol symbol-20px me-4">
                                                         <img class="rounded-1"
-                                                             src="{% static 'site/media/flags/japan.svg' %}"
+                                                             src="{% static 'site/medias/flags/japan.svg' %}"
                                                              alt=""/>
                                                     </span>ژاپنی</a>
                                             </div>
@@ -1203,7 +1213,7 @@
                                                 <a href="account/settings.html" class="menu-link d-flex px-5">
                                                     <span class="symbol symbol-20px me-4">
                                                         <img class="rounded-1"
-                                                             src="{% static 'site/media/flags/france.svg' %}"
+                                                             src="{% static 'site/medias/flags/france.svg' %}"
                                                              alt=""/>
                                                     </span>فرانسه</a>
                                             </div>

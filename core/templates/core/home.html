@@ -41,19 +41,22 @@
                                         <input type="text"
                                                class="form-control form-control-solid py-5 w-100 border"
                                                style="text-align: right; font-size: 1.2rem; border-radius: 3rem;"
+                                               id="typingInput"
                                                placeholder="...دستیار هوشمند سفر اینجاست" name="message">
                                     </form>
                                     <div class="mt-3 text-center">
                                         <div class="btn btn-facebook btn-sm py-1 my-2">
-{#                                            #TODO: link to planer#}
-                                            <a href="/chat/?message=یه سفر تفریحی به دبی برام طراحی کن" class="text-white">یه سفر تفریحی برام طراحی کن</a>
+                                            {#                                            #TODO: link to planer#}
+                                            <a href="/chat/?message=یه سفر تفریحی به دبی برام طراحی کن"
+                                               class="text-white">میخوام یه سفر عالی به دبی داشته باشم</a>
                                         </div>
                                         <div class="btn btn-facebook btn-sm py-1 my-2">
-                                            <a href="/chat/?message=نزدیک ترین هتل های برج خلیفه رو بهم معرفی کن" class="text-white">نزدیک ترین هتل های برج خلیفه</a>
+                                            <a href="{% url 'core:dubai-life' %}"
+                                               class="text-white">دنبال راهی برای زندگی یا اقامت در دبی هستم</a>
                                         </div>
                                         <div class="btn btn-facebook btn-sm py-1 my-2">
-{#                                            #TODO: link to contact us#}
-                                            <a href="/chat/?message=چطور با دبی بای همکاری کنم" class="text-white">میخوام با دبی بای همکاری کنم</a>
+                                            <a href="{% url 'core:dubai-business' %}" class="text-white">چطور
+                                                با دبی بای کسب و کارم رو گسترش بدم؟</a>
                                         </div>
                                     </div>
                                     <!--end::Title-->
@@ -68,56 +71,7 @@
                                 <!--end::Body-->
                             </div>
                             <!--end::Engage widget 1-->
-                            <div class="row mb-5 mb-xl-8 g-5 g-xl-8">
-                                <!--begin::Col-->
-                                <div class="col-6 col-md-3">
-                                    <!--begin::کارت-->
-                                    <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
-                                       href="apps/customers/view.html">
-                                        <i
-                                                class="ki-outline ki-abstract-26 fs-2tx mb-5 ms-n1 text-gray-500"></i>
-                                        <span class="fs-4 fw-bold">پلنر هوشمند سفر</span>
-                                    </a>
-                                    <!--end::کارت-->
-                                </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
-                                <div class="col-6 col-md-3">
-                                    <!--begin::کارت-->
-                                    <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
-                                       href="{% url 'travel:hotel-list' %}">
-                                        <i class="fas fa-building fs-2tx mb-5 ms-n1 text-gray-500"></i>
-                                        <span class="fs-4 fw-bold">هتل ها</span>
-                                    </a>
-                                    <!--end::کارت-->
-                                </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
-                                <div class="col-6 col-md-3">
-                                    <!--begin::کارت-->
-                                    <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
-                                       href="{% url 'travel:tour-list' %}">
-                                        <i
-                                                class="ki-outline ki-technology-2 fs-2tx mb-5 ms-n1 text-gray-500"></i>
-                                        <span class="fs-4 fw-bold">تور دبی</span>
-                                    </a>
-                                    <!--end::کارت-->
-                                </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
-                                <div class="col-6 col-md-3">
-                                    <!--begin::کارت-->
-                                    <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
-                                       href="{% url 'travel:flight-list' %}">
-                                        <i
-                                                class="fa fa-plane-departure fs-2tx mb-5 ms-n1 text-gray-500"></i>
-                                        <span class="fs-4 fw-bold">پرواز</span>
-                                    </a>
-                                    <!--end::کارت-->
-                                </div>
-                                <!--end::Col-->
-                            </div>
-
+                            <!-- offers -->
                             <div class="row g-5 gx-xl-10 mb-5 mt-10 mb-xl-10">
                                 <div class="col-12 mt-12">
                                     <h1 class="text-center">پیشنهادات ویژه DubaiBy</h1>
@@ -135,7 +89,7 @@
                                                     <!--begin::Overlay-->
                                                     <a class="d-block overlay h-100"
                                                        data-fslightbox="lightbox-hot-sales"
-                                                       href="{% static 'site/media/stock/600x600/img-42.jpg' %}">
+                                                       href="{% static 'site/medias/stock/600x600/img-42.jpg' %}">
                                                         <!--begin::Image-->
                                                         <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-200px h-100"
                                                              style="background-image:url('https://wallpapers-max.b-cdn.net/wallpapers/2020/hd/cool-burj-khalifa-in-dubai-wallpaper.jpg')">
@@ -177,7 +131,7 @@
                                                                     <!--begin::Symbol-->
                                                                     <div
                                                                             class="symbol symbol-30px symbol-circle me-3">
-                                                                        <img src="{% static 'site/media/avatars/300-3.jpg' %}"
+                                                                        <img src="{% static 'site/medias/avatars/300-3.jpg' %}"
                                                                              class="" alt="">
                                                                     </div>
                                                                     <!--end::Symbol-->
@@ -273,7 +227,7 @@
                                         <div class="card-body text-center pb-5">
                                             <!--begin::Overlay-->
                                             <a class="d-block overlay" data-fslightbox="lightbox-hot-sales"
-                                               href="{% static 'site/media/stock/600x600/img-39.jpg' %}">
+                                               href="{% static 'site/medias/stock/600x600/img-39.jpg' %}">
                                                 <!--begin::Image-->
                                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded mb-7"
                                                      style="height: 266px;background-image:url('https://i.pinimg.com/564x/a8/b2/84/a8b284d43f99de7af51a048d639ccd10.jpg')">
@@ -332,7 +286,7 @@
                                         <div class="card-body text-center pb-5">
                                             <!--begin::Overlay-->
                                             <a class="d-block overlay" data-fslightbox="lightbox-hot-sales"
-                                               href="{% static 'site/media/stock/600x600/img-47.jpg' %}">
+                                               href="{% static 'site/medias/stock/600x600/img-47.jpg' %}">
                                                 <!--begin::Image-->
                                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded mb-7"
                                                      style="height: 266px;background-image:url('https://i.pinimg.com/736x/71/12/22/711222d2a5c1748e382c9e3deec7738b.jpg')">
@@ -385,6 +339,7 @@
                                 <!--end::Col-->
                             </div>
 
+                            <!-- planer -->
                             <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
                                 <!--begin::Col-->
                                 <div class="col-xxl-12">
@@ -412,16 +367,8 @@
                                                     <div
                                                             class="d-flex flex-column flex-sm-row d-grid gap-2">
                                                         <a href="#"
-                                                           class="btn btn-facebook flex-shrink-0 me-lg-2"
-                                                           data-bs-toggle="modal"
-                                                           data-bs-target="#kt_modal_upgrade_plan">برنامه
+                                                           class="btn btn-facebook flex-shrink-0 me-lg-2">برنامه
                                                             سفرتو بچین</a>
-                                                        <a href="{% url 'core:chatbot' %}"
-                                                           class="btn btn-primary flex-shrink-0"
-                                                           style="background: rgba(255, 255, 255, 0.2)"
-                                                           data-bs-toggle="modal"
-                                                           data-bs-target="#kt_modal_create_app">از دستیار
-                                                            هوشمندت بپرس</a>
                                                     </div>
                                                     <!--end::Actions-->
                                                 </div>
@@ -429,8 +376,8 @@
                                                 <!--begin::Col-->
                                                 <div class="col-5 pt-10">
                                                     <!--begin::Illustration-->
-                                                    <div class="bgi-no-repeat bgi-size-contain bgi-position-x-end h-225px"
-                                                         style="background-image:url({% static 'site/media/svg/illustrations/easy/5.svg' %})">
+                                                    <div class="bgi-no-repeat bgi-size-contain bgi-position-x-end h-250px"
+                                                         style="background-image:url({% static 'site/medias/dubaiby-avatar.png' %})">
                                                     </div>
                                                     <!--end::Illustration-->
                                                 </div>
@@ -442,8 +389,172 @@
                                     </div>
                                     <!--end::Engage widget 8-->
                                 </div>
+
+                            </div>
+
+                            <!-- cta -->
+                            <div class="row mb-5 mb-xl-8 g-5 g-xl-8">
+                                <!--begin::Col-->
+                                <div class="col-6 col-md-4">
+                                    <!--begin::کارت-->
+                                    <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
+                                       href="{% url 'travel:hotel-list' %}">
+                                        <i class="fas fa-plane-departure fs-2tx mb-5 ms-n1 text-gray-500"></i>
+                                        <span class="fs-6 fs-md-4 fw-bold">سفر به دبی</span>
+                                    </a>
+                                    <!--end::کارت-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-6 col-md-4">
+                                    <!--begin::کارت-->
+                                    <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
+                                       href="{% url 'travel:tour-list' %}">
+                                        <i
+                                                class="ki-outline ki-technology-2 fs-2tx mb-5 ms-n1 text-gray-500"></i>
+                                        <span class="fs-6 fs-md-4 fw-bold">زندگی در دبی</span>
+                                    </a>
+                                    <!--end::کارت-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-12 col-md-4">
+                                    <!--begin::کارت-->
+                                    <a class="card flex-column justfiy-content-start align-items-start text-start w-100 text-gray-800 text-hover-primary p-10"
+                                       href="{% url 'travel:flight-list' %}">
+                                        <i
+                                                class="fa fa-business-time fs-2tx mb-5 ms-n1 text-gray-500"></i>
+                                        <span class="fs-6 fs-md-4 fw-bold">کسب و کار و سرمایه گذاری</span>
+                                    </a>
+                                    <!--end::کارت-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+
+                            <!-- hotels -->
+                            <div class="row g-5 g-xl-10 mt-10 mb-5 mb-xl-10">
+                                <!-- <div class="col-12 mt-12 text-center">
+                                    <h2 class="h1">
+                                        هتل های دبی
+                                    </h2>
+                                </div> -->
+                                <!--begin::Col-->
+                                <div class="col-xl-8">
+                                    <!--begin::Engage widget 7-->
+                                    <div class="card card-flush h-xl-100">
+                                        <!--begin::Header-->
+                                        <div class="card-header pt-7">
+                                            <!--begin::Title-->
+                                            <h3 class="card-title align-items-start flex-column">
+                                                            <span class="card-label fw-bold text-gray-900 fs-3">بهترین هتل های هفته</span>
+                                            </h3>
+                                            <!--end::Title-->
+                                            <!--begin::Toolbar-->
+                                            <div class="card-toolbar">
+                                                <a href="{% url 'travel:hotel-list' %}"
+                                                   class="btn btn-sm btn-light">همه هتل ها</a>
+                                            </div>
+                                            <!--end::Toolbar-->
+                                        </div>
+                                        <!--end::Header-->
+                                        <!--begin::کارت body-->
+                                        <div class="card-body pt-7">
+                                            <!--begin::Row-->
+                                            <div class="row align-items-end h-100 gx-5 gx-xl-10">
+                                                {% for hotel in hotels %}
+                                                    <!--begin::Col-->
+                                                    <div class="col-md-4 mb-11 mb-md-0">
+                                                        <!--begin::Overlay-->
+                                                        <a class="d-block overlay"
+                                                           data-fslightbox="lightbox-hot-sales"
+                                                           href="{{ hotel.get_absolute_url }}">
+                                                            <!--begin::Image-->
+                                                            <div class="overlay-wrapper bgi-position-center bgi-no-repeat bgi-size-cover h-200px card-rounded mb-3"
+                                                                 style="height: 266px;background-image:url({{ hotel.image.url }})">
+                                                            </div>
+                                                            <!--end::Image-->
+                                                            <!--begin::Actions-->
+                                                            <div
+                                                                    class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                                <i
+                                                                        class="ki-outline ki-eye fs-3x text-white"></i>
+                                                            </div>
+                                                            <!--end::Actions-->
+                                                        </a>
+                                                        <!--end::Overlay-->
+                                                        <!--begin::Info-->
+                                                        <div class="m-0">
+                                                            <!--begin::Title-->
+                                                            <a href="{{ hotel.get_absolute_url }}"
+                                                               class="text-gray-800 text-hover-primary fs-4 fw-bold d-block mb-2">{{ hotel.title }}</a>
+                                                            <!--end::Title-->
+                                                            <!--begin::زمان-->
+                                                            <span
+                                                                    class="fw-bold fs-6 text-gray-500 d-block lh-1">قیمت:
+                                                                        از
+                                                                {{ hotel.get_min_price.price_per_night|intcomma:False }}{{ hotel.get_min_price.currency }}</span>
+                                                            <!--end::زمان-->
+                                                        </div>
+                                                        <!--end::Info-->
+                                                    </div>
+                                                    <!--end::Col-->
+                                                {% endfor %}
+
+                                            </div>
+                                            <!--end::Row-->
+                                        </div>
+                                        <!--end::کارت body-->
+                                    </div>
+                                    <!--end::Engage widget 7-->
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xl-4">
+                                    <!--begin::Engage widget 1-->
+                                    <div class="card h-md-100" dir="ltr">
+                                        <!--begin::Body-->
+                                        <div class="card-body d-flex flex-column flex-center">
+                                            <!--begin::Heading-->
+                                            <div class="mb-2">
+                                                <!--begin::Title-->
+                                                <h1
+                                                        class="fw-semibold text-gray-800 fs-4 text-center lh-lg">
+                                                    <br>
+                                                    <span class="fw-bolder">دستیار هوشمند سفر</span>
+                                                    <br>
+                                                    برای انتخاب هتل با دستیار هوشمندت مشورت کن
+                                                </h1>
+                                                <!--end::Title-->
+                                                <!--begin::Illustration-->
+                                                <div class="py-10 text-center">
+                                                    <img src="{% static 'site/medias/svg/illustrations/easy/2.svg' %}"
+                                                         class="theme-light-show h-125px" alt="">
+                                                    <img src="{% static 'site/medias/svg/illustrations/easy/2-dark.svg' %}"
+                                                         class="theme-dark-show h-125px" alt="">
+                                                </div>
+                                                <!--end::Illustration-->
+                                            </div>
+                                            <!--end::Heading-->
+                                            <!--begin::Links-->
+                                            <div class="text-center mb-1">
+                                                <!--begin::Link-->
+                                                <a class="btn btn-sm btn-facebook"
+                                                   href="{% url 'core:chatbot' %}">دستیار سفر</a>
+                                                <!--end::Link-->
+                                            </div>
+                                            <!--end::Links-->
+                                        </div>
+                                        <!--end::Body-->
+                                    </div>
+                                    <!--end::Engage widget 1-->
+                                </div>
+                                <!--end::Col-->
+                            </div>
+
+                            <!-- tours -->
+                            <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
                                 <div class="col-12 d-flex justify-content-between align-items-center">
-                                    <h3 class="fs-2">تور های دبی</h3>
+                                    <h3 class="fs-3">تور های ویژه</h3>
                                     <a href="#" class="btn btn-light">همه تور ها</a>
                                 </div>
                                 <!--end::Col-->
@@ -476,7 +587,7 @@
                                                                     <!--begin::Title-->
                                                                     <div class="flex-shrink-0 me-5">
                                                                                 <span
-                                                                                        class="text-gray-800 fs-2 fw-bold">{{ tour.title }}</span>
+                                                                                        class="text-gray-800 fs-3 fw-bold">{{ tour.title }}</span>
                                                                     </div>
                                                                 </div>
                                                                 <!--end::Heading-->
@@ -599,127 +710,6 @@
                                     </div>
                                     <!--end::Col-->
                                 {% endfor %}
-
-                            </div>
-
-                            <div class="row g-5 g-xl-10 mt-10 mb-5 mb-xl-10">
-                                <!-- <div class="col-12 mt-12 text-center">
-                                    <h2 class="h1">
-                                        هتل های دبی
-                                    </h2>
-                                </div> -->
-                                <!--begin::Col-->
-                                <div class="col-xl-8">
-                                    <!--begin::Engage widget 7-->
-                                    <div class="card card-flush h-xl-100">
-                                        <!--begin::Header-->
-                                        <div class="card-header pt-7">
-                                            <!--begin::Title-->
-                                            <h3 class="card-title align-items-start flex-column">
-                                                            <span class="card-label fw-bold text-gray-900 fs-2">رزرو
-                                                                هتل</span>
-                                            </h3>
-                                            <!--end::Title-->
-                                            <!--begin::Toolbar-->
-                                            <div class="card-toolbar">
-                                                <a href="{% url 'travel:hotel-list' %}"
-                                                   class="btn btn-sm btn-light">همه هتل ها</a>
-                                            </div>
-                                            <!--end::Toolbar-->
-                                        </div>
-                                        <!--end::Header-->
-                                        <!--begin::کارت body-->
-                                        <div class="card-body pt-7">
-                                            <!--begin::Row-->
-                                            <div class="row align-items-end h-100 gx-5 gx-xl-10">
-                                                {% for hotel in hotels %}
-                                                    <!--begin::Col-->
-                                                    <div class="col-md-4 mb-11 mb-md-0">
-                                                        <!--begin::Overlay-->
-                                                        <a class="d-block overlay"
-                                                           data-fslightbox="lightbox-hot-sales"
-                                                           href="{{ hotel.get_absolute_url }}">
-                                                            <!--begin::Image-->
-                                                            <div class="overlay-wrapper bgi-position-center bgi-no-repeat bgi-size-cover h-200px card-rounded mb-3"
-                                                                 style="height: 266px;background-image:url({{ hotel.image.url }})">
-                                                            </div>
-                                                            <!--end::Image-->
-                                                            <!--begin::Actions-->
-                                                            <div
-                                                                    class="overlay-layer card-rounded bg-dark bg-opacity-25">
-                                                                <i
-                                                                        class="ki-outline ki-eye fs-3x text-white"></i>
-                                                            </div>
-                                                            <!--end::Actions-->
-                                                        </a>
-                                                        <!--end::Overlay-->
-                                                        <!--begin::Info-->
-                                                        <div class="m-0">
-                                                            <!--begin::Title-->
-                                                            <a href="{{ hotel.get_absolute_url }}"
-                                                               class="text-gray-800 text-hover-primary fs-3 fw-bold d-block mb-2">{{ hotel.title }}</a>
-                                                            <!--end::Title-->
-                                                            <!--begin::زمان-->
-                                                            <span
-                                                                    class="fw-bold fs-6 text-gray-500 d-block lh-1">قیمت:
-                                                                        از
-                                                                {{ hotel.get_min_price.price_per_night|intcomma:False }}{{ hotel.get_min_price.currency }}</span>
-                                                            <!--end::زمان-->
-                                                        </div>
-                                                        <!--end::Info-->
-                                                    </div>
-                                                    <!--end::Col-->
-                                                {% endfor %}
-
-                                            </div>
-                                            <!--end::Row-->
-                                        </div>
-                                        <!--end::کارت body-->
-                                    </div>
-                                    <!--end::Engage widget 7-->
-                                </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
-                                <div class="col-xl-4">
-                                    <!--begin::Engage widget 1-->
-                                    <div class="card h-md-100" dir="ltr">
-                                        <!--begin::Body-->
-                                        <div class="card-body d-flex flex-column flex-center">
-                                            <!--begin::Heading-->
-                                            <div class="mb-2">
-                                                <!--begin::Title-->
-                                                <h1
-                                                        class="fw-semibold text-gray-800 fs-4 text-center lh-lg">
-                                                    <br>
-                                                    <span class="fw-bolder">دستیار هوشمند سفر</span>
-                                                    <br>
-                                                    برای انتخاب هتل با دستیار هوشمندت مشورت کن
-                                                </h1>
-                                                <!--end::Title-->
-                                                <!--begin::Illustration-->
-                                                <div class="py-10 text-center">
-                                                    <img src="{% static 'site/media/svg/illustrations/easy/2.svg' %}"
-                                                         class="theme-light-show h-125px" alt="">
-                                                    <img src="{% static 'site/media/svg/illustrations/easy/2-dark.svg' %}"
-                                                         class="theme-dark-show h-125px" alt="">
-                                                </div>
-                                                <!--end::Illustration-->
-                                            </div>
-                                            <!--end::Heading-->
-                                            <!--begin::Links-->
-                                            <div class="text-center mb-1">
-                                                <!--begin::Link-->
-                                                <a class="btn btn-sm btn-facebook"
-                                                   href="{% url 'core:chatbot' %}">دستیار سفر</a>
-                                                <!--end::Link-->
-                                            </div>
-                                            <!--end::Links-->
-                                        </div>
-                                        <!--end::Body-->
-                                    </div>
-                                    <!--end::Engage widget 1-->
-                                </div>
-                                <!--end::Col-->
                             </div>
 
                             <div class="row mt-12">
@@ -731,7 +721,7 @@
                                             <!--begin::Title-->
                                             <h3 class="card-title align-items-start flex-column">
                                                             <span class="card-label fw-bold text-gray-800 fs-2">پرواز
-                                                                های دبی</span>
+                                                                های ارزان هفته</span>
                                                 <!-- <span class="text-gray-500 mt-1 fw-semibold fs-6">8 هزار
                                                     بازدید اجتماعی</span> -->
                                             </h3>
@@ -759,7 +749,7 @@
                                                     <!--begin::Wrapper-->
                                                     <div class="d-flex align-items-center me-3">
                                                         <!--begin::Icon-->
-                                                        <!-- <img src="{% static 'site/media/stock/ecommerce/14.png' %}"
+                                                        <!-- <img src="{% static 'site/medias/stock/ecommerce/14.png' %}"
                                                                 class="me-4 w-50px" alt=""> -->
                                                         <!--end::Icon-->
                                                         <!--begin::Section-->
@@ -810,7 +800,7 @@
                                             <div class="card-title m-0">
                                                 <!--begin::Avatar-->
                                                 <div class="symbol symbol-50px w-50px bg-light">
-                                                    <img src="{% static 'site/media/svg/general/rhone.svg' %}"
+                                                    <img src="{% static 'site/medias/svg/general/rhone.svg' %}"
                                                          alt="image" class="p-3">
                                                 </div>
                                                 <!--end::Avatar-->
@@ -821,7 +811,7 @@
                                         <!--begin:: کارت body-->
                                         <div class="card-body p-9">
                                             <!--begin::نام-->
-                                            <div class="fs-3 fw-bold text-gray-900">درخواست ویزای دبی</div>
+                                            <div class="fs-3 fw-bold text-gray-900">ویزای فوری دبی</div>
                                             <!--end::نام-->
                                             <!--begin::توضیحات-->
                                             <p class="text-gray-500 fw-semibold fs-5 mt-1 mb-7">ارتباط با
@@ -866,7 +856,7 @@
                                                      data-bs-toggle="tooltip" aria-label="مرادی نیا"
                                                      data-bs-original-title="مرادی نیا"
                                                      data-kt-initialized="1">
-                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-6.jpg' %}">
+                                                    <img alt="Pic" src="{% static 'site/medias/avatars/300-6.jpg' %}">
                                                 </div>
                                                 <!--begin::user-->
                                                 <!--begin::user-->
@@ -874,7 +864,7 @@
                                                      data-bs-toggle="tooltip" aria-label="Rudy Stone"
                                                      data-bs-original-title="Rudy Stone"
                                                      data-kt-initialized="1">
-                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-1.jpg' %}">
+                                                    <img alt="Pic" src="{% static 'site/medias/avatars/300-1.jpg' %}">
                                                 </div>
                                                 <!--begin::user-->
                                                 <!--begin::user-->
@@ -902,7 +892,7 @@
                                             <div class="card-title m-0">
                                                 <!--begin::Avatar-->
                                                 <div class="symbol symbol-50px w-50px bg-light">
-                                                    <img src="{% static 'site/media/svg/brand-logos/plurk.svg' %}"
+                                                    <img src="{% static 'site/medias/illustrations/unitedpalms-1/1.png' %}"
                                                          alt="image" class="p-3">
                                                 </div>
                                                 <!--end::Avatar-->
@@ -913,11 +903,12 @@
                                         <!--begin:: کارت body-->
                                         <div class="card-body p-9">
                                             <!--begin::نام-->
-                                            <div class="fs-3 fw-bold text-gray-900">زندگی در دبی</div>
+                                            <div class="fs-3 fw-bold text-gray-900">
+                                                4 روز اجاره فراری
+                                            </div>
                                             <!--end::نام-->
                                             <!--begin::توضیحات-->
-                                            <p class="text-gray-500 fw-semibold fs-5 mt-1 mb-7">ارتباط با
-                                                بهترین شرکت های مهاجرتی</p>
+                                            <p class="text-gray-500 fw-semibold fs-5 mt-1 mb-7">4 روز اجاره فراری در دبی فقط 100 درهم</p>
                                             <!--end::توضیحات-->
                                             <!--begin::Info-->
                                             <div class="d-flex flex-wrap mb-5">
@@ -958,7 +949,7 @@
                                                      data-bs-toggle="tooltip" aria-label="مرادی نیا"
                                                      data-bs-original-title="مرادی نیا"
                                                      data-kt-initialized="1">
-                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-6.jpg' %}">
+                                                    <img alt="Pic" src="{% static 'site/medias/avatars/300-6.jpg' %}">
                                                 </div>
                                                 <!--begin::user-->
                                                 <!--begin::user-->
@@ -966,7 +957,7 @@
                                                      data-bs-toggle="tooltip" aria-label="Rudy Stone"
                                                      data-bs-original-title="Rudy Stone"
                                                      data-kt-initialized="1">
-                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-1.jpg' %}">
+                                                    <img alt="Pic" src="{% static 'site/medias/avatars/300-1.jpg' %}">
                                                 </div>
                                                 <!--begin::user-->
                                                 <!--begin::user-->
@@ -993,31 +984,25 @@
                                             <!--begin::کارت Title-->
                                             <div class="card-title m-0">
                                                 <!--begin::Avatar-->
-                                                <div class="symbol symbol-50px w-50px bg-light">
-                                                    <img src="{% static 'site/media/svg/brand-logos/plurk.svg' %}"
+                                                <div class="symbol symbol-60px w-60px bg-light">
+                                                    <img src="{% static 'site/medias/illustrations/misc/credit-card.png' %}"
                                                          alt="image" class="p-3">
                                                 </div>
                                                 <!--end::Avatar-->
                                             </div>
                                             <!--end::Car Title-->
-                                            <!--begin::کارت toolbar-->
-                                            <div class="card-toolbar">
-                                                            <span
-                                                                    class="badge badge-light-primary fw-bold me-auto px-4 py-3">درحال
-                                                                پردازش</span>
-                                            </div>
-                                            <!--end::کارت toolbar-->
                                         </div>
                                         <!--end:: کارت header-->
                                         <!--begin:: کارت body-->
                                         <div class="card-body p-9">
                                             <!--begin::نام-->
-                                            <div class="fs-3 fw-bold text-gray-900">کسب و کار و سرمایه گذاری
+                                            <div class="fs-3 fw-bold text-gray-900">
+                                                سود 100 درصدی در پروژه nمال دبی
                                             </div>
                                             <!--end::نام-->
                                             <!--begin::توضیحات-->
                                             <p class="text-gray-500 fw-semibold fs-5 mt-1 mb-7">ارتباط با
-                                                بهترین شرکت های مهاجرتی</p>
+                                                شرکت های سرمایه گذاری سود ده</p>
                                             <!--end::توضیحات-->
                                             <!--begin::Info-->
                                             <div class="d-flex flex-wrap mb-5">
@@ -1058,7 +1043,7 @@
                                                      data-bs-toggle="tooltip" aria-label="مرادی نیا"
                                                      data-bs-original-title="مرادی نیا"
                                                      data-kt-initialized="1">
-                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-6.jpg' %}">
+                                                    <img alt="Pic" src="{% static 'site/medias/avatars/300-6.jpg' %}">
                                                 </div>
                                                 <!--begin::user-->
                                                 <!--begin::user-->
@@ -1066,7 +1051,7 @@
                                                      data-bs-toggle="tooltip" aria-label="Rudy Stone"
                                                      data-bs-original-title="Rudy Stone"
                                                      data-kt-initialized="1">
-                                                    <img alt="Pic" src="{% static 'site/media/avatars/300-1.jpg' %}">
+                                                    <img alt="Pic" src="{% static 'site/medias/avatars/300-1.jpg' %}">
                                                 </div>
                                                 <!--begin::user-->
                                                 <!--begin::user-->
@@ -1124,4 +1109,55 @@
         <!--end:::اصلی-->
     </div>
     <!--end::Wrapper container-->
+{% endblock %}
+
+{% block js_code %}
+    <script>
+        $(document).ready(function () {
+            const sentences = [
+                " یه سفر تفریحی برام طراحی کن",
+                "هتل های نزدیک برج خلیفه رو بهم معرفی کن",
+                "میخوام در دبی کسب و کار راه بندازم"
+            ];
+            const input = $("#typingInput");
+            let sentenceIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+            let deleteSpeed = 50;
+            let pauseBetweenSentences = 2000;
+
+            function type() {
+                const currentSentence = sentences[sentenceIndex];
+
+                if (isDeleting) {
+                    // deleting
+                    input.attr("placeholder", currentSentence.substring(0, charIndex - 1));
+                    charIndex--;
+
+                    if (charIndex === 0) {
+                        isDeleting = false;
+                        sentenceIndex = (sentenceIndex + 1) % sentences.length; // حرکت به جمله بعدی (حلقه‌ای)
+                        setTimeout(type, typingSpeed);
+                    } else {
+                        setTimeout(type, deleteSpeed);
+                    }
+                } else {
+                    // typing
+                    input.attr("placeholder", currentSentence.substring(0, charIndex + 1));
+                    charIndex++;
+
+                    if (charIndex === currentSentence.length) {
+                        isDeleting = true;
+                        setTimeout(type, pauseBetweenSentences);
+                    } else {
+                        setTimeout(type, typingSpeed);
+                    }
+                }
+            }
+
+            // typing after 1 second
+            setTimeout(type, 1000);
+        });
+    </script>
 {% endblock %}

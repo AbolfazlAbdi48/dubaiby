@@ -78,5 +78,10 @@ def chatbot_view(request):
     return render(request, 'core/chatbot.html', context=context)
 
 
+# TODO: add life and business module
 def dubai_life_view(request):
     return render(request, 'core/dubai_life.html')
+
+
+def dubai_business_view(request):
+    return render(request, 'core/dubai_business.html')
